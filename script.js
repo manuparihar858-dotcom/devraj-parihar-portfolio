@@ -1,8 +1,22 @@
-const menuBtn = document.getElementById("menuBtn");
-const navMenu = document.getElementById("navMenu");
+/* =========================================================
+   DEVRAJ PARIHAR PORTFOLIO
+   ========================================================= */
+
+
+/* ================= FOOTER YEAR ================= */
+
+const yearElement = document.getElementById("year");
+
+if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+}
+
 
 
 /* ================= MOBILE MENU ================= */
+
+const menuBtn = document.getElementById("menuBtn");
+const navMenu = document.getElementById("navMenu");
 
 if (menuBtn && navMenu) {
 
@@ -27,7 +41,7 @@ if (menuBtn && navMenu) {
     });
 
 
-    document.querySelectorAll("#navMenu a").forEach(link => {
+    navMenu.querySelectorAll("a").forEach(link => {
 
         link.addEventListener("click", () => {
 
@@ -45,53 +59,6 @@ if (menuBtn && navMenu) {
 }
 
 
-/* ================= ACTIVE NAVIGATION ================= */
-
-const sections = document.querySelectorAll("section[id]");
-const navLinks = document.querySelectorAll("nav a");
-
-
-function updateActiveLink() {
-
-    let current = "home";
-
-
-    sections.forEach(section => {
-
-        const top =
-            section.offsetTop - 180;
-
-
-        if (window.scrollY >= top) {
-
-            current = section.id;
-
-        }
-
-    });
-
-
-    navLinks.forEach(link => {
-
-        link.classList.toggle(
-            "active",
-            link.getAttribute("href") === `#${current}`
-        );
-
-    });
-
-}
-
-
-window.addEventListener(
-    "scroll",
-    updateActiveLink,
-    { passive: true }
-);
-
-
-updateActiveLink();
-
 
 /* ================= SCROLL REVEAL ================= */
 
@@ -99,19 +66,18 @@ const revealElements =
     document.querySelectorAll(".reveal");
 
 
-const observer =
+const revealObserver =
     new IntersectionObserver(
+
         entries => {
 
             entries.forEach(entry => {
 
                 if (entry.isIntersecting) {
 
-                    entry.target.classList.add(
-                        "visible"
-                    );
+                    entry.target.classList.add("visible");
 
-                    observer.unobserve(
+                    revealObserver.unobserve(
                         entry.target
                     );
 
@@ -120,95 +86,104 @@ const observer =
             });
 
         },
+
         {
             threshold: 0.12
         }
+
     );
 
 
 revealElements.forEach(element => {
 
-    observer.observe(element);
+    revealObserver.observe(element);
 
 });
 
 
-/* ================= CURRENT YEAR ================= */
 
-const year =
-    document.getElementById("year");
+/* ================= ACTIVE NAVIGATION ================= */
 
+const sections =
+    document.querySelectorAll("main section[id]");
 
-if (year) {
-
-    year.textContent =
-        new Date().getFullYear();
-
-}
+const navLinks =
+    document.querySelectorAll("#navMenu a");
 
 
-/* ================= SMOOTH SCROLL ================= */
+const sectionObserver =
+    new IntersectionObserver(
 
-document
-    .querySelectorAll('a[href^="#"]')
-    .forEach(anchor => {
+        entries => {
 
-        anchor.addEventListener(
-            "click",
-            event => {
+            entries.forEach(entry => {
 
-                const selector =
-                    anchor.getAttribute("href");
-
-                const target =
-                    document.querySelector(selector);
+                if (!entry.isIntersecting) {
+                    return;
+                }
 
 
-                if (!target) return;
+                const id =
+                    entry.target.getAttribute("id");
 
 
-                event.preventDefault();
+                navLinks.forEach(link => {
 
+                    link.classList.remove("active");
 
-                target.scrollIntoView({
+                    if (
+                        link.getAttribute("href") ===
+                        `#${id}`
+                    ) {
 
-                    behavior: "smooth",
+                        link.classList.add("active");
 
-                    block: "start"
+                    }
 
                 });
 
-            }
-        );
+            });
 
-    });
+        },
+
+        {
+            rootMargin:
+                "-35% 0px -55% 0px",
+
+            threshold:
+                0
+        }
+
+    );
+
+
+sections.forEach(section => {
+
+    sectionObserver.observe(section);
+
+});
+
 
 
 /* ================= CURSOR GLOW ================= */
 
-const glow =
+const cursorGlow =
     document.getElementById("cursorGlow");
 
 
 if (
-    glow &&
+    cursorGlow &&
     window.matchMedia("(pointer: fine)").matches
 ) {
 
-    window.addEventListener(
-        "pointermove",
-        event => {
+    document.addEventListener("mousemove", event => {
 
-            glow.style.left =
-                `${event.clientX}px`;
+        cursorGlow.style.left =
+            `${event.clientX}px`;
 
-            glow.style.top =
-                `${event.clientY}px`;
+        cursorGlow.style.top =
+            `${event.clientY}px`;
 
-        },
-        {
-            passive: true
-        }
-    );
+    });
 
 }
