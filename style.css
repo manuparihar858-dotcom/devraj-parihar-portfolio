@@ -13,7 +13,7 @@
     --accent-2: #55d6ff;
     --accent-soft: rgba(91, 140, 255, .12);
 
-    --border: rgba(255,255,255,.085);
+    --border: rgba(255, 255, 255, .085);
 
     --max: 1180px;
 
@@ -58,24 +58,25 @@ button {
 }
 
 
-/* ================= BACKGROUND ================= */
+/* ================= BACKGROUND EFFECTS ================= */
 
 body::before {
     content: "";
     position: fixed;
     inset: 0;
+
     pointer-events: none;
     z-index: -3;
 
     background:
         radial-gradient(
             circle at 80% 15%,
-            rgba(91,140,255,.08),
+            rgba(91, 140, 255, .08),
             transparent 28%
         ),
         radial-gradient(
             circle at 10% 55%,
-            rgba(85,214,255,.045),
+            rgba(85, 214, 255, .045),
             transparent 25%
         );
 }
@@ -83,7 +84,9 @@ body::before {
 .noise {
     position: fixed;
     inset: 0;
+
     opacity: .025;
+
     pointer-events: none;
     z-index: 1001;
 
@@ -93,21 +96,27 @@ body::before {
 
 .cursor-glow {
     position: fixed;
+
     width: 280px;
     height: 280px;
+
     border-radius: 50%;
+
     pointer-events: none;
     z-index: -1;
 
     background:
         radial-gradient(
             circle,
-            rgba(91,140,255,.09),
+            rgba(91, 140, 255, .09),
             transparent 65%
         );
 
     transform: translate(-50%, -50%);
-    transition: left .12s ease, top .12s ease;
+
+    transition:
+        left .12s ease,
+        top .12s ease;
 }
 
 
@@ -115,15 +124,22 @@ body::before {
 
 .navbar {
     position: fixed;
+
     top: 0;
     left: 0;
+
     width: 100%;
+
     z-index: 1000;
 
-    background: rgba(8,11,18,.76);
+    background:
+        rgba(8, 11, 18, .76);
+
     backdrop-filter: blur(20px);
 
-    border-bottom: 1px solid var(--border);
+    border-bottom:
+        1px solid
+        var(--border);
 }
 
 .nav-inner {
@@ -136,8 +152,10 @@ body::before {
 
 .logo {
     font-family: var(--mono);
+
     font-weight: 700;
     font-size: 1.35rem;
+
     letter-spacing: -1px;
 }
 
@@ -152,8 +170,11 @@ nav {
 
 nav a {
     position: relative;
+
     color: var(--muted);
+
     font-size: .78rem;
+
     transition: .25s ease;
 }
 
@@ -164,6 +185,7 @@ nav a.active {
 
 nav a.active::after {
     content: "";
+
     position: absolute;
 
     left: 50%;
@@ -173,19 +195,26 @@ nav a.active::after {
     height: 4px;
 
     border-radius: 50%;
+
     background: var(--accent);
 
-    box-shadow: 0 0 12px var(--accent);
+    box-shadow:
+        0 0 12px
+        var(--accent);
 
     transform: translateX(-50%);
 }
 
 .menu-btn {
     display: none;
+
     border: 0;
     background: transparent;
+
     color: var(--text);
+
     cursor: pointer;
+
     font-size: 1.15rem;
 }
 
@@ -194,6 +223,7 @@ nav a.active::after {
 
 .hero {
     min-height: 100vh;
+
     position: relative;
 
     display: flex;
@@ -202,21 +232,29 @@ nav a.active::after {
 
     overflow: hidden;
 
-    padding: 135px 0 75px;
+    padding:
+        135px
+        0
+        75px;
 }
 
-.hero-grid {
+
+/* Decorative background grid */
+
+.hero::before {
+    content: "";
+
     position: absolute;
     inset: 0;
 
     background-image:
         linear-gradient(
-            rgba(91,140,255,.045) 1px,
+            rgba(91, 140, 255, .045) 1px,
             transparent 1px
         ),
         linear-gradient(
             90deg,
-            rgba(91,140,255,.045) 1px,
+            rgba(91, 140, 255, .045) 1px,
             transparent 1px
         );
 
@@ -228,45 +266,65 @@ nav a.active::after {
             black,
             transparent 85%
         );
+
+    pointer-events: none;
 }
+
+
+/* Decorative orbs */
 
 .orb {
     position: absolute;
+
     border-radius: 50%;
+
     filter: blur(90px);
+
     pointer-events: none;
 }
 
 .orb-one {
     width: 430px;
     height: 430px;
+
     right: -150px;
     top: 8%;
-    background: rgba(91,140,255,.13);
+
+    background:
+        rgba(91, 140, 255, .13);
 }
 
 .orb-two {
     width: 280px;
     height: 280px;
+
     left: -150px;
     bottom: 0;
-    background: rgba(85,214,255,.06);
+
+    background:
+        rgba(85, 214, 255, .06);
 }
 
 
-/* ================= HERO LAYOUT ================= */
+/* ================= HERO GRID ================= */
 
-.hero-layout {
+.hero-grid {
     width: min(92%, var(--max));
-    margin: auto;
+
+    margin: 0 auto;
 
     display: grid;
-    grid-template-columns: 1.02fr .98fr;
 
-    gap: 65px;
+    grid-template-columns:
+        1.05fr
+        .95fr;
+
+    gap: 70px;
+
     align-items: center;
 
     position: relative;
+
     z-index: 2;
 }
 
@@ -275,18 +333,30 @@ nav a.active::after {
 
 .status {
     display: inline-flex;
+
     align-items: center;
+
     gap: 8px;
 
-    border: 1px solid rgba(91,140,255,.25);
-    background: rgba(91,140,255,.06);
+    border:
+        1px solid
+        rgba(91, 140, 255, .25);
+
+    background:
+        rgba(91, 140, 255, .06);
 
     color: #9eb9ff;
 
-    padding: 7px 10px;
+    padding:
+        7px
+        10px;
+
     border-radius: 999px;
 
-    font: 700 .63rem var(--mono);
+    font:
+        700
+        .63rem
+        var(--mono);
 
     margin-bottom: 24px;
 }
@@ -298,7 +368,10 @@ nav a.active::after {
     border-radius: 50%;
 
     background: #5dffb0;
-    box-shadow: 0 0 12px #5dffb0;
+
+    box-shadow:
+        0 0 12px
+        #5dffb0;
 }
 
 
@@ -307,7 +380,10 @@ nav a.active::after {
 .eyebrow {
     color: #7fa4ff;
 
-    font: 700 .65rem var(--mono);
+    font:
+        700
+        .65rem
+        var(--mono);
 
     letter-spacing: 1.7px;
 }
@@ -325,7 +401,9 @@ nav a.active::after {
         );
 
     line-height: .9;
+
     letter-spacing: -5px;
+
     font-weight: 800;
 }
 
@@ -346,7 +424,9 @@ nav a.active::after {
         );
 
     line-height: 1.1;
+
     letter-spacing: -1.5px;
+
     font-weight: 700;
 }
 
@@ -363,6 +443,7 @@ nav a.active::after {
     color: var(--muted-light);
 
     font-size: 1rem;
+
     line-height: 1.85;
 }
 
@@ -371,20 +452,27 @@ nav a.active::after {
 
 .hero-actions {
     display: flex;
+
     gap: 10px;
+
     margin-top: 32px;
 }
 
 .btn {
     display: inline-flex;
+
     align-items: center;
+
     gap: 9px;
 
-    padding: 13px 17px;
+    padding:
+        13px
+        17px;
 
     border-radius: 7px;
 
     font-size: .78rem;
+
     font-weight: 700;
 
     transition: .25s ease;
@@ -402,7 +490,7 @@ nav a.active::after {
 
     box-shadow:
         0 10px 35px
-        rgba(91,140,255,.18);
+        rgba(91, 140, 255, .18);
 }
 
 .btn-primary:hover {
@@ -410,17 +498,23 @@ nav a.active::after {
 
     box-shadow:
         0 16px 45px
-        rgba(91,140,255,.27);
+        rgba(91, 140, 255, .27);
 }
 
 .btn-ghost {
-    border: 1px solid var(--border);
+    border:
+        1px solid
+        var(--border);
+
     color: var(--text);
 }
 
 .btn-ghost:hover {
-    border-color: rgba(91,140,255,.4);
-    background: rgba(91,140,255,.06);
+    border-color:
+        rgba(91, 140, 255, .4);
+
+    background:
+        rgba(91, 140, 255, .06);
 }
 
 
@@ -428,31 +522,45 @@ nav a.active::after {
 
 .tool-row {
     display: flex;
+
     flex-wrap: wrap;
+
     gap: 7px;
+
     margin-top: 30px;
 }
 
 .tool-row span {
     color: #8e99ac;
 
-    border: 1px solid var(--border);
-    background: rgba(255,255,255,.02);
+    border:
+        1px solid
+        var(--border);
 
-    padding: 6px 8px;
+    background:
+        rgba(255, 255, 255, .02);
+
+    padding:
+        6px
+        8px;
+
     border-radius: 4px;
 
-    font: .58rem var(--mono);
+    font:
+        .58rem
+        var(--mono);
 }
 
 
-/* ================= PROFILE PHOTO ================= */
+/* ================= HERO PHOTO ================= */
 
 .hero-visual {
     position: relative;
 
     display: flex;
+
     justify-content: center;
+
     align-items: center;
 }
 
@@ -461,11 +569,13 @@ nav a.active::after {
 
     width: min(390px, 100%);
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     margin-left: auto;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
 }
 
 .photo-frame {
@@ -473,7 +583,10 @@ nav a.active::after {
 
     width: 100%;
 
-    /* SHORTER PHOTO */
+    /*
+       Shorter profile photo
+       compared with the previous 4:5 frame.
+    */
     aspect-ratio: 5 / 5.6;
 
     overflow: hidden;
@@ -482,18 +595,20 @@ nav a.active::after {
 
     border:
         1px solid
-        rgba(91,140,255,.38);
+        rgba(91, 140, 255, .38);
 
-    background: var(--card);
+    background:
+        var(--card);
 
     box-shadow:
         0 30px 80px
-        rgba(0,0,0,.45),
+        rgba(0, 0, 0, .45),
 
         0 0 70px
-        rgba(91,140,255,.08);
+        rgba(91, 140, 255, .08);
 
-    transform: rotate(1.5deg);
+    transform:
+        rotate(1.5deg);
 
     transition:
         transform .4s ease,
@@ -507,14 +622,14 @@ nav a.active::after {
         translateY(-5px);
 
     border-color:
-        rgba(91,140,255,.65);
+        rgba(91, 140, 255, .65);
 
     box-shadow:
         0 35px 90px
-        rgba(0,0,0,.5),
+        rgba(0, 0, 0, .5),
 
         0 0 80px
-        rgba(91,140,255,.14);
+        rgba(91, 140, 255, .14);
 }
 
 .photo-frame img {
@@ -525,15 +640,20 @@ nav a.active::after {
 
     object-fit: cover;
 
-    object-position: center 25%;
+    object-position:
+        center 25%;
 
     filter:
         saturate(.9)
         contrast(1.03);
 }
 
+
+/* ================= PHOTO OVERLAY ================= */
+
 .photo-overlay {
     position: absolute;
+
     inset: 0;
 
     pointer-events: none;
@@ -541,15 +661,16 @@ nav a.active::after {
     background:
         linear-gradient(
             180deg,
-            rgba(8,11,18,.03) 45%,
-            rgba(8,11,18,.6) 100%
+            rgba(8, 11, 18, .03) 45%,
+            rgba(8, 11, 18, .6) 100%
         ),
+
         linear-gradient(
             90deg,
-            rgba(8,11,18,.08),
+            rgba(8, 11, 18, .08),
             transparent 35%,
             transparent 70%,
-            rgba(8,11,18,.18)
+            rgba(8, 11, 18, .18)
         );
 }
 
@@ -564,7 +685,9 @@ nav a.active::after {
 
     pointer-events: none;
 
-    border-color: var(--accent);
+    border-color:
+        var(--accent);
+
     opacity: .9;
 
     z-index: 3;
@@ -574,32 +697,44 @@ nav a.active::after {
     top: 16px;
     left: 16px;
 
-    border-top: 2px solid;
-    border-left: 2px solid;
+    border-top:
+        2px solid;
+
+    border-left:
+        2px solid;
 }
 
 .photo-corner.top-right {
     top: 16px;
     right: 16px;
 
-    border-top: 2px solid;
-    border-right: 2px solid;
+    border-top:
+        2px solid;
+
+    border-right:
+        2px solid;
 }
 
 .photo-corner.bottom-left {
     bottom: 16px;
     left: 16px;
 
-    border-bottom: 2px solid;
-    border-left: 2px solid;
+    border-bottom:
+        2px solid;
+
+    border-left:
+        2px solid;
 }
 
 .photo-corner.bottom-right {
     bottom: 16px;
     right: 16px;
 
-    border-bottom: 2px solid;
-    border-right: 2px solid;
+    border-bottom:
+        2px solid;
+
+    border-right:
+        2px solid;
 }
 
 
@@ -609,34 +744,43 @@ nav a.active::after {
     position: absolute;
 
     right: -20px;
+
     bottom: 20px;
 
     display: flex;
+
     align-items: center;
+
     gap: 9px;
 
-    padding: 11px 14px;
+    padding:
+        11px
+        14px;
 
     border:
         1px solid
-        rgba(91,140,255,.28);
+        rgba(91, 140, 255, .28);
 
     border-radius: 6px;
 
     background:
-        rgba(8,11,18,.94);
+        rgba(8, 11, 18, .94);
 
-    backdrop-filter: blur(15px);
+    backdrop-filter:
+        blur(15px);
 
     color: #b8c7e8;
 
-    font: 700 .58rem var(--mono);
+    font:
+        700
+        .58rem
+        var(--mono);
 
     letter-spacing: .5px;
 
     box-shadow:
         0 15px 40px
-        rgba(0,0,0,.3);
+        rgba(0, 0, 0, .3);
 
     z-index: 5;
 }
@@ -649,7 +793,8 @@ nav a.active::after {
 
     border-radius: 50%;
 
-    background: #5dffb0;
+    background:
+        #5dffb0;
 
     box-shadow:
         0 0 10px
@@ -657,9 +802,13 @@ nav a.active::after {
 }
 
 .photo-label small {
-    color: var(--accent);
+    color:
+        var(--accent);
 
-    font: 700 .48rem var(--mono);
+    font:
+        700
+        .48rem
+        var(--mono);
 }
 
 
@@ -667,19 +816,27 @@ nav a.active::after {
 
 .hero-stats {
     width: min(92%, var(--max));
-    margin: 65px auto 0;
+
+    margin:
+        65px auto
+        0;
 
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+
+    grid-template-columns:
+        repeat(4, 1fr);
 
     gap: 10px;
 
     position: relative;
+
     z-index: 3;
 }
 
 .stat-card {
-    padding: 20px 22px;
+    padding:
+        20px
+        22px;
 
     border:
         1px solid
@@ -688,9 +845,10 @@ nav a.active::after {
     border-radius: 9px;
 
     background:
-        rgba(16,21,31,.72);
+        rgba(16, 21, 31, .72);
 
-    backdrop-filter: blur(12px);
+    backdrop-filter:
+        blur(12px);
 
     transition:
         transform .3s ease,
@@ -699,22 +857,25 @@ nav a.active::after {
 }
 
 .stat-card:hover {
-    transform: translateY(-4px);
+    transform:
+        translateY(-4px);
 
     border-color:
-        rgba(91,140,255,.35);
+        rgba(91, 140, 255, .35);
 
     background:
-        rgba(18,25,37,.9);
+        rgba(18, 25, 37, .9);
 }
 
 .stat-card strong {
     display: block;
 
-    color: var(--accent);
+    color:
+        var(--accent);
 
     font:
-        700 1.35rem
+        700
+        1.35rem
         var(--mono);
 }
 
@@ -723,7 +884,8 @@ nav a.active::after {
 
     margin-top: 5px;
 
-    color: var(--muted);
+    color:
+        var(--muted);
 
     font-size: .62rem;
 }
@@ -732,16 +894,24 @@ nav a.active::after {
 /* ================= SECTIONS ================= */
 
 .section {
-    padding: 115px 0;
+    padding:
+        115px
+        0;
 }
 
 .skills,
 .process,
 .certifications {
-    background: var(--bg-soft);
+    background:
+        var(--bg-soft);
 
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
+    border-top:
+        1px solid
+        var(--border);
+
+    border-bottom:
+        1px solid
+        var(--border);
 }
 
 .section-head {
@@ -759,11 +929,12 @@ nav a.active::after {
         );
 
     line-height: 1;
+
     letter-spacing: -3px;
 }
 
 
-/* ================= ABOUT ================= */
+/* ================= ABOUT FLOW ================= */
 
 .about-flow {
     display: grid;
@@ -779,11 +950,13 @@ nav a.active::after {
 
 .about-intro {
     position: sticky;
+
     top: 120px;
 }
 
 .about-intro .lead {
-    color: var(--text);
+    color:
+        var(--text);
 
     font-size:
         clamp(
@@ -798,9 +971,11 @@ nav a.active::after {
 }
 
 .about-intro p:not(.lead) {
-    color: var(--muted);
+    color:
+        var(--muted);
 
     font-size: .82rem;
+
     line-height: 1.9;
 
     margin-top: 14px;
@@ -808,6 +983,7 @@ nav a.active::after {
 
 .flow-track {
     position: relative;
+
     padding-left: 34px;
 }
 
@@ -817,6 +993,7 @@ nav a.active::after {
     position: absolute;
 
     left: 7px;
+
     top: 8px;
     bottom: 8px;
 
@@ -826,12 +1003,13 @@ nav a.active::after {
         linear-gradient(
             to bottom,
             var(--accent),
-            rgba(91,140,255,.1)
+            rgba(91, 140, 255, .1)
         );
 }
 
 .flow-item {
     position: relative;
+
     padding-bottom: 48px;
 }
 
@@ -850,7 +1028,8 @@ nav a.active::after {
 
     border-radius: 50%;
 
-    background: var(--bg);
+    background:
+        var(--bg);
 
     border:
         2px solid
@@ -858,26 +1037,32 @@ nav a.active::after {
 
     box-shadow:
         0 0 18px
-        rgba(91,140,255,.4);
+        rgba(91, 140, 255, .4);
 }
 
 .flow-content {
-    padding: 0 0 28px;
+    padding:
+        0
+        0
+        28px;
 
     border-bottom:
         1px solid
         var(--border);
 }
 
-.flow-item:last-child .flow-content {
+.flow-item:last-child
+.flow-content {
     border-bottom: 0;
 }
 
 .flow-content span {
-    color: #6f91e8;
+    color:
+        #6f91e8;
 
     font:
-        700 .55rem
+        700
+        .55rem
         var(--mono);
 
     letter-spacing: 1.3px;
@@ -887,6 +1072,7 @@ nav a.active::after {
     margin-top: 7px;
 
     font-size: 1.35rem;
+
     letter-spacing: -.5px;
 }
 
@@ -895,9 +1081,11 @@ nav a.active::after {
 
     margin-top: 8px;
 
-    color: var(--muted);
+    color:
+        var(--muted);
 
     font-size: .76rem;
+
     line-height: 1.8;
 }
 
@@ -905,27 +1093,34 @@ nav a.active::after {
     grid-column: 1 / -1;
 
     display: flex;
+
     flex-wrap: wrap;
 
     gap: 7px;
+
     margin-top: 5px;
 }
 
 .about-tools span {
-    color: #aab4c3;
+    color:
+        #aab4c3;
 
     border:
         1px solid
         var(--border);
 
     background:
-        rgba(255,255,255,.02);
+        rgba(255, 255, 255, .02);
 
-    padding: 7px 10px;
+    padding:
+        7px
+        10px;
 
     border-radius: 5px;
 
-    font: .56rem var(--mono);
+    font:
+        .56rem
+        var(--mono);
 }
 
 
@@ -935,7 +1130,7 @@ nav a.active::after {
     display: grid;
 
     grid-template-columns:
-        repeat(4,1fr);
+        repeat(4, 1fr);
 
     gap: 9px;
 }
@@ -947,7 +1142,8 @@ nav a.active::after {
         1px solid
         var(--border);
 
-    background: var(--card);
+    background:
+        var(--card);
 
     border-radius: 9px;
 
@@ -955,20 +1151,25 @@ nav a.active::after {
 }
 
 .skill-panel:hover {
-    transform: translateY(-6px);
+    transform:
+        translateY(-6px);
 
     border-color:
-        rgba(91,140,255,.32);
+        rgba(91, 140, 255, .32);
 }
 
 .skill-title {
     display: flex;
+
     align-items: center;
+
     gap: 10px;
 }
 
 .skill-title i {
-    color: var(--accent);
+    color:
+        var(--accent);
+
     font-size: .95rem;
 }
 
@@ -977,7 +1178,8 @@ nav a.active::after {
 }
 
 .skill-panel > p {
-    color: var(--muted);
+    color:
+        var(--muted);
 
     font-size: .7rem;
 
@@ -989,21 +1191,26 @@ nav a.active::after {
 
 .skill-tags {
     display: flex;
+
     flex-wrap: wrap;
+
     gap: 5px;
 }
 
 .skill-tags span {
-    color: #aab3c1;
+    color:
+        #aab3c1;
 
     background:
-        rgba(255,255,255,.025);
+        rgba(255, 255, 255, .025);
 
     border:
         1px solid
         var(--border);
 
-    padding: 5px 7px;
+    padding:
+        5px
+        7px;
 
     border-radius: 4px;
 
@@ -1015,6 +1222,7 @@ nav a.active::after {
 
 .projects-list {
     display: grid;
+
     gap: 10px;
 }
 
@@ -1023,7 +1231,8 @@ nav a.active::after {
         1px solid
         var(--border);
 
-    background: var(--card);
+    background:
+        var(--card);
 
     border-radius: 11px;
 
@@ -1033,37 +1242,44 @@ nav a.active::after {
 }
 
 .project:hover {
-    transform: translateY(-4px);
+    transform:
+        translateY(-4px);
 
     border-color:
-        rgba(91,140,255,.34);
+        rgba(91, 140, 255, .34);
 
     box-shadow:
         0 25px 70px
-        rgba(0,0,0,.22);
+        rgba(0, 0, 0, .22);
 }
 
 .project-main {
-    padding: 27px 30px;
+    padding:
+        27px
+        30px;
 }
 
 .project-meta {
     display: flex;
+
     justify-content: space-between;
 
     gap: 20px;
 
-    color: #779cff;
+    color:
+        #779cff;
 
     font:
-        700 .57rem
+        700
+        .57rem
         var(--mono);
 
     letter-spacing: 1px;
 }
 
 .project-meta span:last-child {
-    color: #667286;
+    color:
+        #667286;
 }
 
 .project h3 {
@@ -1079,14 +1295,17 @@ nav a.active::after {
 
     margin-top: 10px;
 
-    color: var(--muted);
+    color:
+        var(--muted);
 
     font-size: .76rem;
+
     line-height: 1.75;
 }
 
 .metrics {
     display: flex;
+
     gap: 40px;
 
     margin-top: 22px;
@@ -1095,20 +1314,25 @@ nav a.active::after {
 .metrics strong {
     display: block;
 
-    color: var(--accent);
+    color:
+        var(--accent);
 
     font:
-        700 1.2rem
+        700
+        1.2rem
         var(--mono);
 }
 
 .metrics span {
-    color: var(--muted);
+    color:
+        var(--muted);
+
     font-size: .57rem;
 }
 
 .tag-row {
     display: flex;
+
     flex-wrap: wrap;
 
     gap: 6px;
@@ -1117,35 +1341,43 @@ nav a.active::after {
 }
 
 .tag-row span {
-    color: #9aa6b8;
+    color:
+        #9aa6b8;
 
     border:
         1px solid
         var(--border);
 
-    padding: 6px 8px;
+    padding:
+        6px
+        8px;
 
     border-radius: 4px;
 
-    font: .55rem var(--mono);
+    font:
+        .55rem
+        var(--mono);
 }
 
 .project-bottom {
     display: flex;
 
     justify-content: space-between;
-    align-items: center;
 
     gap: 20px;
+
+    align-items: center;
 
     border-top:
         1px solid
         var(--border);
 
     margin-top: 22px;
+
     padding-top: 15px;
 
-    color: #647084;
+    color:
+        #647084;
 
     font:
         .55rem
@@ -1153,7 +1385,9 @@ nav a.active::after {
 }
 
 .project-bottom a {
-    color: #8dabff;
+    color:
+        #8dabff;
+
     transition: .2s;
 }
 
@@ -1172,7 +1406,7 @@ nav a.active::after {
     display: grid;
 
     grid-template-columns:
-        repeat(4,1fr);
+        repeat(4, 1fr);
 
     gap: 9px;
 }
@@ -1184,7 +1418,8 @@ nav a.active::after {
         1px solid
         var(--border);
 
-    background: var(--card);
+    background:
+        var(--card);
 
     border-radius: 9px;
 
@@ -1192,10 +1427,11 @@ nav a.active::after {
 }
 
 .process-step:hover {
-    transform: translateY(-5px);
+    transform:
+        translateY(-5px);
 
     border-color:
-        rgba(91,140,255,.32);
+        rgba(91, 140, 255, .32);
 }
 
 .process-step i {
@@ -1206,7 +1442,9 @@ nav a.active::after {
         0
         15px;
 
-    color: var(--accent);
+    color:
+        var(--accent);
+
     font-size: 1.15rem;
 }
 
@@ -1215,9 +1453,11 @@ nav a.active::after {
 }
 
 .process-step p {
-    color: var(--muted);
+    color:
+        var(--muted);
 
     font-size: .67rem;
+
     margin-top: 7px;
 }
 
@@ -1239,7 +1479,9 @@ nav a.active::after {
     position: relative;
 
     display: flex;
+
     gap: 17px;
+
     align-items: flex-start;
 
     padding: 24px;
@@ -1248,7 +1490,8 @@ nav a.active::after {
         1px solid
         var(--border);
 
-    background: var(--card);
+    background:
+        var(--card);
 
     border-radius: 9px;
 }
@@ -1260,37 +1503,49 @@ nav a.active::after {
     flex: 0 0 42px;
 
     display: grid;
+
     place-items: center;
 
     border-radius: 8px;
 
-    background: var(--accent-soft);
-    color: var(--accent);
+    background:
+        var(--accent-soft);
+
+    color:
+        var(--accent);
 }
 
 .cert-card span {
-    color: #779cff;
+    color:
+        #779cff;
 
     font:
-        700 .54rem
+        700
+        .54rem
         var(--mono);
 }
 
 .cert-card h3 {
     margin-top: 6px;
+
     font-size: .95rem;
 }
 
 .cert-card p {
     margin-top: 6px;
 
-    color: var(--muted);
+    color:
+        var(--muted);
+
     font-size: .64rem;
 }
 
 .cert-arrow {
     margin-left: auto;
-    color: var(--accent);
+
+    color:
+        var(--accent);
+
     font-size: .65rem;
 }
 
@@ -1327,7 +1582,7 @@ nav a.active::after {
     background:
         radial-gradient(
             circle at 20% 10%,
-            rgba(91,140,255,.13),
+            rgba(91, 140, 255, .13),
             transparent 35%
         ),
         var(--card);
@@ -1342,6 +1597,7 @@ nav a.active::after {
         );
 
     line-height: .98;
+
     letter-spacing: -3px;
 
     margin-top: 8px;
@@ -1350,15 +1606,19 @@ nav a.active::after {
 .contact-box > div > p:last-child {
     max-width: 620px;
 
-    color: var(--muted);
+    color:
+        var(--muted);
 
     font-size: .8rem;
+
     margin-top: 20px;
 }
 
 .contact-actions {
     display: flex;
+
     flex-direction: column;
+
     gap: 18px;
 }
 
@@ -1366,6 +1626,7 @@ nav a.active::after {
     display: flex;
 
     justify-content: space-between;
+
     align-items: center;
 
     gap: 15px;
@@ -1376,7 +1637,8 @@ nav a.active::after {
         1px solid
         var(--border);
 
-    color: #9eb7ff;
+    color:
+        #9eb7ff;
 
     font:
         .7rem
@@ -1385,17 +1647,22 @@ nav a.active::after {
 
 .socials {
     display: flex;
+
     gap: 18px;
 }
 
 .socials a {
-    color: var(--muted);
+    color:
+        var(--muted);
+
     font-size: .7rem;
+
     transition: .2s;
 }
 
 .socials a:hover {
-    color: var(--text);
+    color:
+        var(--text);
 }
 
 
@@ -1406,9 +1673,13 @@ footer {
         1px solid
         var(--border);
 
-    padding: 23px 0;
+    padding:
+        23px
+        0;
 
-    color: #5e6878;
+    color:
+        #5e6878;
+
     font-size: .6rem;
 }
 
@@ -1416,12 +1687,15 @@ footer {
     display: flex;
 
     justify-content: space-between;
+
     align-items: center;
 }
 
 .footer-status {
     display: flex;
+
     align-items: center;
+
     gap: 7px;
 }
 
@@ -1431,7 +1705,8 @@ footer {
 
     border-radius: 50%;
 
-    background: #5dffb0;
+    background:
+        #5dffb0;
 
     box-shadow:
         0 0 8px
@@ -1468,24 +1743,29 @@ footer {
 
 @media (max-width: 1000px) {
 
-    .hero-layout,
+    .hero-grid,
     .about-flow,
     .contact-box {
         grid-template-columns: 1fr;
     }
 
-    .hero-layout {
+    .hero-grid {
         gap: 55px;
     }
 
     .hero-visual {
         max-width: 600px;
-        margin: auto;
+
+        margin:
+            0 auto;
+
         width: 100%;
     }
 
     .hero-photo {
-        margin: auto;
+        margin:
+            20px auto
+            0;
     }
 
     .about-intro {
@@ -1495,7 +1775,7 @@ footer {
     .skills-layout,
     .process-grid {
         grid-template-columns:
-            repeat(2,1fr);
+            repeat(2, 1fr);
     }
 
     .cert-grid {
@@ -1504,12 +1784,13 @@ footer {
     }
 
     .cert-card:first-child {
-        grid-column: span 2;
+        grid-column:
+            span 2;
     }
 
     .hero-stats {
         grid-template-columns:
-            repeat(2,1fr);
+            repeat(2, 1fr);
     }
 }
 
@@ -1533,10 +1814,11 @@ footer {
         padding: 20px;
 
         flex-direction: column;
+
         gap: 17px;
 
         background:
-            rgba(8,11,18,.98);
+            rgba(8, 11, 18, .98);
 
         border-bottom:
             1px solid
@@ -1562,42 +1844,71 @@ footer {
     }
 
     .hero {
-        padding-top: 115px;
+        padding:
+            115px
+            0
+            65px;
+    }
+
+    .hero-grid {
+        width: min(90%, var(--max));
+
+        gap: 45px;
     }
 
     .name-heading {
         font-size: 3.6rem;
+
         letter-spacing: -3px;
     }
 
     .hero-role {
         font-size: 1.6rem;
+
         letter-spacing: -1px;
+    }
+
+    .hero-text {
+        font-size: .92rem;
     }
 
     .hero-actions {
         flex-direction: column;
+
         align-items: flex-start;
     }
 
     .hero-photo {
-        width: min(340px, 100%);
-        margin: 25px auto 0;
+        width:
+            min(
+                340px,
+                100%
+            );
+
+        margin:
+            10px auto
+            0;
     }
 
     .photo-frame {
-        aspect-ratio: 5 / 5.8;
-        transform: rotate(1deg);
+        aspect-ratio:
+            5 / 5.8;
+
+        transform:
+            rotate(1deg);
     }
 
     .photo-label {
         right: 0;
+
         bottom: 18px;
     }
 
     .hero-stats {
+        width: min(90%, var(--max));
+
         grid-template-columns:
-            repeat(2,1fr);
+            repeat(2, 1fr);
 
         gap: 8px;
 
@@ -1617,7 +1928,9 @@ footer {
     }
 
     .section {
-        padding: 85px 0;
+        padding:
+            85px
+            0;
     }
 
     .section-head {
@@ -1626,6 +1939,7 @@ footer {
 
     .section-head h2 {
         font-size: 2.4rem;
+
         letter-spacing: -2px;
     }
 
@@ -1640,7 +1954,8 @@ footer {
     }
 
     .cert-card:first-child {
-        grid-column: span 1;
+        grid-column:
+            span 1;
     }
 
     .project-main {
@@ -1651,11 +1966,13 @@ footer {
 
     .project-meta {
         flex-direction: column;
+
         gap: 7px;
     }
 
     .project-bottom {
         flex-direction: column;
+
         align-items: flex-start;
     }
 
@@ -1671,8 +1988,56 @@ footer {
 
     .footer-inner {
         flex-direction: column;
+
         gap: 9px;
+
         text-align: center;
+    }
+}
+
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width: 430px) {
+
+    .name-heading {
+        font-size: 3rem;
+
+        letter-spacing: -2.5px;
+    }
+
+    .hero-role {
+        font-size: 1.35rem;
+    }
+
+    .hero-photo {
+        width: 92%;
+    }
+
+    .photo-label {
+        font-size: .5rem;
+
+        padding:
+            9px
+            11px;
+    }
+
+    .hero-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card {
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        gap: 15px;
+    }
+
+    .stat-card span {
+        margin-top: 0;
     }
 }
 
