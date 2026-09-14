@@ -13,7 +13,7 @@
     --accent-2: #55d6ff;
     --accent-soft: rgba(91, 140, 255, .12);
 
-    --border: rgba(255, 255, 255, .085);
+    --border: rgba(255,255,255,.085);
 
     --max: 1180px;
 
@@ -22,7 +22,9 @@
 }
 
 
-/* ================= RESET ================= */
+/* =========================================================
+   RESET
+========================================================= */
 
 * {
     box-sizing: border-box;
@@ -58,10 +60,13 @@ button {
 }
 
 
-/* ================= BACKGROUND EFFECTS ================= */
+/* =========================================================
+   BACKGROUND EFFECTS
+========================================================= */
 
 body::before {
     content: "";
+
     position: fixed;
     inset: 0;
 
@@ -71,12 +76,12 @@ body::before {
     background:
         radial-gradient(
             circle at 80% 15%,
-            rgba(91, 140, 255, .08),
+            rgba(91,140,255,.08),
             transparent 28%
         ),
         radial-gradient(
             circle at 10% 55%,
-            rgba(85, 214, 255, .045),
+            rgba(85,214,255,.045),
             transparent 25%
         );
 }
@@ -108,7 +113,7 @@ body::before {
     background:
         radial-gradient(
             circle,
-            rgba(91, 140, 255, .09),
+            rgba(91,140,255,.09),
             transparent 65%
         );
 
@@ -120,7 +125,9 @@ body::before {
 }
 
 
-/* ================= NAVBAR ================= */
+/* =========================================================
+   NAVBAR
+========================================================= */
 
 .navbar {
     position: fixed;
@@ -133,7 +140,7 @@ body::before {
     z-index: 1000;
 
     background:
-        rgba(8, 11, 18, .76);
+        rgba(8,11,18,.76);
 
     backdrop-filter: blur(20px);
 
@@ -219,7 +226,9 @@ nav a.active::after {
 }
 
 
-/* ================= HERO ================= */
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero {
     min-height: 100vh;
@@ -235,26 +244,25 @@ nav a.active::after {
     padding:
         135px
         0
-        75px;
+        70px;
 }
 
 
 /* Decorative background grid */
 
-.hero::before {
-    content: "";
-
+.hero-grid {
     position: absolute;
+
     inset: 0;
 
     background-image:
         linear-gradient(
-            rgba(91, 140, 255, .045) 1px,
+            rgba(91,140,255,.045) 1px,
             transparent 1px
         ),
         linear-gradient(
             90deg,
-            rgba(91, 140, 255, .045) 1px,
+            rgba(91,140,255,.045) 1px,
             transparent 1px
         );
 
@@ -268,6 +276,8 @@ nav a.active::after {
         );
 
     pointer-events: none;
+
+    z-index: 0;
 }
 
 
@@ -281,6 +291,8 @@ nav a.active::after {
     filter: blur(90px);
 
     pointer-events: none;
+
+    z-index: 0;
 }
 
 .orb-one {
@@ -291,7 +303,7 @@ nav a.active::after {
     top: 8%;
 
     background:
-        rgba(91, 140, 255, .13);
+        rgba(91,140,255,.13);
 }
 
 .orb-two {
@@ -302,17 +314,15 @@ nav a.active::after {
     bottom: 0;
 
     background:
-        rgba(85, 214, 255, .06);
+        rgba(85,214,255,.06);
 }
 
 
-/* ================= HERO GRID ================= */
+/* =========================================================
+   HERO LAYOUT
+========================================================= */
 
-.hero-grid {
-    width: min(92%, var(--max));
-
-    margin: 0 auto;
-
+.hero-layout {
     display: grid;
 
     grid-template-columns:
@@ -329,7 +339,16 @@ nav a.active::after {
 }
 
 
-/* ================= STATUS ================= */
+/* =========================================================
+   HERO COPY
+========================================================= */
+
+.hero-copy {
+    position: relative;
+    z-index: 3;
+
+    min-width: 0;
+}
 
 .status {
     display: inline-flex;
@@ -340,10 +359,10 @@ nav a.active::after {
 
     border:
         1px solid
-        rgba(91, 140, 255, .25);
+        rgba(91,140,255,.25);
 
     background:
-        rgba(91, 140, 255, .06);
+        rgba(91,140,255,.06);
 
     color: #9eb9ff;
 
@@ -373,9 +392,6 @@ nav a.active::after {
         0 0 12px
         #5dffb0;
 }
-
-
-/* ================= HERO TEXT ================= */
 
 .eyebrow {
     color: #7fa4ff;
@@ -432,6 +448,7 @@ nav a.active::after {
 
 .hero-role em {
     color: var(--accent);
+
     font-style: normal;
 }
 
@@ -448,7 +465,9 @@ nav a.active::after {
 }
 
 
-/* ================= BUTTONS ================= */
+/* =========================================================
+   HERO BUTTONS
+========================================================= */
 
 .hero-actions {
     display: flex;
@@ -490,7 +509,7 @@ nav a.active::after {
 
     box-shadow:
         0 10px 35px
-        rgba(91, 140, 255, .18);
+        rgba(91,140,255,.18);
 }
 
 .btn-primary:hover {
@@ -498,7 +517,7 @@ nav a.active::after {
 
     box-shadow:
         0 16px 45px
-        rgba(91, 140, 255, .27);
+        rgba(91,140,255,.27);
 }
 
 .btn-ghost {
@@ -511,14 +530,16 @@ nav a.active::after {
 
 .btn-ghost:hover {
     border-color:
-        rgba(91, 140, 255, .4);
+        rgba(91,140,255,.4);
 
     background:
-        rgba(91, 140, 255, .06);
+        rgba(91,140,255,.06);
 }
 
 
-/* ================= TOOLS ================= */
+/* =========================================================
+   TOOL ROW
+========================================================= */
 
 .tool-row {
     display: flex;
@@ -538,7 +559,7 @@ nav a.active::after {
         var(--border);
 
     background:
-        rgba(255, 255, 255, .02);
+        rgba(255,255,255,.02);
 
     padding:
         6px
@@ -552,30 +573,27 @@ nav a.active::after {
 }
 
 
-/* ================= HERO PHOTO ================= */
-
-.hero-visual {
-    position: relative;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-}
+/* =========================================================
+   PROFILE PHOTO
+========================================================= */
 
 .hero-photo {
     position: relative;
 
     width: min(390px, 100%);
 
-    margin-left: auto;
+    margin:
+        0
+        0
+        0
+        auto;
 
     display: flex;
 
     justify-content: center;
-
     align-items: center;
+
+    z-index: 3;
 }
 
 .photo-frame {
@@ -583,11 +601,8 @@ nav a.active::after {
 
     width: 100%;
 
-    /*
-       Shorter profile photo
-       compared with the previous 4:5 frame.
-    */
-    aspect-ratio: 5 / 5.6;
+    /* Shorter than the previous 4:5 version */
+    aspect-ratio: 5 / 5.8;
 
     overflow: hidden;
 
@@ -595,20 +610,20 @@ nav a.active::after {
 
     border:
         1px solid
-        rgba(91, 140, 255, .38);
+        rgba(91,140,255,.38);
 
     background:
         var(--card);
 
     box-shadow:
         0 30px 80px
-        rgba(0, 0, 0, .45),
+        rgba(0,0,0,.45),
 
         0 0 70px
-        rgba(91, 140, 255, .08);
+        rgba(91,140,255,.08);
 
     transform:
-        rotate(1.5deg);
+        rotate(1deg);
 
     transition:
         transform .4s ease,
@@ -622,14 +637,14 @@ nav a.active::after {
         translateY(-5px);
 
     border-color:
-        rgba(91, 140, 255, .65);
+        rgba(91,140,255,.65);
 
     box-shadow:
         0 35px 90px
-        rgba(0, 0, 0, .5),
+        rgba(0,0,0,.5),
 
         0 0 80px
-        rgba(91, 140, 255, .14);
+        rgba(91,140,255,.14);
 }
 
 .photo-frame img {
@@ -648,9 +663,6 @@ nav a.active::after {
         contrast(1.03);
 }
 
-
-/* ================= PHOTO OVERLAY ================= */
-
 .photo-overlay {
     position: absolute;
 
@@ -661,21 +673,23 @@ nav a.active::after {
     background:
         linear-gradient(
             180deg,
-            rgba(8, 11, 18, .03) 45%,
-            rgba(8, 11, 18, .6) 100%
+            rgba(8,11,18,.03) 45%,
+            rgba(8,11,18,.62) 100%
         ),
 
         linear-gradient(
             90deg,
-            rgba(8, 11, 18, .08),
+            rgba(8,11,18,.08),
             transparent 35%,
             transparent 70%,
-            rgba(8, 11, 18, .18)
+            rgba(8,11,18,.18)
         );
 }
 
 
-/* ================= PHOTO CORNERS ================= */
+/* =========================================================
+   PHOTO CORNERS
+========================================================= */
 
 .photo-corner {
     position: absolute;
@@ -738,7 +752,9 @@ nav a.active::after {
 }
 
 
-/* ================= PHOTO LABEL ================= */
+/* =========================================================
+   PHOTO LABEL
+========================================================= */
 
 .photo-label {
     position: absolute;
@@ -759,17 +775,18 @@ nav a.active::after {
 
     border:
         1px solid
-        rgba(91, 140, 255, .28);
+        rgba(91,140,255,.28);
 
     border-radius: 6px;
 
     background:
-        rgba(8, 11, 18, .94);
+        rgba(8,11,18,.94);
 
     backdrop-filter:
         blur(15px);
 
-    color: #b8c7e8;
+    color:
+        #b8c7e8;
 
     font:
         700
@@ -780,7 +797,7 @@ nav a.active::after {
 
     box-shadow:
         0 15px 40px
-        rgba(0, 0, 0, .3);
+        rgba(0,0,0,.3);
 
     z-index: 5;
 }
@@ -812,13 +829,15 @@ nav a.active::after {
 }
 
 
-/* ================= HERO STATS ================= */
+/* =========================================================
+   HERO STATS
+========================================================= */
 
 .hero-stats {
     width: min(92%, var(--max));
 
     margin:
-        65px auto
+        55px auto
         0;
 
     display: grid;
@@ -826,14 +845,16 @@ nav a.active::after {
     grid-template-columns:
         repeat(4, 1fr);
 
-    gap: 10px;
+    gap: 12px;
 
     position: relative;
 
-    z-index: 3;
+    z-index: 4;
 }
 
 .stat-card {
+    min-height: 98px;
+
     padding:
         20px
         22px;
@@ -842,10 +863,10 @@ nav a.active::after {
         1px solid
         var(--border);
 
-    border-radius: 9px;
+    border-radius: 10px;
 
     background:
-        rgba(16, 21, 31, .72);
+        rgba(16,21,31,.72);
 
     backdrop-filter:
         blur(12px);
@@ -861,10 +882,10 @@ nav a.active::after {
         translateY(-4px);
 
     border-color:
-        rgba(91, 140, 255, .35);
+        rgba(91,140,255,.35);
 
     background:
-        rgba(18, 25, 37, .9);
+        rgba(18,25,37,.9);
 }
 
 .stat-card strong {
@@ -891,7 +912,9 @@ nav a.active::after {
 }
 
 
-/* ================= SECTIONS ================= */
+/* =========================================================
+   SECTIONS
+========================================================= */
 
 .section {
     padding:
@@ -934,7 +957,9 @@ nav a.active::after {
 }
 
 
-/* ================= ABOUT FLOW ================= */
+/* =========================================================
+   ABOUT FLOW
+========================================================= */
 
 .about-flow {
     display: grid;
@@ -1003,7 +1028,7 @@ nav a.active::after {
         linear-gradient(
             to bottom,
             var(--accent),
-            rgba(91, 140, 255, .1)
+            rgba(91,140,255,.1)
         );
 }
 
@@ -1037,7 +1062,7 @@ nav a.active::after {
 
     box-shadow:
         0 0 18px
-        rgba(91, 140, 255, .4);
+        rgba(91,140,255,.4);
 }
 
 .flow-content {
@@ -1110,7 +1135,7 @@ nav a.active::after {
         var(--border);
 
     background:
-        rgba(255, 255, 255, .02);
+        rgba(255,255,255,.02);
 
     padding:
         7px
@@ -1124,13 +1149,15 @@ nav a.active::after {
 }
 
 
-/* ================= SKILLS ================= */
+/* =========================================================
+   SKILLS
+========================================================= */
 
 .skills-layout {
     display: grid;
 
     grid-template-columns:
-        repeat(4, 1fr);
+        repeat(4,1fr);
 
     gap: 9px;
 }
@@ -1155,7 +1182,7 @@ nav a.active::after {
         translateY(-6px);
 
     border-color:
-        rgba(91, 140, 255, .32);
+        rgba(91,140,255,.32);
 }
 
 .skill-title {
@@ -1202,7 +1229,7 @@ nav a.active::after {
         #aab3c1;
 
     background:
-        rgba(255, 255, 255, .025);
+        rgba(255,255,255,.025);
 
     border:
         1px solid
@@ -1218,7 +1245,9 @@ nav a.active::after {
 }
 
 
-/* ================= PROJECTS ================= */
+/* =========================================================
+   PROJECTS
+========================================================= */
 
 .projects-list {
     display: grid;
@@ -1246,11 +1275,11 @@ nav a.active::after {
         translateY(-4px);
 
     border-color:
-        rgba(91, 140, 255, .34);
+        rgba(91,140,255,.34);
 
     box-shadow:
         0 25px 70px
-        rgba(0, 0, 0, .22);
+        rgba(0,0,0,.22);
 }
 
 .project-main {
@@ -1400,13 +1429,15 @@ nav a.active::after {
 }
 
 
-/* ================= PROCESS ================= */
+/* =========================================================
+   PROCESS
+========================================================= */
 
 .process-grid {
     display: grid;
 
     grid-template-columns:
-        repeat(4, 1fr);
+        repeat(4,1fr);
 
     gap: 9px;
 }
@@ -1431,7 +1462,7 @@ nav a.active::after {
         translateY(-5px);
 
     border-color:
-        rgba(91, 140, 255, .32);
+        rgba(91,140,255,.32);
 }
 
 .process-step i {
@@ -1462,7 +1493,9 @@ nav a.active::after {
 }
 
 
-/* ================= CERTIFICATIONS ================= */
+/* =========================================================
+   CERTIFICATIONS
+========================================================= */
 
 .cert-grid {
     display: grid;
@@ -1554,7 +1587,9 @@ nav a.active::after {
 }
 
 
-/* ================= CONTACT ================= */
+/* =========================================================
+   CONTACT
+========================================================= */
 
 .contact {
     padding-bottom: 85px;
@@ -1582,7 +1617,7 @@ nav a.active::after {
     background:
         radial-gradient(
             circle at 20% 10%,
-            rgba(91, 140, 255, .13),
+            rgba(91,140,255,.13),
             transparent 35%
         ),
         var(--card);
@@ -1666,7 +1701,9 @@ nav a.active::after {
 }
 
 
-/* ================= FOOTER ================= */
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer {
     border-top:
@@ -1714,7 +1751,9 @@ footer {
 }
 
 
-/* ================= ANIMATION ================= */
+/* =========================================================
+   SCROLL ANIMATION
+========================================================= */
 
 .reveal {
     opacity: 0;
@@ -1739,43 +1778,35 @@ footer {
 }
 
 
-/* ================= TABLET ================= */
+/* =========================================================
+   TABLET
+========================================================= */
 
 @media (max-width: 1000px) {
 
-    .hero-grid,
-    .about-flow,
-    .contact-box {
+    .hero-layout {
         grid-template-columns: 1fr;
-    }
 
-    .hero-grid {
         gap: 55px;
     }
 
-    .hero-visual {
-        max-width: 600px;
-
-        margin:
-            0 auto;
-
-        width: 100%;
-    }
-
     .hero-photo {
+        width: min(500px, 100%);
+
         margin:
-            20px auto
-            0;
+            0
+            auto;
     }
 
-    .about-intro {
-        position: static;
+    .photo-frame {
+        aspect-ratio:
+            5 / 5.7;
     }
 
     .skills-layout,
     .process-grid {
         grid-template-columns:
-            repeat(2, 1fr);
+            repeat(2,1fr);
     }
 
     .cert-grid {
@@ -1788,14 +1819,30 @@ footer {
             span 2;
     }
 
+    .about-flow {
+        grid-template-columns: 1fr;
+
+        gap: 55px;
+    }
+
+    .about-intro {
+        position: static;
+    }
+
     .hero-stats {
         grid-template-columns:
-            repeat(2, 1fr);
+            repeat(2,1fr);
+    }
+
+    .contact-box {
+        grid-template-columns: 1fr;
     }
 }
 
 
-/* ================= MOBILE ================= */
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media (max-width: 700px) {
 
@@ -1818,7 +1865,7 @@ footer {
         gap: 17px;
 
         background:
-            rgba(8, 11, 18, .98);
+            rgba(8,11,18,.98);
 
         border-bottom:
             1px solid
@@ -1850,32 +1897,39 @@ footer {
             65px;
     }
 
-    .hero-grid {
+    .hero-layout {
         width: min(90%, var(--max));
 
         gap: 45px;
     }
 
     .name-heading {
-        font-size: 3.6rem;
+        font-size:
+            3.6rem;
 
-        letter-spacing: -3px;
+        letter-spacing:
+            -3px;
     }
 
     .hero-role {
-        font-size: 1.6rem;
+        font-size:
+            1.6rem;
 
-        letter-spacing: -1px;
+        letter-spacing:
+            -1px;
     }
 
     .hero-text {
-        font-size: .92rem;
+        font-size:
+            .92rem;
     }
 
     .hero-actions {
-        flex-direction: column;
+        flex-direction:
+            column;
 
-        align-items: flex-start;
+        align-items:
+            flex-start;
     }
 
     .hero-photo {
@@ -1886,7 +1940,8 @@ footer {
             );
 
         margin:
-            10px auto
+            10px
+            auto
             0;
     }
 
@@ -1905,26 +1960,36 @@ footer {
     }
 
     .hero-stats {
-        width: min(90%, var(--max));
+        width:
+            min(
+                90%,
+                var(--max)
+            );
 
         grid-template-columns:
-            repeat(2, 1fr);
+            repeat(2,1fr);
 
         gap: 8px;
 
-        margin-top: 50px;
+        margin-top:
+            45px;
     }
 
     .stat-card {
-        padding: 17px;
+        min-height: 90px;
+
+        padding:
+            17px;
     }
 
     .stat-card strong {
-        font-size: 1.1rem;
+        font-size:
+            1.1rem;
     }
 
     .stat-card span {
-        font-size: .56rem;
+        font-size:
+            .56rem;
     }
 
     .section {
@@ -1934,23 +1999,23 @@ footer {
     }
 
     .section-head {
-        margin-bottom: 38px;
+        margin-bottom:
+            38px;
     }
 
     .section-head h2 {
-        font-size: 2.4rem;
+        font-size:
+            2.4rem;
 
-        letter-spacing: -2px;
-    }
-
-    .about-flow {
-        gap: 55px;
+        letter-spacing:
+            -2px;
     }
 
     .skills-layout,
     .process-grid,
     .cert-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
     }
 
     .cert-card:first-child {
@@ -1965,19 +2030,23 @@ footer {
     }
 
     .project-meta {
-        flex-direction: column;
+        flex-direction:
+            column;
 
         gap: 7px;
     }
 
     .project-bottom {
-        flex-direction: column;
+        flex-direction:
+            column;
 
-        align-items: flex-start;
+        align-items:
+            flex-start;
     }
 
     .metrics {
-        gap: 24px;
+        gap:
+            24px;
     }
 
     .contact-box {
@@ -1987,35 +2056,45 @@ footer {
     }
 
     .footer-inner {
-        flex-direction: column;
+        flex-direction:
+            column;
 
-        gap: 9px;
+        gap:
+            9px;
 
-        text-align: center;
+        text-align:
+            center;
     }
 }
 
 
-/* ================= SMALL MOBILE ================= */
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
 
 @media (max-width: 430px) {
 
     .name-heading {
-        font-size: 3rem;
+        font-size:
+            3rem;
 
-        letter-spacing: -2.5px;
+        letter-spacing:
+            -2.5px;
     }
 
     .hero-role {
-        font-size: 1.35rem;
+        font-size:
+            1.35rem;
     }
 
     .hero-photo {
-        width: 92%;
+        width:
+            92%;
     }
 
     .photo-label {
-        font-size: .5rem;
+        font-size:
+            .5rem;
 
         padding:
             9px
@@ -2023,31 +2102,42 @@ footer {
     }
 
     .hero-stats {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
     }
 
     .stat-card {
+        min-height:
+            auto;
+
         display: flex;
 
-        align-items: center;
+        align-items:
+            center;
 
-        justify-content: space-between;
+        justify-content:
+            space-between;
 
-        gap: 15px;
+        gap:
+            15px;
     }
 
     .stat-card span {
-        margin-top: 0;
+        margin-top:
+            0;
     }
 }
 
 
-/* ================= REDUCED MOTION ================= */
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
     html {
-        scroll-behavior: auto;
+        scroll-behavior:
+            auto;
     }
 
     *,
