@@ -1963,3 +1963,346 @@ footer {
     }
 
 }
+/* ================= HERO IDENTITY ================= */
+
+.name-heading {
+    max-width: 800px;
+
+    margin-top: 12px;
+
+    font-size:
+        clamp(
+            3.8rem,
+            7vw,
+            6.8rem
+        );
+
+    line-height: .9;
+
+    letter-spacing: -5px;
+
+    font-weight: 800;
+}
+
+
+.name-heading span {
+    color: var(--accent);
+}
+
+
+.hero-role {
+    max-width: 680px;
+
+    margin-top: 25px;
+
+    font-size:
+        clamp(
+            1.45rem,
+            2.8vw,
+            2.35rem
+        );
+
+    line-height: 1.1;
+
+    letter-spacing: -1.5px;
+
+    font-weight: 700;
+}
+
+
+.hero-role em {
+    color: var(--accent);
+
+    font-style: normal;
+}
+
+
+/* ================= PROFILE PHOTO ================= */
+
+.hero-photo {
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    min-height: 570px;
+}
+
+
+.photo-frame {
+    position: relative;
+
+    width: min(390px, 100%);
+
+    aspect-ratio: 4 / 5;
+
+    overflow: hidden;
+
+    border-radius: 14px;
+
+    border:
+        1px solid
+        rgba(91,140,255,.35);
+
+    background: var(--card);
+
+    box-shadow:
+        0 35px 100px
+        rgba(0,0,0,.45),
+
+        0 0 80px
+        rgba(91,140,255,.08);
+
+    transform:
+        rotate(2deg);
+
+    transition:
+        transform .5s ease,
+        border-color .5s ease,
+        box-shadow .5s ease;
+}
+
+
+.photo-frame:hover {
+    transform:
+        rotate(0deg)
+        translateY(-6px);
+
+    border-color:
+        rgba(91,140,255,.65);
+
+    box-shadow:
+        0 40px 110px
+        rgba(0,0,0,.5),
+
+        0 0 90px
+        rgba(91,140,255,.15);
+}
+
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    object-position: center 25%;
+
+    filter:
+        saturate(.9)
+        contrast(1.03);
+}
+
+
+/* Dark gradient that blends photo
+   into the portfolio theme */
+
+.photo-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(8,11,18,.05) 45%,
+            rgba(8,11,18,.65) 100%
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(8,11,18,.08),
+            transparent 35%,
+            transparent 70%,
+            rgba(8,11,18,.18)
+        );
+}
+
+
+/* ================= PHOTO CORNERS ================= */
+
+.photo-corner {
+    position: absolute;
+
+    width: 35px;
+    height: 35px;
+
+    pointer-events: none;
+
+    border-color:
+        var(--accent);
+
+    opacity: .9;
+}
+
+
+.photo-corner.top-left {
+    top: 16px;
+    left: 16px;
+
+    border-top: 2px solid;
+    border-left: 2px solid;
+}
+
+
+.photo-corner.top-right {
+    top: 16px;
+    right: 16px;
+
+    border-top: 2px solid;
+    border-right: 2px solid;
+}
+
+
+.photo-corner.bottom-left {
+    bottom: 16px;
+    left: 16px;
+
+    border-bottom: 2px solid;
+    border-left: 2px solid;
+}
+
+
+.photo-corner.bottom-right {
+    bottom: 16px;
+    right: 16px;
+
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+}
+
+
+/* ================= PHOTO LABEL ================= */
+
+.photo-label {
+    position: absolute;
+
+    right: -25px;
+    bottom: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding:
+        11px
+        14px;
+
+    border:
+        1px solid
+        rgba(91,140,255,.28);
+
+    border-radius: 6px;
+
+    background:
+        rgba(8,11,18,.92);
+
+    backdrop-filter:
+        blur(15px);
+
+    color: #b8c7e8;
+
+    font:
+        700
+        .58rem
+        var(--mono);
+
+    letter-spacing: .5px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,0,0,.3);
+}
+
+
+.photo-label span {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background:
+        #5dffb0;
+
+    box-shadow:
+        0 0 10px
+        #5dffb0;
+}
+
+
+.photo-label small {
+    color:
+        var(--accent);
+
+    font:
+        700
+        .48rem
+        var(--mono);
+}
+
+
+/* ================= MOBILE PHOTO ================= */
+
+@media (max-width: 1000px) {
+
+    .hero-photo {
+        min-height: auto;
+
+        margin-top: 20px;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .name-heading {
+        font-size: 3.6rem;
+
+        letter-spacing: -3px;
+    }
+
+
+    .hero-role {
+        font-size: 1.6rem;
+
+        letter-spacing: -1px;
+    }
+
+
+    .hero-photo {
+        margin-top: 25px;
+
+        padding:
+            0
+            25px;
+    }
+
+
+    .photo-frame {
+        width: min(
+            330px,
+            100%
+        );
+
+        transform:
+            rotate(1deg);
+    }
+
+
+    .photo-label {
+        right: 5px;
+
+        bottom: 25px;
+    }
+
+}
