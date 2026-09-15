@@ -15,15 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
        MOBILE MENU
     ========================================= */
 
-    const menuToggle =
-        document.getElementById("menuToggle") ||
-        document.getElementById("menuBtn");
-
-    const navMenu =
-        document.getElementById("navMenu");
-
-    const navLinks =
-        document.querySelectorAll("nav a");
+    const menuToggle = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
+    const navLinks = document.querySelectorAll(".nav-link");
 
     if (menuToggle && navMenu) {
 
@@ -31,18 +25,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
             navMenu.classList.toggle("open");
 
-            const icon =
-                menuToggle.querySelector("i");
+            const icon = menuToggle.querySelector("i");
 
-            if (icon) {
+            if (navMenu.classList.contains("open")) {
 
-                if (navMenu.classList.contains("open")) {
-                    icon.classList.remove("fa-bars");
-                    icon.classList.add("fa-xmark");
-                } else {
-                    icon.classList.remove("fa-xmark");
-                    icon.classList.add("fa-bars");
-                }
+                icon.classList.remove("fa-bars");
+                icon.classList.add("fa-xmark");
+
+            } else {
+
+                icon.classList.remove("fa-xmark");
+                icon.classList.add("fa-bars");
 
             }
 
@@ -55,13 +48,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 navMenu.classList.remove("open");
 
-                const icon =
-                    menuToggle.querySelector("i");
+                const icon = menuToggle.querySelector("i");
 
-                if (icon) {
-                    icon.classList.remove("fa-xmark");
-                    icon.classList.add("fa-bars");
-                }
+                icon.classList.remove("fa-xmark");
+                icon.classList.add("fa-bars");
 
             });
 
@@ -74,8 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
        SCROLL PROGRESS
     ========================================= */
 
-    const progress =
-        document.createElement("div");
+    const progress = document.createElement("div");
 
     progress.className = "scroll-progress";
 
@@ -90,167 +79,96 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================
-       HERO ELEMENTS
+       SCROLL STATE
     ========================================= */
 
-    const hero =
-        document.querySelector(".hero");
-
-    const heroCopy =
-        document.querySelector(".hero-copy");
-
-    const heroPhoto =
-        document.querySelector(".hero-photo");
-
-    const heroGrid =
-        document.querySelector(".hero-grid");
-
-    const orbOne =
-        document.querySelector(".orb-one");
-
-    const orbTwo =
-        document.querySelector(".orb-two");
-
-
-    /* =========================================
-       SCROLL HANDLING
-    ========================================= */
-
-    let scrollTicking = false;
+    let ticking = false;
 
     function updateScroll() {
 
-        const scrollTop =
-            window.scrollY || window.pageYOffset;
+        const scrollTop = window.scrollY;
 
         const documentHeight =
             document.documentElement.scrollHeight -
             window.innerHeight;
 
-
-        /* -------------------------------------
-           SCROLL PROGRESS
-        ------------------------------------- */
-
         const percentage =
             documentHeight > 0
-                ? Math.min(
-                    scrollTop / documentHeight,
-                    1
-                )
+                ? scrollTop / documentHeight
                 : 0;
 
-        if (progressBar) {
-
-            progressBar.style.transform =
-                `scaleX(${percentage})`;
-
-        }
+        progressBar.style.transform =
+            `scaleX(${percentage})`;
 
 
-        /* -------------------------------------
+        /* =====================================
            HERO PARALLAX
-        ------------------------------------- */
+        ===================================== */
+
+        const hero = document.querySelector(".hero");
 
         if (hero) {
 
             const heroBottom =
-                hero.offsetTop +
-                hero.offsetHeight;
+                hero.offsetTop + hero.offsetHeight;
 
             if (scrollTop < heroBottom) {
 
                 const heroProgress =
-                    Math.min(
-                        Math.max(
-                            scrollTop / hero.offsetHeight,
-                            0
-                        ),
-                        1
-                    );
+                    Math.min(scrollTop / hero.offsetHeight, 1);
+
+                const heroCopy =
+                    document.querySelector(".hero-copy");
+
+                const heroPhoto =
+                    document.querySelector(".hero-photo");
+
+                const heroGrid =
+                    document.querySelector(".hero-grid");
+
+                const orbOne =
+                    document.querySelector(".orb-one");
+
+                const orbTwo =
+                    document.querySelector(".orb-two");
 
 
-                if (
-                    heroCopy &&
-                    !window.matchMedia(
-                        "(prefers-reduced-motion: reduce)"
-                    ).matches
-                ) {
+                if (heroCopy) {
 
                     heroCopy.style.transform =
-                        `translate3d(
-                            0,
-                            ${heroProgress * -45}px,
-                            0
-                        )`;
+                        `translate3d(0, ${heroProgress * -45}px, 0)`;
 
                 }
 
 
-                if (
-                    heroPhoto &&
-                    !window.matchMedia(
-                        "(prefers-reduced-motion: reduce)"
-                    ).matches
-                ) {
+                if (heroPhoto) {
 
                     heroPhoto.style.transform =
-                        `translate3d(
-                            0,
-                            ${heroProgress * 35}px,
-                            0
-                        )`;
+                        `translate3d(0, ${heroProgress * 35}px, 0)`;
 
                 }
 
 
-                if (
-                    heroGrid &&
-                    !window.matchMedia(
-                        "(prefers-reduced-motion: reduce)"
-                    ).matches
-                ) {
+                if (heroGrid) {
 
                     heroGrid.style.transform =
-                        `translate3d(
-                            0,
-                            ${heroProgress * 70}px,
-                            0
-                        )`;
+                        `translate3d(0, ${heroProgress * 70}px, 0)`;
 
                 }
 
 
-                if (
-                    orbOne &&
-                    !window.matchMedia(
-                        "(prefers-reduced-motion: reduce)"
-                    ).matches
-                ) {
+                if (orbOne) {
 
                     orbOne.style.transform =
-                        `translate3d(
-                            ${heroProgress * 40}px,
-                            ${heroProgress * 80}px,
-                            0
-                        )`;
+                        `translate3d(${heroProgress * 40}px, ${heroProgress * 80}px, 0)`;
 
                 }
 
 
-                if (
-                    orbTwo &&
-                    !window.matchMedia(
-                        "(prefers-reduced-motion: reduce)"
-                    ).matches
-                ) {
+                if (orbTwo) {
 
                     orbTwo.style.transform =
-                        `translate3d(
-                            ${heroProgress * -30}px,
-                            ${heroProgress * -60}px,
-                            0
-                        )`;
+                        `translate3d(${heroProgress * -30}px, ${heroProgress * -60}px, 0)`;
 
                 }
 
@@ -259,37 +177,32 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        scrollTicking = false;
+        ticking = false;
 
     }
 
 
     function requestScrollUpdate() {
 
-        if (!scrollTicking) {
+        if (!ticking) {
 
-            window.requestAnimationFrame(
-                updateScroll
-            );
+            window.requestAnimationFrame(updateScroll);
 
-            scrollTicking = true;
+            ticking = true;
 
         }
 
     }
 
-
     window.addEventListener(
         "scroll",
         requestScrollUpdate,
-        {
-            passive: true
-        }
+        { passive: true }
     );
 
 
     /* =========================================
-       SCROLL REVEAL
+       SCROLL REVEALS
     ========================================= */
 
     const revealElements =
@@ -299,71 +212,41 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll("[data-scroll]");
 
 
-    if ("IntersectionObserver" in window) {
+    const revealObserver =
+        new IntersectionObserver(
+            entries => {
 
-        const revealObserver =
-            new IntersectionObserver(
-                entries => {
+                entries.forEach(entry => {
 
-                    entries.forEach(entry => {
+                    if (entry.isIntersecting) {
 
-                        if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        entry.target.classList.add("is-visible");
 
-                            entry.target.classList.add(
-                                "visible"
-                            );
+                        revealObserver.unobserve(
+                            entry.target
+                        );
 
-                            entry.target.classList.add(
-                                "is-visible"
-                            );
+                    }
 
-                            revealObserver.unobserve(
-                                entry.target
-                            );
+                });
 
-                        }
-
-                    });
-
-                },
-                {
-                    threshold: 0.08,
-                    rootMargin:
-                        "0px 0px -45px 0px"
-                }
-            );
+            },
+            {
+                threshold: 0.12,
+                rootMargin: "0px 0px -60px 0px"
+            }
+        );
 
 
-        revealElements.forEach(element => {
-
-            revealObserver.observe(element);
-
-        });
+    revealElements.forEach(element => {
+        revealObserver.observe(element);
+    });
 
 
-        scrollElements.forEach(element => {
-
-            revealObserver.observe(element);
-
-        });
-
-    } else {
-
-        /* Fallback for older browsers */
-
-        revealElements.forEach(element => {
-
-            element.classList.add("visible");
-
-        });
-
-        scrollElements.forEach(element => {
-
-            element.classList.add("visible");
-
-        });
-
-    }
+    scrollElements.forEach(element => {
+        revealObserver.observe(element);
+    });
 
 
     /* =========================================
@@ -371,56 +254,37 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================================= */
 
     const projectRows =
-        document.querySelectorAll(
-            ".project-row"
+        document.querySelectorAll(".project-row");
+
+
+    const projectObserver =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        projectRows.forEach(row => {
+                            row.classList.remove("is-active");
+                        });
+
+                        entry.target.classList.add("is-active");
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.55
+            }
         );
 
 
-    if (
-        projectRows.length &&
-        "IntersectionObserver" in window
-    ) {
-
-        const projectObserver =
-            new IntersectionObserver(
-                entries => {
-
-                    entries.forEach(entry => {
-
-                        if (
-                            entry.isIntersecting
-                        ) {
-
-                            projectRows.forEach(
-                                row => {
-                                    row.classList.remove(
-                                        "is-active"
-                                    );
-                                }
-                            );
-
-                            entry.target.classList.add(
-                                "is-active"
-                            );
-
-                        }
-
-                    });
-
-                },
-                {
-                    threshold: 0.45
-                }
-            );
-
-
-        projectRows.forEach(row => {
-
-            projectObserver.observe(row);
-
-        });
-
-    }
+    projectRows.forEach(row => {
+        projectObserver.observe(row);
+    });
 
 
     /* =========================================
@@ -428,48 +292,33 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================================= */
 
     const appCards =
-        document.querySelectorAll(
-            ".app-card"
+        document.querySelectorAll(".app-card");
+
+
+    const appObserver =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("is-active");
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.35
+            }
         );
 
 
-    if (
-        appCards.length &&
-        "IntersectionObserver" in window
-    ) {
-
-        const appObserver =
-            new IntersectionObserver(
-                entries => {
-
-                    entries.forEach(entry => {
-
-                        if (
-                            entry.isIntersecting
-                        ) {
-
-                            entry.target.classList.add(
-                                "is-active"
-                            );
-
-                        }
-
-                    });
-
-                },
-                {
-                    threshold: 0.3
-                }
-            );
-
-
-        appCards.forEach(card => {
-
-            appObserver.observe(card);
-
-        });
-
-    }
+    appCards.forEach(card => {
+        appObserver.observe(card);
+    });
 
 
     /* =========================================
@@ -477,82 +326,50 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================================= */
 
     const sections =
-        document.querySelectorAll(
-            "section[id]"
-        );
+        document.querySelectorAll("section[id]");
 
 
-    if (
-        sections.length &&
-        navLinks.length &&
-        "IntersectionObserver" in window
-    ) {
+    const sectionObserver =
+        new IntersectionObserver(
+            entries => {
 
-        const sectionObserver =
-            new IntersectionObserver(
-                entries => {
+                entries.forEach(entry => {
 
-                    entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
 
-                        if (
-                            !entry.isIntersecting
-                        ) {
-                            return;
+                    const currentId =
+                        entry.target.getAttribute("id");
+
+
+                    navLinks.forEach(link => {
+
+                        link.classList.remove("active");
+
+                        const href =
+                            link.getAttribute("href");
+
+                        if (href === `#${currentId}`) {
+
+                            link.classList.add("active");
+
                         }
-
-
-                        const currentId =
-                            entry.target.getAttribute(
-                                "id"
-                            );
-
-
-                        navLinks.forEach(link => {
-
-                            link.classList.remove(
-                                "active"
-                            );
-
-
-                            const href =
-                                link.getAttribute(
-                                    "href"
-                                );
-
-
-                            if (
-                                href ===
-                                `#${currentId}`
-                            ) {
-
-                                link.classList.add(
-                                    "active"
-                                );
-
-                            }
-
-                        });
 
                     });
 
-                },
-                {
-                    rootMargin:
-                        "-35% 0px -55% 0px",
-                    threshold: 0
-                }
-            );
+                });
+
+            },
+            {
+                rootMargin: "-35% 0px -55% 0px"
+            }
+        );
 
 
-        sections.forEach(section => {
-
-            sectionObserver.observe(
-                section
-            );
-
-        });
-
-    }
+    sections.forEach(section => {
+        sectionObserver.observe(section);
+    });
 
 
     /* =========================================
@@ -560,21 +377,15 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================================= */
 
     const cursorGlow =
-        document.querySelector(
-            ".cursor-glow"
-        );
-
-
-    const reducedMotion =
-        window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        ).matches;
+        document.querySelector(".cursor-glow");
 
 
     if (
         cursorGlow &&
         window.innerWidth > 800 &&
-        !reducedMotion
+        !window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches
     ) {
 
         let mouseX = 0;
@@ -584,29 +395,21 @@ document.addEventListener("DOMContentLoaded", () => {
         let currentY = 0;
 
 
-        document.addEventListener(
-            "mousemove",
-            event => {
+        document.addEventListener("mousemove", event => {
 
-                mouseX =
-                    event.clientX;
+            mouseX = event.clientX;
+            mouseY = event.clientY;
 
-                mouseY =
-                    event.clientY;
-
-            }
-        );
+        });
 
 
         function animateCursor() {
 
             currentX +=
-                (mouseX - currentX) *
-                0.08;
+                (mouseX - currentX) * 0.08;
 
             currentY +=
-                (mouseY - currentY) *
-                0.08;
+                (mouseY - currentY) * 0.08;
 
 
             cursorGlow.style.left =
@@ -633,9 +436,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================================= */
 
     document
-        .querySelectorAll(
-            'a[href^="#"]'
-        )
+        .querySelectorAll('a[href^="#"]')
         .forEach(anchor => {
 
             anchor.addEventListener(
@@ -643,14 +444,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 event => {
 
                     const targetId =
-                        anchor.getAttribute(
-                            "href"
-                        );
-
+                        anchor.getAttribute("href");
 
                     if (
-                        !targetId ||
-                        targetId === "#"
+                        targetId === "#" ||
+                        !targetId
                     ) {
                         return;
                     }
@@ -671,10 +469,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                     target.scrollIntoView({
-                        behavior:
-                            reducedMotion
-                                ? "auto"
-                                : "smooth",
+                        behavior: "smooth",
                         block: "start"
                     });
 
@@ -685,2153 +480,386 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================
-       DATA DETECTIVE GAME
-    ========================================= */
-
-    const detectiveCases = [
-
-        {
-            headers: [
-                "Customer",
-                "Age",
-                "City",
-                "Purchase"
-            ],
-
-            rows: [
-                ["Aarav", "24", "Delhi", "₹2,400"],
-                ["Riya", "29", "Mumbai", "₹3,100"],
-                ["Kabir", "-7", "Pune", "₹1,800"],
-                ["Neha", "31", "Delhi", "₹4,200"]
-            ],
-
-            correct: {
-                row: 2,
-                col: 1
-            },
-
-            explanation:
-                "An age of -7 is impossible."
-
-        },
-
-
-        {
-            headers: [
-                "Order ID",
-                "Customer",
-                "Amount",
-                "Status"
-            ],
-
-            rows: [
-                [
-                    "ORD-101",
-                    "Aarav",
-                    "₹2,400",
-                    "Completed"
-                ],
-                [
-                    "ORD-102",
-                    "Riya",
-                    "₹1,800",
-                    "Completed"
-                ],
-                [
-                    "ORD-103",
-                    "Kabir",
-                    "₹3,200",
-                    "Pending"
-                ],
-                [
-                    "ORD-103",
-                    "Neha",
-                    "₹2,100",
-                    "Completed"
-                ]
-            ],
-
-            correct: {
-                row: 3,
-                col: 0
-            },
-
-            explanation:
-                "ORD-103 appears twice. That's a duplicate order ID."
-
-        },
-
-
-        {
-            headers: [
-                "Customer",
-                "Region",
-                "Orders",
-                "Revenue"
-            ],
-
-            rows: [
-                [
-                    "Aarav",
-                    "North",
-                    "12",
-                    "₹18,400"
-                ],
-                [
-                    "Riya",
-                    "West",
-                    "9",
-                    "₹14,200"
-                ],
-                [
-                    "Kabir",
-                    "",
-                    "15",
-                    "₹22,100"
-                ],
-                [
-                    "Neha",
-                    "South",
-                    "11",
-                    "₹16,800"
-                ]
-            ],
-
-            correct: {
-                row: 2,
-                col: 1
-            },
-
-            explanation:
-                "Kabir's region is missing."
-
-        },
-
-
-        {
-            headers: [
-                "Product",
-                "Units",
-                "Price",
-                "Revenue"
-            ],
-
-            rows: [
-                [
-                    "Laptop",
-                    "4",
-                    "₹55,000",
-                    "₹220,000"
-                ],
-                [
-                    "Mouse",
-                    "12",
-                    "₹900",
-                    "₹10,800"
-                ],
-                [
-                    "Keyboard",
-                    "8",
-                    "₹1,500",
-                    "₹12,000"
-                ],
-                [
-                    "Monitor",
-                    "3",
-                    "₹18,000",
-                    "₹540,000"
-                ]
-            ],
-
-            correct: {
-                row: 3,
-                col: 3
-            },
-
-            explanation:
-                "3 × ₹18,000 = ₹54,000, not ₹540,000."
-
-        },
-
-
-        {
-            headers: [
-                "Product",
-                "Units Sold",
-                "Unit Price",
-                "Revenue"
-            ],
-
-            rows: [
-                [
-                    "Laptop",
-                    "5",
-                    "₹50,000",
-                    "₹250,000"
-                ],
-                [
-                    "Phone",
-                    "8",
-                    "₹25,000",
-                    "₹200,000"
-                ],
-                [
-                    "Tablet",
-                    "6",
-                    "₹20,000",
-                    "₹120,000"
-                ],
-                [
-                    "Monitor",
-                    "4",
-                    "₹15,000",
-                    "₹45,000"
-                ]
-            ],
-
-            correct: {
-                row: 3,
-                col: 3
-            },
-
-            explanation:
-                "4 × ₹15,000 = ₹60,000, not ₹45,000."
-
-        }
-
-    ];
-
-
-    let detectiveIndex = 0;
-
-    let detectiveScore = 0;
-
-    let detectiveAnswered = false;
-
-
-    const detectiveHead =
-        document.getElementById(
-            "detectiveHead"
-        );
-
-    const detectiveBody =
-        document.getElementById(
-            "detectiveBody"
-        );
-
-    const detectiveQuestion =
-        document.getElementById(
-            "detectiveQuestion"
-        );
-
-    const detectiveMessage =
-        document.getElementById(
-            "detectiveMessage"
-        );
-
-    const detectiveScoreElement =
-        document.getElementById(
-            "detectiveScore"
-        );
-
-    const caseNumber =
-        document.getElementById(
-            "caseNumber"
-        );
-
-    const detectiveProgress =
-        document.getElementById(
-            "detectiveProgress"
-        );
-
-    const nextCase =
-        document.getElementById(
-            "nextCase"
-        );
-
-    const detectiveResult =
-        document.getElementById(
-            "detectiveResult"
-        );
-
-    const finalScore =
-        document.getElementById(
-            "finalScore"
-        );
-
-    const finalMessage =
-        document.getElementById(
-            "finalMessage"
-        );
-
-    const restartGame =
-        document.getElementById(
-            "restartGame"
-        );
-
-
-    /* -----------------------------------------
-       LOAD CASE
-    ----------------------------------------- */
-
-    function loadDetectiveCase() {
-
-        if (
-            !detectiveHead ||
-            !detectiveBody ||
-            !detectiveCases.length
-        ) {
-            return;
-        }
-
-
-        const currentCase =
-            detectiveCases[
-                detectiveIndex
-            ];
-
-
-        detectiveAnswered =
-            false;
-
-
-        if (nextCase) {
-            nextCase.disabled = true;
-        }
-
-
-        if (caseNumber) {
-
-            caseNumber.textContent =
-                `${String(
-                    detectiveIndex + 1
-                ).padStart(2, "0")} / ${
-                    detectiveCases.length
-                }`;
-
-        }
-
-
-        if (detectiveProgress) {
-
-            detectiveProgress.textContent =
-                `Case ${
-                    detectiveIndex + 1
-                } of ${
-                    detectiveCases.length
-                }`;
-
-        }
-
-
-        if (detectiveQuestion) {
-
-            detectiveQuestion.textContent =
-                "One value in this table is wrong. Find it.";
-
-        }
-
-
-        if (detectiveMessage) {
-
-            detectiveMessage.textContent =
-                "Select the value you think is wrong.";
-
-            detectiveMessage.className =
-                "detective-message";
-
-        }
-
-
-        /* -------------------------------------
-           TABLE HEADER
-        ------------------------------------- */
-
-        detectiveHead.innerHTML =
-            currentCase.headers
-                .map(
-                    header =>
-                        `<th>${header}</th>`
-                )
-                .join("");
-
-
-        /* -------------------------------------
-           TABLE BODY
-        ------------------------------------- */
-
-        detectiveBody.innerHTML =
-            currentCase.rows
-                .map(
-                    (row, rowIndex) => {
-
-                        return `
-                            <tr>
-                                ${row
-                                    .map(
-                                        (
-                                            value,
-                                            colIndex
-                                        ) => {
-
-                                            return `
-                                                <td
-                                                    class="selectable"
-                                                    data-row="${rowIndex}"
-                                                    data-col="${colIndex}"
-                                                >
-                                                    ${
-                                                        value ||
-                                                        "—"
-                                                    }
-                                                </td>
-                                            `;
-
-                                        }
-                                    )
-                                    .join("")}
-                            </tr>
-                        `;
-
-                    }
-                )
-                .join("");
-
-
-        /* -------------------------------------
-           CELL CLICK EVENTS
-        ------------------------------------- */
-
-        detectiveBody
-            .querySelectorAll(
-                "td.selectable"
-            )
-            .forEach(cell => {
-
-                cell.addEventListener(
-                    "click",
-                    () => {
-
-                        if (
-                            detectiveAnswered
-                        ) {
-                            return;
-                        }
-
-
-                        const selectedRow =
-                            Number(
-                                cell.dataset.row
-                            );
-
-                        const selectedCol =
-                            Number(
-                                cell.dataset.col
-                            );
-
-
-                        const correct =
-                            currentCase.correct;
-
-
-                        detectiveAnswered =
-                            true;
-
-
-                        /* ---------------------
-                           CORRECT
-                        --------------------- */
-
-                        if (
-                            selectedRow ===
-                                correct.row &&
-                            selectedCol ===
-                                correct.col
-                        ) {
-
-                            detectiveScore++;
-
-
-                            if (
-                                detectiveScoreElement
-                            ) {
-
-                                detectiveScoreElement
-                                    .textContent =
-                                    detectiveScore;
-
-                            }
-
-
-                            cell.classList.add(
-                                "correct"
-                            );
-
-
-                            if (
-                                detectiveMessage
-                            ) {
-
-                                detectiveMessage.textContent =
-                                    `✓ Correct. ${currentCase.explanation}`;
-
-                                detectiveMessage.classList.add(
-                                    "success"
-                                );
-
-                            }
-
-                        }
-
-
-                        /* ---------------------
-                           WRONG
-                        --------------------- */
-
-                        else {
-
-                            cell.classList.add(
-                                "wrong"
-                            );
-
-
-                            if (
-                                detectiveMessage
-                            ) {
-
-                                detectiveMessage.textContent =
-                                    `Not quite. ${currentCase.explanation}`;
-
-                                detectiveMessage.classList.add(
-                                    "error"
-                                );
-
-                            }
-
-
-                            const correctCell =
-                                detectiveBody.querySelector(
-                                    `[data-row="${correct.row}"][data-col="${correct.col}"]`
-                                );
-
-
-                            if (correctCell) {
-
-                                correctCell.classList.add(
-                                    "correct"
-                                );
-
-                            }
-
-                        }
-
-
-                        if (nextCase) {
-
-                            nextCase.disabled =
-                                false;
-
-                        }
-
-                    }
-                );
-
-            });
-
-    }
-
-
-    /* -----------------------------------------
-       FINISH GAME
-    ----------------------------------------- */
-
-    function finishDetective() {
-
-        if (finalScore) {
-
-            finalScore.textContent =
-                detectiveScore;
-
-        }
-
-
-        if (finalMessage) {
-
-            if (
-                detectiveScore ===
-                detectiveCases.length
-            ) {
-
-                finalMessage.textContent =
-                    "Outstanding. You're a Data Detective.";
-
-            }
-
-            else if (
-                detectiveScore >= 3
-            ) {
-
-                finalMessage.textContent =
-                    "Nice work. Your analyst instincts are solid.";
-
-            }
-
-            else {
-
-                finalMessage.textContent =
-                    "Good start. Every analyst gets better with practice.";
-
-            }
-
-        }
-
-
-        if (detectiveResult) {
-
-            detectiveResult.classList.add(
-                "show"
-            );
-
-
-            setTimeout(() => {
-
-                detectiveResult.scrollIntoView({
-                    behavior:
-                        reducedMotion
-                            ? "auto"
-                            : "smooth",
-                    block: "center"
-                });
-
-            }, 50);
-
-        }
-
-    }
-
-
-    /* -----------------------------------------
-       NEXT CASE
-    ----------------------------------------- */
-
-    if (nextCase) {
-
-        nextCase.addEventListener(
-            "click",
-            () => {
-
-                if (
-                    !detectiveAnswered
-                ) {
-                    return;
-                }
-
-
-                detectiveIndex++;
-
-
-                if (
-                    detectiveIndex >=
-                    detectiveCases.length
-                ) {
-
-                    finishDetective();
-
-                    return;
-
-                }
-
-
-                loadDetectiveCase();
-
-            }
-        );
-
-    }
-
-
-    /* -----------------------------------------
-       RESTART GAME
-    ----------------------------------------- */
-
-    if (restartGame) {
-
-        restartGame.addEventListener(
-            "click",
-            () => {
-
-                detectiveIndex = 0;
-
-                detectiveScore = 0;
-
-                detectiveAnswered =
-                    false;
-
-
-                if (
-                    detectiveScoreElement
-                ) {
-
-                    detectiveScoreElement
-                        .textContent =
-                        "0";
-
-                }
-
-
-                if (detectiveResult) {
-
-                    detectiveResult.classList.remove(
-                        "show"
-                    );
-
-                }
-
-
-                loadDetectiveCase();
-
-            }
-        );
-
-    }
-
-
-    /* -----------------------------------------
-       START GAME
-    ----------------------------------------- */
-
-    if (
-        detectiveHead &&
-        detectiveBody
-    ) {
-
-        loadDetectiveCase();
-
-    }
-
-
-    /* =========================================
-       INITIAL SCROLL UPDATE
+       INITIAL UPDATE
     ========================================= */
 
     updateScroll();
 
-});document.addEventListener("DOMContentLoaded", () => {
+/* =========================================
+   DATA DETECTIVE GAME
+========================================= */
 
-    /* =========================================
-       FOOTER YEAR
-    ========================================= */
+const detectiveCases = [
 
-    const year = document.getElementById("year");
+    {
+        headers: ["Customer", "Age", "City", "Purchase"],
 
-    if (year) {
-        year.textContent = new Date().getFullYear();
+        rows: [
+            ["Aarav", "24", "Delhi", "₹2,400"],
+            ["Riya", "29", "Mumbai", "₹3,100"],
+            ["Kabir", "-7", "Pune", "₹1,800"],
+            ["Neha", "31", "Delhi", "₹4,200"]
+        ],
+
+        correct: {
+            row: 2,
+            col: 1
+        },
+
+        explanation:
+            "An age of -7 is impossible."
+    },
+
+    {
+        headers: ["Order ID", "Customer", "Amount", "Status"],
+
+        rows: [
+            ["ORD-101", "Aarav", "₹2,400", "Completed"],
+            ["ORD-102", "Riya", "₹1,800", "Completed"],
+            ["ORD-103", "Kabir", "₹3,200", "Pending"],
+            ["ORD-103", "Neha", "₹2,100", "Completed"]
+        ],
+
+        correct: {
+            row: 3,
+            col: 0
+        },
+
+        explanation:
+            "ORD-103 appears twice. That's a duplicate order ID."
+    },
+
+    {
+        headers: ["Customer", "Region", "Orders", "Revenue"],
+
+        rows: [
+            ["Aarav", "North", "12", "₹18,400"],
+            ["Riya", "West", "9", "₹14,200"],
+            ["Kabir", "", "15", "₹22,100"],
+            ["Neha", "South", "11", "₹16,800"]
+        ],
+
+        correct: {
+            row: 2,
+            col: 1
+        },
+
+        explanation:
+            "Kabir's region is missing."
+    },
+
+    {
+        headers: ["Product", "Units", "Price", "Revenue"],
+
+        rows: [
+            ["Laptop", "4", "₹55,000", "₹220,000"],
+            ["Mouse", "12", "₹900", "₹10,800"],
+            ["Keyboard", "8", "₹1,500", "₹12,000"],
+            ["Monitor", "3", "₹18,000", "₹540,000"]
+        ],
+
+        correct: {
+            row: 3,
+            col: 3
+        },
+
+        explanation:
+            "3 × ₹18,000 = ₹54,000, not ₹540,000."
+    },
+
+    {
+        headers: ["Customer", "Orders", "Average Order", "Segment"],
+
+        rows: [
+            ["Aarav", "8", "₹2,400", "Regular"],
+            ["Riya", "11", "₹3,100", "Regular"],
+            ["Kabir", "7", "₹2,700", "Premium"],
+            ["Neha", "9", "₹2,900", "Regular"]
+        ],
+
+        correct: {
+            row: 2,
+            col: 3
+        },
+
+        explanation:
+            "Kabir has the Premium label despite having the lowest order count."
     }
 
+];
 
-    /* =========================================
-       MOBILE MENU
-    ========================================= */
 
-    const menuToggle =
-        document.getElementById("menuToggle") ||
-        document.getElementById("menuBtn");
+let detectiveIndex = 0;
+let detectiveScore = 0;
+let detectiveAnswered = false;
 
-    const navMenu =
-        document.getElementById("navMenu");
 
-    const navLinks =
-        document.querySelectorAll("nav a");
+const detectiveHead =
+    document.getElementById("detectiveHead");
 
-    if (menuToggle && navMenu) {
+const detectiveBody =
+    document.getElementById("detectiveBody");
 
-        menuToggle.addEventListener("click", () => {
+const detectiveQuestion =
+    document.getElementById("detectiveQuestion");
 
-            navMenu.classList.toggle("open");
+const detectiveMessage =
+    document.getElementById("detectiveMessage");
 
-            const icon =
-                menuToggle.querySelector("i");
+const detectiveScoreElement =
+    document.getElementById("detectiveScore");
 
-            if (icon) {
+const caseNumber =
+    document.getElementById("caseNumber");
 
-                if (navMenu.classList.contains("open")) {
-                    icon.classList.remove("fa-bars");
-                    icon.classList.add("fa-xmark");
-                } else {
-                    icon.classList.remove("fa-xmark");
-                    icon.classList.add("fa-bars");
-                }
+const detectiveProgress =
+    document.getElementById("detectiveProgress");
 
-            }
+const nextCase =
+    document.getElementById("nextCase");
 
-        });
+const detectiveResult =
+    document.getElementById("detectiveResult");
 
+const finalScore =
+    document.getElementById("finalScore");
 
-        navLinks.forEach(link => {
+const finalMessage =
+    document.getElementById("finalMessage");
 
-            link.addEventListener("click", () => {
+const restartGame =
+    document.getElementById("restartGame");
 
-                navMenu.classList.remove("open");
 
-                const icon =
-                    menuToggle.querySelector("i");
+function loadDetectiveCase() {
 
-                if (icon) {
-                    icon.classList.remove("fa-xmark");
-                    icon.classList.add("fa-bars");
-                }
+    const current =
+        detectiveCases[detectiveIndex];
 
-            });
+    detectiveAnswered = false;
 
-        });
+    nextCase.disabled = true;
 
-    }
+    caseNumber.textContent =
+        `${String(detectiveIndex + 1).padStart(2, "0")} / ${detectiveCases.length}`;
 
+    detectiveProgress.textContent =
+        `Case ${detectiveIndex + 1} of ${detectiveCases.length}`;
 
-    /* =========================================
-       SCROLL PROGRESS
-    ========================================= */
+    detectiveMessage.textContent =
+        "Select the value you think is wrong.";
 
-    const progress =
-        document.createElement("div");
+    detectiveMessage.className =
+        "detective-message";
 
-    progress.className = "scroll-progress";
 
-    progress.innerHTML = `
-        <div class="scroll-progress-bar"></div>
-    `;
+    detectiveHead.innerHTML =
+        current.headers
+            .map(header => `<th>${header}</th>`)
+            .join("");
 
-    document.body.appendChild(progress);
 
-    const progressBar =
-        progress.querySelector(".scroll-progress-bar");
+    detectiveBody.innerHTML =
+        current.rows
+            .map((row, rowIndex) => {
 
+                return `
+                    <tr>
+                        ${row.map((value, colIndex) => `
+                            <td
+                                class="selectable"
+                                data-row="${rowIndex}"
+                                data-col="${colIndex}"
+                            >
+                                ${value || "—"}
+                            </td>
+                        `).join("")}
+                    </tr>
+                `;
 
-    /* =========================================
-       HERO ELEMENTS
-    ========================================= */
+            })
+            .join("");
 
-    const hero =
-        document.querySelector(".hero");
 
-    const heroCopy =
-        document.querySelector(".hero-copy");
+    detectiveBody
+        .querySelectorAll("td")
+        .forEach(cell => {
 
-    const heroPhoto =
-        document.querySelector(".hero-photo");
+            cell.addEventListener(
+                "click",
+                () => {
 
-    const heroGrid =
-        document.querySelector(".hero-grid");
+                    if (detectiveAnswered) {
+                        return;
+                    }
 
-    const orbOne =
-        document.querySelector(".orb-one");
+                    const row =
+                        Number(cell.dataset.row);
 
-    const orbTwo =
-        document.querySelector(".orb-two");
+                    const col =
+                        Number(cell.dataset.col);
 
 
-    /* =========================================
-       SCROLL HANDLING
-    ========================================= */
+                    const correct =
+                        current.correct;
 
-    let scrollTicking = false;
 
-    function updateScroll() {
+                    detectiveAnswered = true;
 
-        const scrollTop =
-            window.scrollY || window.pageYOffset;
 
-        const documentHeight =
-            document.documentElement.scrollHeight -
-            window.innerHeight;
+                    if (
+                        row === correct.row &&
+                        col === correct.col
+                    ) {
 
+                        detectiveScore++;
 
-        /* -------------------------------------
-           SCROLL PROGRESS
-        ------------------------------------- */
+                        detectiveScoreElement.textContent =
+                            detectiveScore;
 
-        const percentage =
-            documentHeight > 0
-                ? Math.min(
-                    scrollTop / documentHeight,
-                    1
-                )
-                : 0;
+                        cell.classList.add("correct");
 
-        if (progressBar) {
+                        detectiveMessage.textContent =
+                            `✓ Correct. ${current.explanation}`;
 
-            progressBar.style.transform =
-                `scaleX(${percentage})`;
+                        detectiveMessage.classList.add(
+                            "success"
+                        );
 
-        }
+                    } else {
 
+                        cell.classList.add("wrong");
 
-        /* -------------------------------------
-           HERO PARALLAX
-        ------------------------------------- */
+                        detectiveMessage.textContent =
+                            `Not quite. ${current.explanation}`;
 
-        if (hero) {
+                        detectiveMessage.classList.add(
+                            "error"
+                        );
 
-            const heroBottom =
-                hero.offsetTop +
-                hero.offsetHeight;
 
-            if (scrollTop < heroBottom) {
-
-                const heroProgress =
-                    Math.min(
-                        Math.max(
-                            scrollTop / hero.offsetHeight,
-                            0
-                        ),
-                        1
-                    );
-
-
-                if (
-                    heroCopy &&
-                    !window.matchMedia(
-                        "(prefers-reduced-motion: reduce)"
-                    ).matches
-                ) {
-
-                    heroCopy.style.transform =
-                        `translate3d(
-                            0,
-                            ${heroProgress * -45}px,
-                            0
-                        )`;
-
-                }
-
-
-                if (
-                    heroPhoto &&
-                    !window.matchMedia(
-                        "(prefers-reduced-motion: reduce)"
-                    ).matches
-                ) {
-
-                    heroPhoto.style.transform =
-                        `translate3d(
-                            0,
-                            ${heroProgress * 35}px,
-                            0
-                        )`;
-
-                }
-
-
-                if (
-                    heroGrid &&
-                    !window.matchMedia(
-                        "(prefers-reduced-motion: reduce)"
-                    ).matches
-                ) {
-
-                    heroGrid.style.transform =
-                        `translate3d(
-                            0,
-                            ${heroProgress * 70}px,
-                            0
-                        )`;
-
-                }
-
-
-                if (
-                    orbOne &&
-                    !window.matchMedia(
-                        "(prefers-reduced-motion: reduce)"
-                    ).matches
-                ) {
-
-                    orbOne.style.transform =
-                        `translate3d(
-                            ${heroProgress * 40}px,
-                            ${heroProgress * 80}px,
-                            0
-                        )`;
-
-                }
-
-
-                if (
-                    orbTwo &&
-                    !window.matchMedia(
-                        "(prefers-reduced-motion: reduce)"
-                    ).matches
-                ) {
-
-                    orbTwo.style.transform =
-                        `translate3d(
-                            ${heroProgress * -30}px,
-                            ${heroProgress * -60}px,
-                            0
-                        )`;
-
-                }
-
-            }
-
-        }
-
-
-        scrollTicking = false;
-
-    }
-
-
-    function requestScrollUpdate() {
-
-        if (!scrollTicking) {
-
-            window.requestAnimationFrame(
-                updateScroll
-            );
-
-            scrollTicking = true;
-
-        }
-
-    }
-
-
-    window.addEventListener(
-        "scroll",
-        requestScrollUpdate,
-        {
-            passive: true
-        }
-    );
-
-
-    /* =========================================
-       SCROLL REVEAL
-    ========================================= */
-
-    const revealElements =
-        document.querySelectorAll(".reveal");
-
-    const scrollElements =
-        document.querySelectorAll("[data-scroll]");
-
-
-    if ("IntersectionObserver" in window) {
-
-        const revealObserver =
-            new IntersectionObserver(
-                entries => {
-
-                    entries.forEach(entry => {
-
-                        if (entry.isIntersecting) {
-
-                            entry.target.classList.add(
-                                "visible"
+                        const correctCell =
+                            detectiveBody.querySelector(
+                                `[data-row="${correct.row}"][data-col="${correct.col}"]`
                             );
 
-                            entry.target.classList.add(
-                                "is-visible"
-                            );
 
-                            revealObserver.unobserve(
-                                entry.target
+                        if (correctCell) {
+                            correctCell.classList.add(
+                                "correct"
                             );
-
                         }
 
-                    });
+                    }
 
-                },
-                {
-                    threshold: 0.08,
-                    rootMargin:
-                        "0px 0px -45px 0px"
+
+                    nextCase.disabled = false;
+
                 }
             );
 
-
-        revealElements.forEach(element => {
-
-            revealObserver.observe(element);
-
         });
 
+}
 
-        scrollElements.forEach(element => {
 
-            revealObserver.observe(element);
+function finishDetective() {
 
-        });
+    finalScore.textContent =
+        detectiveScore;
+
+
+    if (detectiveScore === 5) {
+
+        finalMessage.textContent =
+            "Outstanding. You're a Data Detective.";
+
+    } else if (detectiveScore >= 3) {
+
+        finalMessage.textContent =
+            "Nice work. Your analyst instincts are solid.";
 
     } else {
 
-        /* Fallback for older browsers */
-
-        revealElements.forEach(element => {
-
-            element.classList.add("visible");
-
-        });
-
-        scrollElements.forEach(element => {
-
-            element.classList.add("visible");
-
-        });
+        finalMessage.textContent =
+            "Good start. Every analyst gets better with practice.";
 
     }
 
 
-    /* =========================================
-       PROJECT ACTIVE STATE
-    ========================================= */
+    detectiveResult.classList.add("show");
 
-    const projectRows =
-        document.querySelectorAll(
-            ".project-row"
-        );
+    detectiveResult.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
 
+}
 
-    if (
-        projectRows.length &&
-        "IntersectionObserver" in window
-    ) {
 
-        const projectObserver =
-            new IntersectionObserver(
-                entries => {
+if (nextCase) {
 
-                    entries.forEach(entry => {
+    nextCase.addEventListener(
+        "click",
+        () => {
 
-                        if (
-                            entry.isIntersecting
-                        ) {
-
-                            projectRows.forEach(
-                                row => {
-                                    row.classList.remove(
-                                        "is-active"
-                                    );
-                                }
-                            );
-
-                            entry.target.classList.add(
-                                "is-active"
-                            );
-
-                        }
-
-                    });
-
-                },
-                {
-                    threshold: 0.45
-                }
-            );
-
-
-        projectRows.forEach(row => {
-
-            projectObserver.observe(row);
-
-        });
-
-    }
-
-
-    /* =========================================
-       APP CARD ACTIVE STATE
-    ========================================= */
-
-    const appCards =
-        document.querySelectorAll(
-            ".app-card"
-        );
-
-
-    if (
-        appCards.length &&
-        "IntersectionObserver" in window
-    ) {
-
-        const appObserver =
-            new IntersectionObserver(
-                entries => {
-
-                    entries.forEach(entry => {
-
-                        if (
-                            entry.isIntersecting
-                        ) {
-
-                            entry.target.classList.add(
-                                "is-active"
-                            );
-
-                        }
-
-                    });
-
-                },
-                {
-                    threshold: 0.3
-                }
-            );
-
-
-        appCards.forEach(card => {
-
-            appObserver.observe(card);
-
-        });
-
-    }
-
-
-    /* =========================================
-       ACTIVE NAVIGATION
-    ========================================= */
-
-    const sections =
-        document.querySelectorAll(
-            "section[id]"
-        );
-
-
-    if (
-        sections.length &&
-        navLinks.length &&
-        "IntersectionObserver" in window
-    ) {
-
-        const sectionObserver =
-            new IntersectionObserver(
-                entries => {
-
-                    entries.forEach(entry => {
-
-                        if (
-                            !entry.isIntersecting
-                        ) {
-                            return;
-                        }
-
-
-                        const currentId =
-                            entry.target.getAttribute(
-                                "id"
-                            );
-
-
-                        navLinks.forEach(link => {
-
-                            link.classList.remove(
-                                "active"
-                            );
-
-
-                            const href =
-                                link.getAttribute(
-                                    "href"
-                                );
-
-
-                            if (
-                                href ===
-                                `#${currentId}`
-                            ) {
-
-                                link.classList.add(
-                                    "active"
-                                );
-
-                            }
-
-                        });
-
-                    });
-
-                },
-                {
-                    rootMargin:
-                        "-35% 0px -55% 0px",
-                    threshold: 0
-                }
-            );
-
-
-        sections.forEach(section => {
-
-            sectionObserver.observe(
-                section
-            );
-
-        });
-
-    }
-
-
-    /* =========================================
-       CURSOR GLOW
-    ========================================= */
-
-    const cursorGlow =
-        document.querySelector(
-            ".cursor-glow"
-        );
-
-
-    const reducedMotion =
-        window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        ).matches;
-
-
-    if (
-        cursorGlow &&
-        window.innerWidth > 800 &&
-        !reducedMotion
-    ) {
-
-        let mouseX = 0;
-        let mouseY = 0;
-
-        let currentX = 0;
-        let currentY = 0;
-
-
-        document.addEventListener(
-            "mousemove",
-            event => {
-
-                mouseX =
-                    event.clientX;
-
-                mouseY =
-                    event.clientY;
-
+            if (!detectiveAnswered) {
+                return;
             }
-        );
 
 
-        function animateCursor() {
+            detectiveIndex++;
 
-            currentX +=
-                (mouseX - currentX) *
-                0.08;
-
-            currentY +=
-                (mouseY - currentY) *
-                0.08;
-
-
-            cursorGlow.style.left =
-                `${currentX}px`;
-
-            cursorGlow.style.top =
-                `${currentY}px`;
-
-
-            requestAnimationFrame(
-                animateCursor
-            );
-
-        }
-
-
-        animateCursor();
-
-    }
-
-
-    /* =========================================
-       SMOOTH ANCHOR NAVIGATION
-    ========================================= */
-
-    document
-        .querySelectorAll(
-            'a[href^="#"]'
-        )
-        .forEach(anchor => {
-
-            anchor.addEventListener(
-                "click",
-                event => {
-
-                    const targetId =
-                        anchor.getAttribute(
-                            "href"
-                        );
-
-
-                    if (
-                        !targetId ||
-                        targetId === "#"
-                    ) {
-                        return;
-                    }
-
-
-                    const target =
-                        document.querySelector(
-                            targetId
-                        );
-
-
-                    if (!target) {
-                        return;
-                    }
-
-
-                    event.preventDefault();
-
-
-                    target.scrollIntoView({
-                        behavior:
-                            reducedMotion
-                                ? "auto"
-                                : "smooth",
-                        block: "start"
-                    });
-
-                }
-            );
-
-        });
-
-
-    /* =========================================
-       DATA DETECTIVE GAME
-    ========================================= */
-
-    const detectiveCases = [
-
-        {
-            headers: [
-                "Customer",
-                "Age",
-                "City",
-                "Purchase"
-            ],
-
-            rows: [
-                ["Aarav", "24", "Delhi", "₹2,400"],
-                ["Riya", "29", "Mumbai", "₹3,100"],
-                ["Kabir", "-7", "Pune", "₹1,800"],
-                ["Neha", "31", "Delhi", "₹4,200"]
-            ],
-
-            correct: {
-                row: 2,
-                col: 1
-            },
-
-            explanation:
-                "An age of -7 is impossible."
-
-        },
-
-
-        {
-            headers: [
-                "Order ID",
-                "Customer",
-                "Amount",
-                "Status"
-            ],
-
-            rows: [
-                [
-                    "ORD-101",
-                    "Aarav",
-                    "₹2,400",
-                    "Completed"
-                ],
-                [
-                    "ORD-102",
-                    "Riya",
-                    "₹1,800",
-                    "Completed"
-                ],
-                [
-                    "ORD-103",
-                    "Kabir",
-                    "₹3,200",
-                    "Pending"
-                ],
-                [
-                    "ORD-103",
-                    "Neha",
-                    "₹2,100",
-                    "Completed"
-                ]
-            ],
-
-            correct: {
-                row: 3,
-                col: 0
-            },
-
-            explanation:
-                "ORD-103 appears twice. That's a duplicate order ID."
-
-        },
-
-
-        {
-            headers: [
-                "Customer",
-                "Region",
-                "Orders",
-                "Revenue"
-            ],
-
-            rows: [
-                [
-                    "Aarav",
-                    "North",
-                    "12",
-                    "₹18,400"
-                ],
-                [
-                    "Riya",
-                    "West",
-                    "9",
-                    "₹14,200"
-                ],
-                [
-                    "Kabir",
-                    "",
-                    "15",
-                    "₹22,100"
-                ],
-                [
-                    "Neha",
-                    "South",
-                    "11",
-                    "₹16,800"
-                ]
-            ],
-
-            correct: {
-                row: 2,
-                col: 1
-            },
-
-            explanation:
-                "Kabir's region is missing."
-
-        },
-
-
-        {
-            headers: [
-                "Product",
-                "Units",
-                "Price",
-                "Revenue"
-            ],
-
-            rows: [
-                [
-                    "Laptop",
-                    "4",
-                    "₹55,000",
-                    "₹220,000"
-                ],
-                [
-                    "Mouse",
-                    "12",
-                    "₹900",
-                    "₹10,800"
-                ],
-                [
-                    "Keyboard",
-                    "8",
-                    "₹1,500",
-                    "₹12,000"
-                ],
-                [
-                    "Monitor",
-                    "3",
-                    "₹18,000",
-                    "₹540,000"
-                ]
-            ],
-
-            correct: {
-                row: 3,
-                col: 3
-            },
-
-            explanation:
-                "3 × ₹18,000 = ₹54,000, not ₹540,000."
-
-        },
-
-
-        {
-            headers: [
-                "Product",
-                "Units Sold",
-                "Unit Price",
-                "Revenue"
-            ],
-
-            rows: [
-                [
-                    "Laptop",
-                    "5",
-                    "₹50,000",
-                    "₹250,000"
-                ],
-                [
-                    "Phone",
-                    "8",
-                    "₹25,000",
-                    "₹200,000"
-                ],
-                [
-                    "Tablet",
-                    "6",
-                    "₹20,000",
-                    "₹120,000"
-                ],
-                [
-                    "Monitor",
-                    "4",
-                    "₹15,000",
-                    "₹45,000"
-                ]
-            ],
-
-            correct: {
-                row: 3,
-                col: 3
-            },
-
-            explanation:
-                "4 × ₹15,000 = ₹60,000, not ₹45,000."
-
-        }
-
-    ];
-
-
-    let detectiveIndex = 0;
-
-    let detectiveScore = 0;
-
-    let detectiveAnswered = false;
-
-
-    const detectiveHead =
-        document.getElementById(
-            "detectiveHead"
-        );
-
-    const detectiveBody =
-        document.getElementById(
-            "detectiveBody"
-        );
-
-    const detectiveQuestion =
-        document.getElementById(
-            "detectiveQuestion"
-        );
-
-    const detectiveMessage =
-        document.getElementById(
-            "detectiveMessage"
-        );
-
-    const detectiveScoreElement =
-        document.getElementById(
-            "detectiveScore"
-        );
-
-    const caseNumber =
-        document.getElementById(
-            "caseNumber"
-        );
-
-    const detectiveProgress =
-        document.getElementById(
-            "detectiveProgress"
-        );
-
-    const nextCase =
-        document.getElementById(
-            "nextCase"
-        );
-
-    const detectiveResult =
-        document.getElementById(
-            "detectiveResult"
-        );
-
-    const finalScore =
-        document.getElementById(
-            "finalScore"
-        );
-
-    const finalMessage =
-        document.getElementById(
-            "finalMessage"
-        );
-
-    const restartGame =
-        document.getElementById(
-            "restartGame"
-        );
-
-
-    /* -----------------------------------------
-       LOAD CASE
-    ----------------------------------------- */
-
-    function loadDetectiveCase() {
-
-        if (
-            !detectiveHead ||
-            !detectiveBody ||
-            !detectiveCases.length
-        ) {
-            return;
-        }
-
-
-        const currentCase =
-            detectiveCases[
-                detectiveIndex
-            ];
-
-
-        detectiveAnswered =
-            false;
-
-
-        if (nextCase) {
-            nextCase.disabled = true;
-        }
-
-
-        if (caseNumber) {
-
-            caseNumber.textContent =
-                `${String(
-                    detectiveIndex + 1
-                ).padStart(2, "0")} / ${
-                    detectiveCases.length
-                }`;
-
-        }
-
-
-        if (detectiveProgress) {
-
-            detectiveProgress.textContent =
-                `Case ${
-                    detectiveIndex + 1
-                } of ${
-                    detectiveCases.length
-                }`;
-
-        }
-
-
-        if (detectiveQuestion) {
-
-            detectiveQuestion.textContent =
-                "One value in this table is wrong. Find it.";
-
-        }
-
-
-        if (detectiveMessage) {
-
-            detectiveMessage.textContent =
-                "Select the value you think is wrong.";
-
-            detectiveMessage.className =
-                "detective-message";
-
-        }
-
-
-        /* -------------------------------------
-           TABLE HEADER
-        ------------------------------------- */
-
-        detectiveHead.innerHTML =
-            currentCase.headers
-                .map(
-                    header =>
-                        `<th>${header}</th>`
-                )
-                .join("");
-
-
-        /* -------------------------------------
-           TABLE BODY
-        ------------------------------------- */
-
-        detectiveBody.innerHTML =
-            currentCase.rows
-                .map(
-                    (row, rowIndex) => {
-
-                        return `
-                            <tr>
-                                ${row
-                                    .map(
-                                        (
-                                            value,
-                                            colIndex
-                                        ) => {
-
-                                            return `
-                                                <td
-                                                    class="selectable"
-                                                    data-row="${rowIndex}"
-                                                    data-col="${colIndex}"
-                                                >
-                                                    ${
-                                                        value ||
-                                                        "—"
-                                                    }
-                                                </td>
-                                            `;
-
-                                        }
-                                    )
-                                    .join("")}
-                            </tr>
-                        `;
-
-                    }
-                )
-                .join("");
-
-
-        /* -------------------------------------
-           CELL CLICK EVENTS
-        ------------------------------------- */
-
-        detectiveBody
-            .querySelectorAll(
-                "td.selectable"
-            )
-            .forEach(cell => {
-
-                cell.addEventListener(
-                    "click",
-                    () => {
-
-                        if (
-                            detectiveAnswered
-                        ) {
-                            return;
-                        }
-
-
-                        const selectedRow =
-                            Number(
-                                cell.dataset.row
-                            );
-
-                        const selectedCol =
-                            Number(
-                                cell.dataset.col
-                            );
-
-
-                        const correct =
-                            currentCase.correct;
-
-
-                        detectiveAnswered =
-                            true;
-
-
-                        /* ---------------------
-                           CORRECT
-                        --------------------- */
-
-                        if (
-                            selectedRow ===
-                                correct.row &&
-                            selectedCol ===
-                                correct.col
-                        ) {
-
-                            detectiveScore++;
-
-
-                            if (
-                                detectiveScoreElement
-                            ) {
-
-                                detectiveScoreElement
-                                    .textContent =
-                                    detectiveScore;
-
-                            }
-
-
-                            cell.classList.add(
-                                "correct"
-                            );
-
-
-                            if (
-                                detectiveMessage
-                            ) {
-
-                                detectiveMessage.textContent =
-                                    `✓ Correct. ${currentCase.explanation}`;
-
-                                detectiveMessage.classList.add(
-                                    "success"
-                                );
-
-                            }
-
-                        }
-
-
-                        /* ---------------------
-                           WRONG
-                        --------------------- */
-
-                        else {
-
-                            cell.classList.add(
-                                "wrong"
-                            );
-
-
-                            if (
-                                detectiveMessage
-                            ) {
-
-                                detectiveMessage.textContent =
-                                    `Not quite. ${currentCase.explanation}`;
-
-                                detectiveMessage.classList.add(
-                                    "error"
-                                );
-
-                            }
-
-
-                            const correctCell =
-                                detectiveBody.querySelector(
-                                    `[data-row="${correct.row}"][data-col="${correct.col}"]`
-                                );
-
-
-                            if (correctCell) {
-
-                                correctCell.classList.add(
-                                    "correct"
-                                );
-
-                            }
-
-                        }
-
-
-                        if (nextCase) {
-
-                            nextCase.disabled =
-                                false;
-
-                        }
-
-                    }
-                );
-
-            });
-
-    }
-
-
-    /* -----------------------------------------
-       FINISH GAME
-    ----------------------------------------- */
-
-    function finishDetective() {
-
-        if (finalScore) {
-
-            finalScore.textContent =
-                detectiveScore;
-
-        }
-
-
-        if (finalMessage) {
 
             if (
-                detectiveScore ===
+                detectiveIndex >=
                 detectiveCases.length
             ) {
 
-                finalMessage.textContent =
-                    "Outstanding. You're a Data Detective.";
+                finishDetective();
+
+                return;
 
             }
 
-            else if (
-                detectiveScore >= 3
-            ) {
 
-                finalMessage.textContent =
-                    "Nice work. Your analyst instincts are solid.";
-
-            }
-
-            else {
-
-                finalMessage.textContent =
-                    "Good start. Every analyst gets better with practice.";
-
-            }
+            loadDetectiveCase();
 
         }
+    );
+
+}
 
 
-        if (detectiveResult) {
+if (restartGame) {
 
-            detectiveResult.classList.add(
+    restartGame.addEventListener(
+        "click",
+        () => {
+
+            detectiveIndex = 0;
+            detectiveScore = 0;
+
+            detectiveScoreElement.textContent =
+                "0";
+
+            detectiveResult.classList.remove(
                 "show"
             );
 
-
-            setTimeout(() => {
-
-                detectiveResult.scrollIntoView({
-                    behavior:
-                        reducedMotion
-                            ? "auto"
-                            : "smooth",
-                    block: "center"
-                });
-
-            }, 50);
+            loadDetectiveCase();
 
         }
+    );
 
-    }
-
-
-    /* -----------------------------------------
-       NEXT CASE
-    ----------------------------------------- */
-
-    if (nextCase) {
-
-        nextCase.addEventListener(
-            "click",
-            () => {
-
-                if (
-                    !detectiveAnswered
-                ) {
-                    return;
-                }
+}
 
 
-                detectiveIndex++;
+if (
+    detectiveHead &&
+    detectiveBody
+) {
 
+    loadDetectiveCase();
 
-                if (
-                    detectiveIndex >=
-                    detectiveCases.length
-                ) {
-
-                    finishDetective();
-
-                    return;
-
-                }
-
-
-                loadDetectiveCase();
-
-            }
-        );
-
-    }
-
-
-    /* -----------------------------------------
-       RESTART GAME
-    ----------------------------------------- */
-
-    if (restartGame) {
-
-        restartGame.addEventListener(
-            "click",
-            () => {
-
-                detectiveIndex = 0;
-
-                detectiveScore = 0;
-
-                detectiveAnswered =
-                    false;
-
-
-                if (
-                    detectiveScoreElement
-                ) {
-
-                    detectiveScoreElement
-                        .textContent =
-                        "0";
-
-                }
-
-
-                if (detectiveResult) {
-
-                    detectiveResult.classList.remove(
-                        "show"
-                    );
-
-                }
-
-
-                loadDetectiveCase();
-
-            }
-        );
-
-    }
-
-
-    /* -----------------------------------------
-       START GAME
-    ----------------------------------------- */
-
-    if (
-        detectiveHead &&
-        detectiveBody
-    ) {
-
-        loadDetectiveCase();
-
-    }
-
-
-    /* =========================================
-       INITIAL SCROLL UPDATE
-    ========================================= */
-
-    updateScroll();
-
-});
+}});
