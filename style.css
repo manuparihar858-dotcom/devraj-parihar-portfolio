@@ -1721,3 +1721,40 @@ section {
     }
 
 }
+/* Fix accidental empty/hidden contact area */
+.contact-section {
+    min-height: auto;
+    padding: 140px 0 120px;
+}
+
+.contact-content {
+    opacity: 1;
+    transform: none;
+}
+
+/* Prevent hidden decorative elements from creating visual artifacts */
+.hero-photo,
+.photo-frame,
+.photo-label,
+.orb,
+.cursor-glow {
+    pointer-events: none;
+}
+
+.cursor-glow {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    position: fixed;
+    z-index: -1;
+}
+[data-scroll] {
+    overflow: visible;
+}
+
+.hero,
+.section,
+.contact-section,
+.footer {
+    overflow: hidden;
+}
