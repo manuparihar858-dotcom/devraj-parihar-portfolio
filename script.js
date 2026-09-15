@@ -487,14 +487,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* =========================================
    DATA DETECTIVE GAME
-========================================= */
-
-/* =========================================
-   DATA DETECTIVE GAME
    ========================================= */
 
 (function initDataDetective() {
+
     function startGame() {
+
         const head = document.getElementById("detectiveHead");
         const body = document.getElementById("detectiveBody");
         const question = document.getElementById("detectiveQuestion");
@@ -508,7 +506,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const finalMessage = document.getElementById("finalMessage");
         const restartBtn = document.getElementById("restartGame");
 
-        // If the game HTML isn't on the page, simply stop.
         if (
             !head ||
             !body ||
@@ -523,13 +520,15 @@ document.addEventListener("DOMContentLoaded", () => {
             !finalMessage ||
             !restartBtn
         ) {
-            console.warn("Data Detective: required HTML elements were not found.");
+            console.error("Data Detective: required elements are missing.");
             return;
         }
 
         const cases = [
+
             {
                 question: "Which value is suspicious?",
+                columns: ["Type", "Name", "Age"],
                 rows: [
                     ["Customer", "Aarav", "22"],
                     ["Customer", "Riya", "31"],
@@ -537,11 +536,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     ["Customer", "Meera", "27"]
                 ],
                 answer: 2,
-                explanation: "Age cannot reasonably be -7. This is an invalid data value."
+                explanation:
+                    "Kabir's age is -7. This is an invalid data value."
             },
 
             {
                 question: "Which order looks like a duplicate?",
+                columns: ["Type", "Order ID", "Amount"],
                 rows: [
                     ["Order", "ORD-101", "₹2,500"],
                     ["Order", "ORD-102", "₹3,200"],
@@ -549,11 +550,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     ["Order", "ORD-103", "₹1,850"]
                 ],
                 answer: 3,
-                explanation: "ORD-103 appears twice with the same value, indicating a duplicate record."
+                explanation:
+                    "ORD-103 appears twice with the same amount."
             },
 
             {
                 question: "Which record has a missing value?",
+                columns: ["Type", "Customer", "Region"],
                 rows: [
                     ["Customer", "Aarav", "North"],
                     ["Customer", "Riya", "West"],
@@ -561,11 +564,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     ["Customer", "Meera", "South"]
                 ],
                 answer: 2,
-                explanation: "Kabir has no region value. This is a missing-data issue."
+                explanation:
+                    "Kabir's region is missing."
             },
 
             {
                 question: "Which revenue value is clearly wrong?",
+                columns: ["Store", "Month", "Revenue"],
                 rows: [
                     ["Store A", "January", "₹52,000"],
                     ["Store B", "January", "₹48,000"],
@@ -573,11 +578,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     ["Store D", "January", "₹540,000"]
                 ],
                 answer: 3,
-                explanation: "₹540,000 is a major outlier compared with the other stores and likely contains an extra zero."
+                explanation:
+                    "₹540,000 is a major outlier and likely contains an extra zero."
             },
 
             {
                 question: "Which value contains a likely data-entry error?",
+                columns: ["Product", "Metric", "Value"],
                 rows: [
                     ["Product A", "Sales", "₹58,000"],
                     ["Product B", "Sales", "₹61,000"],
@@ -585,8 +592,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     ["Product D", "Sales", "₹6,000"]
                 ],
                 answer: 3,
-                explanation: "₹6,000 is unusually low compared with the other values and likely lost a zero."
+                explanation:
+                    "₹6,000 is unusually low compared with the other values and likely lost a zero."
             }
+
         ];
 
         let currentCase = 0;
@@ -594,27 +603,57 @@ document.addEventListener("DOMContentLoaded", () => {
         let answered = false;
 
         function renderCase() {
+
             const current = cases[currentCase];
 
             answered = false;
 
-            result.classList.remove("show");
-            message.textContent = "";
+            question.textContent = current.question;
+
+            scoreEl.textContent = score;
+
+            caseNumberEl.textContent =
+                `${String(currentCase + 1).padStart(2, "0")} / ${cases.length}`;
+
+            progressEl.textContent =
+                `Case ${currentCase + 1} of ${cases.length}`;
+
+            message.textContent =
+                "Select the value you think is wrong.";
+
             message.className = "detective-message";
 
+            result.classList.remove("show");
+
+            /*
+             * IMPORTANT:
+             * Enable the button again for every new case.
+             */
+            nextBtn.disabled = true;
             nextBtn.style.display = "none";
-            head.textContent = `Case ${currentCase + 1}`;
-            question.textContent = current.question;
-            scoreEl.textContent = score;
-            caseNumberEl.textContent = `${currentCase + 1}/${cases.length}`;
 
-            const progress = ((currentCase) / cases.length) * 100;
-            progressEl.style.width = `${progress}%`;
+            /*
+             * Build table header
+             */
+            head.innerHTML = `
+                <tr>
+                    <th>#</th>
+                    <th>${current.columns[0]}</th>
+                    <th>${current.columns[1]}</th>
+                    <th>${current.columns[2]}</th>
+                </tr>
+            `;
 
+            /*
+             * Build table body
+             */
             body.innerHTML = "";
 
             current.rows.forEach((row, index) => {
+
                 const tr = document.createElement("tr");
+
+                tr.dataset.index = index;
 
                 tr.innerHTML = `
                     <td>${index + 1}</td>
@@ -623,34 +662,42 @@ document.addEventListener("DOMContentLoaded", () => {
                     <td>${row[2] || "—"}</td>
                 `;
 
-                tr.dataset.index = index;
+                tr.addEventListener("click", function () {
 
-                tr.addEventListener("click", () => {
                     if (answered) return;
 
                     answered = true;
 
-                    const selectedIndex = Number(tr.dataset.index);
+                    const selectedIndex = Number(this.dataset.index);
 
-                    document
-                        .querySelectorAll("#detectiveBody tr")
-                        .forEach(rowEl => {
-                            rowEl.style.pointerEvents = "none";
-                        });
+                    /*
+                     * Stop additional clicks.
+                     */
+                    body.querySelectorAll("tr").forEach(rowEl => {
+                        rowEl.style.pointerEvents = "none";
+                    });
 
                     if (selectedIndex === current.answer) {
-                        tr.classList.add("correct");
+
+                        this.classList.add("correct");
+
                         score++;
+
                         scoreEl.textContent = score;
 
-                        message.textContent = `Correct! ${current.explanation}`;
-                        message.classList.add("success");
-                    } else {
-                        tr.classList.add("wrong");
+                        message.textContent =
+                            `Correct! ${current.explanation}`;
 
-                        const correctRow = document.querySelector(
-                            `#detectiveBody tr[data-index="${current.answer}"]`
-                        );
+                        message.classList.add("success");
+
+                    } else {
+
+                        this.classList.add("wrong");
+
+                        const correctRow =
+                            body.querySelector(
+                                `tr[data-index="${current.answer}"]`
+                            );
 
                         if (correctRow) {
                             correctRow.classList.add("correct");
@@ -662,13 +709,20 @@ document.addEventListener("DOMContentLoaded", () => {
                         message.classList.add("error");
                     }
 
-                    if (currentCase < cases.length - 1) {
-                        nextBtn.style.display = "inline-flex";
-                        nextBtn.textContent = "Next Case →";
+                    /*
+                     * NOW enable Next Case.
+                     */
+                    nextBtn.disabled = false;
+                    nextBtn.style.display = "inline-flex";
+
+                    if (currentCase === cases.length - 1) {
+                        nextBtn.innerHTML =
+                            `See Result <i class="fa-solid fa-arrow-right"></i>`;
                     } else {
-                        nextBtn.style.display = "inline-flex";
-                        nextBtn.textContent = "See Result";
+                        nextBtn.innerHTML =
+                            `Next Case <i class="fa-solid fa-arrow-right"></i>`;
                     }
+
                 });
 
                 body.appendChild(tr);
@@ -676,54 +730,88 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         function showResult() {
-            progressEl.style.width = "100%";
 
             result.classList.add("show");
 
-            finalScore.textContent = `${score}/${cases.length}`;
+            finalScore.textContent =
+                `${score}`;
 
-            if (score === cases.length) {
+            if (score === 5) {
+
                 finalMessage.textContent =
                     "Perfect score. Your data detective instincts are sharp.";
+
             } else if (score >= 3) {
+
                 finalMessage.textContent =
-                    "Great work. You have a strong eye for data-quality issues.";
+                    "Great work. You have a strong eye for data quality.";
+
             } else if (score >= 2) {
+
                 finalMessage.textContent =
-                    "Good start. Keep practicing your data-validation instincts.";
+                    "Good start. Keep improving your data validation instincts.";
+
             } else {
+
                 finalMessage.textContent =
-                    "Every analyst misses things sometimes. Keep investigating.";
+                    "Keep investigating. Every analyst gets better with practice.";
             }
 
             nextBtn.style.display = "none";
         }
 
-        nextBtn.addEventListener("click", () => {
+        nextBtn.addEventListener("click", function () {
+
+            if (nextBtn.disabled) return;
+
             if (currentCase < cases.length - 1) {
+
                 currentCase++;
+
                 renderCase();
+
             } else {
+
                 showResult();
             }
+
         });
 
-        restartBtn.addEventListener("click", () => {
+        restartBtn.addEventListener("click", function () {
+
             currentCase = 0;
+
             score = 0;
+
             result.classList.remove("show");
+
             renderCase();
+
         });
 
+        /*
+         * Start the first case.
+         */
         renderCase();
 
-        console.log("Data Detective initialized successfully.");
+        console.log("Data Detective loaded successfully.");
+
     }
 
-    // Works whether this script loads before or after DOMContentLoaded.
+    /*
+     * Make sure the DOM exists before starting.
+     */
     if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", startGame);
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            startGame
+        );
+
     } else {
+
         startGame();
+
     }
+
 })();
