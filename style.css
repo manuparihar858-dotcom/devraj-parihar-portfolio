@@ -2133,3 +2133,8 @@ section {
     }
 
 }
+/* Always show project tool badges */
+.project-tech span {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
