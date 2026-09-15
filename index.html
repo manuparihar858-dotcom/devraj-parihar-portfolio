@@ -2,137 +2,209 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Devraj Parihar | Data Analyst</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <meta
         name="description"
-        content="Devraj Parihar is a Data Analyst focused on transforming raw data into clear, actionable decisions."
+        content="Devraj Parihar — Data Analyst portfolio."
     >
 
+    <title>Devraj Parihar | Data Analyst</title>
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
         rel="stylesheet"
     >
 
+    <!-- Font Awesome -->
     <link
         rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     >
 
+    <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+    <!-- Cursor Glow -->
     <div class="cursor-glow"></div>
 
-    <!-- Navigation -->
+    <!-- ================= NAVBAR ================= -->
+
     <header class="navbar">
+
         <div class="container nav-container">
 
             <a href="#home" class="logo">
                 DP<span>.</span>
             </a>
 
-            <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
+            <nav class="nav-menu">
+
+                <a href="#home" class="nav-link active">
+                    Home
+                </a>
+
+                <a href="#about" class="nav-link">
+                    About
+                </a>
+
+                <a href="#skills" class="nav-link">
+                    Skills
+                </a>
+
+                <a href="#projects" class="nav-link">
+                    Projects
+                </a>
+
+                <a href="#apps" class="nav-link">
+                    Live Apps
+                </a>
+
+                <a href="#detective" class="nav-link">
+                    Detective
+                </a>
+
+                <a href="#certifications" class="nav-link">
+                    Certifications
+                </a>
+
+                <a href="#contact" class="nav-link">
+                    Contact
+                </a>
+
+            </nav>
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Open navigation"
+            >
                 <i class="fa-solid fa-bars"></i>
             </button>
 
-            <nav class="nav-menu" id="navMenu">
-                <a href="#home" class="nav-link active">Home</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#skills" class="nav-link">Skills</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#apps" class="nav-link">Live Apps</a>
-                <a href="#certifications" class="nav-link">Certifications</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </nav>
-
         </div>
+
     </header>
 
 
-    <!-- Hero -->
     <main>
+
+        <!-- ================= HERO ================= -->
 
         <section class="hero" id="home">
 
             <div class="hero-grid"></div>
+
             <div class="orb orb-one"></div>
             <div class="orb orb-two"></div>
 
             <div class="container hero-layout">
 
-                <div class="hero-copy reveal">
+                <div class="hero-copy">
 
-                    <div class="eyebrow">
-                        <span class="eyebrow-dot"></span>
-                        DATA ANALYST
+                    <div class="status">
+                        <span></span>
+                        Open to opportunities
                     </div>
 
+                    <p class="eyebrow">
+                        DATA ANALYST · MATHEMATICS GRADUATE
+                    </p>
+
                     <h1 class="name-heading">
-                        Devraj <span>Parihar.</span>
+                        Devraj
+                        <span>Parihar.</span>
                     </h1>
 
                     <h2 class="hero-role">
-                        Turning raw data into <em>decisions.</em>
+                        Turning raw data into
+                        <em>decisions.</em>
                     </h2>
 
                     <p class="hero-description">
-                        I transform data into meaningful insights using
-                        Python, SQL, Excel, Power BI and data visualization.
-                        My focus is on solving business problems through
-                        clean analysis and practical dashboards.
+                        I'm a Mathematics graduate with a strong interest
+                        in data analysis, visualization and problem solving.
+                        I enjoy taking messy information, finding meaningful
+                        patterns and turning data into clear, useful insights.
                     </p>
 
                     <div class="hero-actions">
 
-                        <a href="#apps" class="btn btn-primary">
-                            Explore My Apps
+                        <a
+                            href="#projects"
+                            class="btn btn-primary"
+                        >
+                            Explore my work
                             <i class="fa-solid fa-arrow-down"></i>
                         </a>
 
-                        <a href="#contact" class="btn btn-secondary">
-                            Get In Touch
-                            <i class="fa-regular fa-paper-plane"></i>
+                        <a
+                            href="https://github.com/manuparihar858-dotcom"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn btn-secondary"
+                        >
+                            <i class="fa-brands fa-github"></i>
+                            GitHub
                         </a>
 
                     </div>
 
                     <div class="hero-tools">
 
-                        <span>PYTHON</span>
+                        <span>Python</span>
                         <span>SQL</span>
-                        <span>EXCEL</span>
-                        <span>POWER BI</span>
-                        <span>PANDAS</span>
+                        <span>Power BI</span>
+                        <span>Excel</span>
+                        <span>Pandas</span>
 
                     </div>
 
                 </div>
 
 
-                <div class="hero-photo reveal delay">
+                <!-- PHOTO -->
+
+                <div class="hero-photo">
 
                     <div class="photo-frame">
 
                         <img
                             src="profile.jpg"
-                            alt="Devraj Parihar"
+                            alt="Devraj Parihar - Data Analyst"
                         >
 
                         <div class="photo-overlay"></div>
 
+                        <div class="photo-corner top-left"></div>
+                        <div class="photo-corner top-right"></div>
+                        <div class="photo-corner bottom-left"></div>
+                        <div class="photo-corner bottom-right"></div>
+
                     </div>
 
                     <div class="photo-label">
-                        <span>DATA</span>
-                        <strong>ANALYST</strong>
+
+                        <span>PROFILE</span>
+
+                        <strong>
+                            DEVRAJ PARIHAR
+                        </strong>
+
+                        <small>
+                            DATA ANALYST
+                        </small>
+
                     </div>
 
                 </div>
@@ -142,21 +214,32 @@
         </section>
 
 
-        <!-- About -->
-        <section class="section" id="about">
+        <!-- ================= ABOUT ================= -->
+
+        <section
+            class="section"
+            id="about"
+        >
 
             <div class="container">
 
-                <div class="section-heading reveal">
+                <div class="section-heading">
 
-                    <div class="section-number">01</div>
+                    <div class="section-number">
+                        01
+                    </div>
 
                     <div>
-                        <span class="section-label">ABOUT ME</span>
+
+                        <span class="section-label">
+                            ABOUT ME
+                        </span>
 
                         <h2>
-                            Data with purpose.
+                            Data meets
+                            <em>mathematics.</em>
                         </h2>
+
                     </div>
 
                 </div>
@@ -164,54 +247,83 @@
 
                 <div class="about-grid">
 
-                    <div class="about-main reveal">
+                    <div class="about-main">
 
                         <p class="large-text">
-                            I am a Data Analyst who enjoys turning
-                            messy datasets into clear and useful insights.
+                            I'm a Mathematics graduate with a strong
+                            interest in data analysis, visualization
+                            and problem solving.
                         </p>
 
                         <p>
-                            I work across data cleaning, exploratory analysis,
-                            visualization and dashboard development. I enjoy
-                            understanding what the data is saying and then
-                            presenting it in a way that makes sense to
-                            people beyond the technical side.
+                            My mathematical background gives me a
+                            structured approach to understanding datasets,
+                            identifying patterns and interpreting results.
                         </p>
 
                         <p>
-                            My projects focus on practical problems such as
-                            customer behavior, data quality and mathematical
-                            modelling.
+                            I work with Excel, SQL, Power BI and Python
+                            to clean datasets, explore trends, build
+                            dashboards and turn raw information into
+                            useful insights.
                         </p>
+
+                        <div class="about-tags">
+
+                            <span>Analytical Thinking</span>
+                            <span>Problem Solving</span>
+                            <span>Data Interpretation</span>
+                            <span>Trend Analysis</span>
+
+                        </div>
 
                     </div>
 
 
-                    <div class="about-details reveal delay">
+                    <div class="about-details">
 
                         <div class="detail-item">
+
                             <span>01</span>
+
                             <div>
-                                <strong>Analyze</strong>
-                                <p>Find patterns and meaningful insights.</p>
+                                <strong>Education</strong>
+
+                                <p>
+                                    B.Sc. Mathematics Honours
+                                </p>
                             </div>
+
                         </div>
 
+
                         <div class="detail-item">
+
                             <span>02</span>
+
                             <div>
-                                <strong>Visualize</strong>
-                                <p>Turn analysis into understandable dashboards.</p>
+                                <strong>Focus</strong>
+
+                                <p>
+                                    Data Analysis & Business Intelligence
+                                </p>
                             </div>
+
                         </div>
 
+
                         <div class="detail-item">
+
                             <span>03</span>
+
                             <div>
-                                <strong>Decide</strong>
-                                <p>Connect insights with practical decisions.</p>
+                                <strong>Approach</strong>
+
+                                <p>
+                                    Clean data. Find patterns. Explain results.
+                                </p>
                             </div>
+
                         </div>
 
                     </div>
@@ -223,21 +335,32 @@
         </section>
 
 
-        <!-- Skills -->
-        <section class="section section-alt" id="skills">
+        <!-- ================= SKILLS ================= -->
+
+        <section
+            class="section section-alt"
+            id="skills"
+        >
 
             <div class="container">
 
-                <div class="section-heading reveal">
+                <div class="section-heading">
 
-                    <div class="section-number">02</div>
+                    <div class="section-number">
+                        02
+                    </div>
 
                     <div>
-                        <span class="section-label">SKILLS</span>
+
+                        <span class="section-label">
+                            SKILLS & TOOLS
+                        </span>
 
                         <h2>
-                            My toolkit.
+                            My analytics
+                            <em>toolkit.</em>
                         </h2>
+
                     </div>
 
                 </div>
@@ -245,84 +368,113 @@
 
                 <div class="skills-grid">
 
-                    <div class="skill-card reveal">
+                    <article class="skill-card">
+
                         <div class="skill-icon">
-                            <i class="fa-brands fa-python"></i>
+                            <i class="fa-solid fa-magnifying-glass-chart"></i>
                         </div>
 
-                        <h3>Python</h3>
+                        <h3>
+                            Analysis
+                        </h3>
 
                         <p>
-                            Data analysis, automation and exploratory
-                            data work.
+                            Turning datasets into useful questions,
+                            patterns and findings.
                         </p>
 
                         <div class="skill-tags">
+
+                            <span>Data Cleaning</span>
+                            <span>EDA</span>
+                            <span>Trend Analysis</span>
+                            <span>Data Interpretation</span>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="skill-card">
+
+                        <div class="skill-icon">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+
+                        <h3>
+                            Programming
+                        </h3>
+
+                        <p>
+                            Using Python and numerical tools to
+                            work with data.
+                        </p>
+
+                        <div class="skill-tags">
+
+                            <span>Python</span>
+                            <span>SQL</span>
                             <span>Pandas</span>
                             <span>NumPy</span>
-                            <span>Plotly</span>
-                        </div>
-                    </div>
+                            <span>SciPy</span>
 
-
-                    <div class="skill-card reveal">
-                        <div class="skill-icon">
-                            <i class="fa-solid fa-database"></i>
                         </div>
 
-                        <h3>SQL</h3>
-
-                        <p>
-                            Querying, filtering, aggregations,
-                            joins and analytical logic.
-                        </p>
-
-                        <div class="skill-tags">
-                            <span>Queries</span>
-                            <span>Joins</span>
-                            <span>Analysis</span>
-                        </div>
-                    </div>
+                    </article>
 
 
-                    <div class="skill-card reveal">
+                    <article class="skill-card">
+
                         <div class="skill-icon">
                             <i class="fa-solid fa-chart-column"></i>
                         </div>
 
-                        <h3>Visualization</h3>
+                        <h3>
+                            BI & Visualization
+                        </h3>
 
                         <p>
-                            Building dashboards and visual stories
-                            from complex datasets.
+                            Building visuals and dashboards that
+                            communicate clearly.
                         </p>
 
                         <div class="skill-tags">
+
                             <span>Power BI</span>
+                            <span>Excel Charts</span>
                             <span>Plotly</span>
-                            <span>Charts</span>
+                            <span>Dashboards</span>
+
                         </div>
-                    </div>
+
+                    </article>
 
 
-                    <div class="skill-card reveal">
+                    <article class="skill-card">
+
                         <div class="skill-icon">
-                            <i class="fa-solid fa-table"></i>
+                            <i class="fa-solid fa-layer-group"></i>
                         </div>
 
-                        <h3>Excel</h3>
+                        <h3>
+                            Tools
+                        </h3>
 
                         <p>
-                            Data preparation, analysis and
-                            business-focused reporting.
+                            Practical tools for organizing,
+                            analyzing and presenting datasets.
                         </p>
 
                         <div class="skill-tags">
-                            <span>Functions</span>
-                            <span>Pivot Tables</span>
-                            <span>Analysis</span>
+
+                            <span>Microsoft Excel</span>
+                            <span>Streamlit</span>
+                            <span>GitHub</span>
+                            <span>Power BI</span>
+
                         </div>
-                    </div>
+
+                    </article>
 
                 </div>
 
@@ -331,21 +483,32 @@
         </section>
 
 
-        <!-- Projects -->
-        <section class="section" id="projects">
+        <!-- ================= PROJECTS ================= -->
+
+        <section
+            class="section"
+            id="projects"
+        >
 
             <div class="container">
 
-                <div class="section-heading reveal">
+                <div class="section-heading">
 
-                    <div class="section-number">03</div>
+                    <div class="section-number">
+                        03
+                    </div>
 
                     <div>
-                        <span class="section-label">PROJECTS</span>
+
+                        <span class="section-label">
+                            SELECTED WORK
+                        </span>
 
                         <h2>
-                            Problems I've explored.
+                            Projects that show
+                            <em>how I think.</em>
                         </h2>
+
                     </div>
 
                 </div>
@@ -353,82 +516,114 @@
 
                 <div class="project-list">
 
-                    <article class="project-row reveal">
 
-                        <div class="project-number">01</div>
+                    <!-- PROJECT 01 -->
+
+                    <article class="project-row">
+
+                        <div class="project-number">
+                            01
+                        </div>
 
                         <div class="project-content">
+
                             <span class="project-type">
                                 DATA ANALYSIS
                             </span>
 
-                            <h3>Customer Analysis</h3>
+                            <h3>
+                                Customer Analysis Dashboard
+                            </h3>
 
                             <p>
-                                An analytical project focused on customer
-                                behavior, sales performance, segmentation
-                                and regional trends.
+                                An interactive customer analytics
+                                dashboard designed to explore customer
+                                behavior, trends and business patterns.
                             </p>
+
                         </div>
 
-                      <div class="project-tech">
-    <span>Python</span>
-    <span>Pandas</span>
-    <span>Plotly</span>
-</div>
+                        <div class="project-tech">
+
+                            <span>Python</span>
+                            <span>Pandas</span>
+                            <span>Plotly</span>
+
+                        </div>
 
                     </article>
 
 
-                    <article class="project-row reveal">
+                    <!-- PROJECT 02 -->
 
-                        <div class="project-number">02</div>
+                    <article class="project-row">
+
+                        <div class="project-number">
+                            02
+                        </div>
 
                         <div class="project-content">
+
                             <span class="project-type">
                                 DATA QUALITY
                             </span>
 
-                            <h3>Data Quality Control</h3>
+                            <h3>
+                                Data Quality Control Center
+                            </h3>
 
                             <p>
-                                A practical application designed to identify
-                                missing values, duplicates, inconsistencies
-                                and other common data quality problems.
+                                A practical tool for identifying
+                                missing values, duplicates and
+                                common data-quality problems.
                             </p>
+
                         </div>
 
-                      <div class="project-tech">
-    <span>Python</span>
-    <span>Pandas</span>
-    <span>Streamlit</span>
-</div>
+                        <div class="project-tech">
+
+                            <span>Python</span>
+                            <span>Pandas</span>
+                            <span>Streamlit</span>
+
+                        </div>
+
                     </article>
 
 
-                    <article class="project-row reveal">
+                    <!-- PROJECT 03 -->
 
-                        <div class="project-number">03</div>
+                    <article class="project-row">
+
+                        <div class="project-number">
+                            03
+                        </div>
 
                         <div class="project-content">
+
                             <span class="project-type">
                                 MATHEMATICAL MODEL
                             </span>
 
-                            <h3>SIR Model Simulation</h3>
+                            <h3>
+                                SIR Model Simulation
+                            </h3>
 
                             <p>
-                                A simulation exploring how susceptible,
-                                infected and recovered populations change
-                                over time.
+                                A mathematical simulation exploring
+                                how susceptible, infected and recovered
+                                populations change over time.
                             </p>
+
                         </div>
 
                         <div class="project-tech">
-    <span>Python</span>
-    <span>Mathematics</span>
-    <span>Plotly</span>
-</div>
+
+                            <span>Python</span>
+                            <span>Mathematics</span>
+                            <span>Plotly</span>
+
+                        </div>
 
                     </article>
 
@@ -439,21 +634,32 @@
         </section>
 
 
-        <!-- Live Apps -->
-        <section class="section section-alt" id="apps">
+        <!-- ================= LIVE APPS ================= -->
+
+        <section
+            class="section section-alt"
+            id="apps"
+        >
 
             <div class="container">
 
-                <div class="section-heading reveal">
+                <div class="section-heading">
 
-                    <div class="section-number">04</div>
+                    <div class="section-number">
+                        04
+                    </div>
 
                     <div>
-                        <span class="section-label">LIVE APPS</span>
+
+                        <span class="section-label">
+                            LIVE PROJECTS
+                        </span>
 
                         <h2>
-                            Try the work yourself.
+                            Try the work
+                            <em>yourself.</em>
                         </h2>
+
                     </div>
 
                 </div>
@@ -462,8 +668,9 @@
                 <div class="apps-grid">
 
 
-                    <!-- Customer Analysis -->
-                    <article class="app-card reveal">
+                    <!-- APP 01 -->
+
+                    <article class="app-card">
 
                         <div class="app-top">
 
@@ -478,31 +685,27 @@
 
                         </div>
 
-
                         <div class="app-icon">
                             <i class="fa-solid fa-chart-line"></i>
                         </div>
-
 
                         <h3>
                             Customer Analysis Dashboard
                         </h3>
 
-
                         <p>
-                            Interactive dashboard for exploring customer
-                            behavior, sales performance, segmentation
-                            and regional trends.
+                            Explore customer trends and interactive
+                            analytics through a live dashboard.
                         </p>
 
-
                         <div class="app-tags">
+
                             <span>Python</span>
-                            <span>Streamlit</span>
                             <span>Pandas</span>
                             <span>Plotly</span>
-                        </div>
+                            <span>Streamlit</span>
 
+                        </div>
 
                         <div class="app-actions">
 
@@ -521,8 +724,9 @@
                     </article>
 
 
-                    <!-- Data Quality -->
-                    <article class="app-card reveal">
+                    <!-- APP 02 -->
+
+                    <article class="app-card">
 
                         <div class="app-top">
 
@@ -537,31 +741,26 @@
 
                         </div>
 
-
                         <div class="app-icon">
                             <i class="fa-solid fa-shield-halved"></i>
                         </div>
-
 
                         <h3>
                             Data Quality Control Center
                         </h3>
 
-
                         <p>
-                            Interactive application for identifying missing
-                            values, duplicates, inconsistencies and other
-                            data quality issues.
+                            Inspect datasets and identify common
+                            quality issues through an interactive tool.
                         </p>
 
-
                         <div class="app-tags">
-                            <span>Python</span>
-                            <span>Streamlit</span>
-                            <span>Pandas</span>
-                            <span>NumPy</span>
-                        </div>
 
+                            <span>Python</span>
+                            <span>Pandas</span>
+                            <span>Streamlit</span>
+
+                        </div>
 
                         <div class="app-actions">
 
@@ -580,8 +779,9 @@
                     </article>
 
 
-                    <!-- SIR Model -->
-                    <article class="app-card reveal">
+                    <!-- APP 03 -->
+
+                    <article class="app-card">
 
                         <div class="app-top">
 
@@ -595,30 +795,27 @@
 
                         </div>
 
-
                         <div class="app-icon">
                             <i class="fa-solid fa-virus"></i>
                         </div>
-
 
                         <h3>
                             SIR Model Simulation
                         </h3>
 
-
                         <p>
-                            Mathematical simulation showing how susceptible,
-                            infected and recovered populations change
-                            over time.
+                            Mathematical simulation showing how
+                            susceptible, infected and recovered
+                            populations change over time.
                         </p>
 
-
                         <div class="app-tags">
+
                             <span>Python</span>
                             <span>Mathematics</span>
                             <span>Plotly</span>
-                        </div>
 
+                        </div>
 
                         <div class="app-actions">
 
@@ -636,6 +833,191 @@
 
                     </article>
 
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= DATA DETECTIVE ================= -->
+
+        <section
+            class="section detective-section"
+            id="detective"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div class="section-number">
+                        05
+                    </div>
+
+                    <div>
+
+                        <span class="section-label">
+                            INTERACTIVE LAB
+                        </span>
+
+                        <h2>
+                            Data Detective.
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="detective-intro">
+
+                    <p class="detective-kicker">
+                        CAN YOU SPOT THE PROBLEM?
+                    </p>
+
+                    <h3>
+                        Find what's wrong with the dataset.
+                    </h3>
+
+                    <p>
+                        Every dataset has a story.
+                        Sometimes it also has a few problems
+                        hiding inside it.
+                    </p>
+
+                </div>
+
+
+                <div class="detective-game">
+
+                    <div class="detective-header">
+
+                        <div>
+
+                            <span>
+                                CASE
+                            </span>
+
+                            <strong id="caseNumber">
+                                01 / 05
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                SCORE
+                            </span>
+
+                            <strong id="detectiveScore">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="detective-question">
+
+                        <span class="detective-label">
+                            INVESTIGATION
+                        </span>
+
+                        <h4 id="detectiveQuestion">
+                            Something is wrong with this dataset.
+                            Find the suspicious value.
+                        </h4>
+
+                    </div>
+
+
+                    <div class="detective-table-wrap">
+
+                        <table class="detective-table">
+
+                            <thead id="detectiveHead"></thead>
+
+                            <tbody id="detectiveBody"></tbody>
+
+                        </table>
+
+                    </div>
+
+
+                    <div
+                        class="detective-message"
+                        id="detectiveMessage"
+                        aria-live="polite"
+                    >
+                        Select the value you think is wrong.
+                    </div>
+
+
+                    <div class="detective-footer">
+
+                        <span id="detectiveProgress">
+                            Case 1 of 5
+                        </span>
+
+                        <button
+                            type="button"
+                            class="detective-next"
+                            id="nextCase"
+                            disabled
+                        >
+                            Next Case
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FINAL RESULT -->
+
+                <div
+                    class="detective-result"
+                    id="detectiveResult"
+                >
+
+                    <span class="detective-label">
+                        INVESTIGATION COMPLETE
+                    </span>
+
+                    <div class="detective-result-score">
+
+                        <strong id="finalScore">
+                            0
+                        </strong>
+
+                        <span>
+                            / 5
+                        </span>
+
+                    </div>
+
+                    <h3 id="finalMessage">
+                        Data Detective
+                    </h3>
+
+                    <p>
+                        You found the problems hidden in the data.
+                        That's the first step toward reliable analysis.
+                    </p>
+
+                    <button
+                        type="button"
+                        class="detective-restart"
+                        id="restartGame"
+                    >
+                        Investigate Again
+                        <i class="fa-solid fa-rotate-right"></i>
+                    </button>
 
                 </div>
 
@@ -644,191 +1026,56 @@
         </section>
 
 
-      <!-- Data Detective -->
-<section class="section detective-section" id="detective">
+        <!-- ================= CERTIFICATIONS ================= -->
 
-    <div class="container">
-
-        <div class="section-heading reveal">
-
-            <div class="section-number">06</div>
-
-            <div>
-                <span class="section-label">INTERACTIVE LAB</span>
-
-                <h2>
-                    Data Detective.
-                </h2>
-            </div>
-
-        </div>
-
-
-        <div class="detective-intro reveal">
-
-            <p class="detective-kicker">
-                CAN YOU SPOT THE PROBLEM?
-            </p>
-
-            <h3>
-                Find what's wrong with the dataset.
-            </h3>
-
-            <p>
-                Every dataset has a story. Sometimes it also has
-                a few problems hiding inside it.
-            </p>
-
-        </div>
-
-
-        <div class="detective-game reveal">
-
-            <div class="detective-header">
-
-                <div>
-                    <span>CASE</span>
-                    <strong id="caseNumber">01 / 05</strong>
-                </div>
-
-                <div>
-                    <span>SCORE</span>
-                    <strong id="detectiveScore">0</strong>
-                </div>
-
-            </div>
-
-
-            <div class="detective-question">
-
-                <span class="detective-label">
-                    INVESTIGATION
-                </span>
-
-                <h4 id="detectiveQuestion">
-                    Something is wrong with this dataset.
-                    Find the suspicious value.
-                </h4>
-
-            </div>
-
-
-            <div class="detective-table-wrap">
-
-                <table class="detective-table">
-
-                    <thead id="detectiveHead"></thead>
-
-                    <tbody id="detectiveBody"></tbody>
-
-                </table>
-
-            </div>
-
-
-            <div
-                class="detective-message"
-                id="detectiveMessage"
-                aria-live="polite"
-            >
-                Select the value you think is wrong.
-            </div>
-
-
-            <div class="detective-footer">
-
-                <span id="detectiveProgress">
-                    Case 1 of 5
-                </span>
-
-                <button
-                    type="button"
-                    id="nextCase"
-                    class="detective-next"
-                    disabled
-                >
-                    Next Case
-                    <i class="fa-solid fa-arrow-right"></i>
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <div
-            class="detective-result reveal"
-            id="detectiveResult"
+        <section
+            class="section"
+            id="certifications"
         >
-
-            <span class="section-label">
-                INVESTIGATION COMPLETE
-            </span>
-
-            <div class="detective-result-score">
-                <strong id="finalScore">0</strong>
-                <span>/ 5</span>
-            </div>
-
-            <h3 id="finalMessage">
-                Data Detective
-            </h3>
-
-            <p>
-                You found the problems hidden in the data.
-                That's the first step toward reliable analysis.
-            </p>
-
-            <button
-                type="button"
-                class="detective-restart"
-                id="restartGame"
-            >
-                Investigate Again
-                <i class="fa-solid fa-rotate-right"></i>
-            </button>
-
-        </div>
-
-    </div>
-
-</section>  <!-- Certifications -->
-        <section class="section" id="certifications">
 
             <div class="container">
 
-                <div class="section-heading reveal">
+                <div class="section-heading">
 
-                    <div class="section-number">05</div>
+                    <div class="section-number">
+                        06
+                    </div>
 
                     <div>
-                        <span class="section-label">CERTIFICATIONS</span>
+
+                        <span class="section-label">
+                            CERTIFICATIONS
+                        </span>
 
                         <h2>
-                            Learning in progress.
+                            Learning in
+                            <em>progress.</em>
                         </h2>
+
                     </div>
 
                 </div>
 
 
-                <div class="certification-box reveal">
+                <div class="certification-box">
 
                     <div class="cert-icon">
                         <i class="fa-solid fa-certificate"></i>
                     </div>
 
                     <div>
+
                         <h3>
                             Building practical expertise
                         </h3>
 
                         <p>
-                            Continuously developing my skills in data
-                            analysis, visualization, SQL, Python and
-                            business intelligence through projects
-                            and hands-on learning.
+                            Continuously developing my skills in
+                            data analysis, visualization, SQL,
+                            Python and business intelligence through
+                            projects and hands-on learning.
                         </p>
+
                     </div>
 
                 </div>
@@ -838,25 +1085,31 @@
         </section>
 
 
-        <!-- Contact -->
-        <section class="section contact-section" id="contact">
+        <!-- ================= CONTACT ================= -->
+
+        <section
+            class="section contact-section"
+            id="contact"
+        >
 
             <div class="container">
 
-                <div class="contact-content reveal">
+                <div class="contact-content">
 
                     <span class="section-label">
                         GET IN TOUCH
                     </span>
 
                     <h2>
-                        Let's talk about<br>
+                        Let's talk about
+                        <br>
                         <em>data.</em>
                     </h2>
 
                     <p>
-                        Looking for a Data Analyst, internship opportunity,
-                        or someone who enjoys solving problems with data?
+                        Looking for a Data Analyst, internship
+                        opportunity, or someone who enjoys solving
+                        problems with data?
                         I'd be happy to connect.
                     </p>
 
@@ -892,12 +1145,14 @@
     </main>
 
 
-    <!-- Footer -->
+    <!-- ================= FOOTER ================= -->
+
     <footer class="footer">
 
         <div class="container footer-container">
 
             <div>
+
                 <span class="footer-logo">
                     DP<span>.</span>
                 </span>
@@ -905,12 +1160,17 @@
                 <p>
                     Data Analyst · Python · SQL · Visualization
                 </p>
+
             </div>
 
+
             <div>
+
                 <p>
-                    © <span id="year"></span> Devraj Parihar
+                    © <span id="year"></span>
+                    Devraj Parihar
                 </p>
+
             </div>
 
         </div>
@@ -922,7 +1182,3 @@
 
 </body>
 </html>
-<div class="section-heading" data-scroll="left">
-    <div class="project-content" data-scroll="right">
-        <div class="project-tech" data-scroll="scale">
-            <article class="app-card" data-scroll="scale">
