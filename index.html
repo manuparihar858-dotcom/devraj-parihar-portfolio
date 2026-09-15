@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Devraj Parihar | Data Analyst</title>
+
     <meta
         name="description"
-        content="Devraj Parihar — Data Analyst and Mathematics Graduate."
+        content="Devraj Parihar is a Data Analyst focused on transforming raw data into clear, actionable decisions."
     >
-
-    <title>Devraj Parihar | Data Analyst</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
         rel="stylesheet"
     >
 
@@ -28,1357 +27,751 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-
 <body>
 
-<div class="noise"></div>
-<div class="cursor-glow" id="cursorGlow"></div>
+    <div class="cursor-glow"></div>
 
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="container nav-container">
 
-<!-- ================= NAVIGATION ================= -->
-
-<header class="navbar">
-
-    <div class="container nav-inner">
-
-        <a class="logo" href="#home">
-            DP<span>.</span>
-        </a>
-
-        <nav id="navMenu">
-
-            <a href="#home" class="active">
-                Home
+            <a href="#home" class="logo">
+                DP<span>.</span>
             </a>
 
-            <a href="#about">
-                About
-            </a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
 
-            <a href="#skills">
-                Skills
-            </a>
-
-            <a href="#projects">
-                Projects
-            </a>
-
-            <a href="#apps">
-                Live Apps
-            </a>
-
-            <a href="#certifications">
-                Certifications
-            </a>
-
-            <a href="#contact">
-                Contact
-            </a>
-
-        </nav>
-
-
-        <button
-            class="menu-btn"
-            id="menuBtn"
-            aria-label="Open menu"
-        >
-            <i class="fa-solid fa-bars"></i>
-        </button>
-
-    </div>
-
-</header>
-
-
-
-<main>
-
-
-<!-- ================= HERO ================= -->
-
-<section class="hero" id="home">
-
-    <div class="hero-grid"></div>
-
-    <div class="orb orb-one"></div>
-    <div class="orb orb-two"></div>
-
-
-    <div class="container hero-layout">
-
-
-        <!-- HERO CONTENT -->
-
-        <div class="hero-copy reveal">
-
-            <div class="status">
-                <span></span>
-                Open to opportunities
-            </div>
-
-
-            <p class="eyebrow">
-                DATA ANALYST · MATHEMATICS GRADUATE
-            </p>
-
-
-            <h1 class="name-heading">
-                Devraj
-                <span>Parihar.</span>
-            </h1>
-
-
-            <h2 class="hero-role">
-                Turning raw data into
-                <em>decisions.</em>
-            </h2>
-
-
-            <p class="hero-text">
-                I'm a Mathematics graduate with a strong interest in
-                data analysis, visualization and problem solving.
-                I enjoy taking messy information, finding meaningful
-                patterns and turning data into clear, useful insights.
-            </p>
-
-
-            <div class="hero-actions">
-
-                <a
-                    href="#projects"
-                    class="btn btn-primary"
-                >
-                    Explore my work
-                    <i class="fa-solid fa-arrow-down"></i>
-                </a>
-
-
-                <a
-                    href="https://github.com/manuparihar858-dotcom"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn btn-ghost"
-                >
-                    <i class="fa-brands fa-github"></i>
-                    GitHub
-                </a>
-
-            </div>
-
-
-            <div class="tool-row">
-
-                <span>Python</span>
-                <span>SQL</span>
-                <span>Power BI</span>
-                <span>Excel</span>
-                <span>Pandas</span>
-
-            </div>
+            <nav class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#apps" class="nav-link">Live Apps</a>
+                <a href="#certifications" class="nav-link">Certifications</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
 
         </div>
+    </header>
 
 
+    <!-- Hero -->
+    <main>
 
-        <!-- PROFILE PHOTO -->
+        <section class="hero" id="home">
 
-        <div class="hero-photo reveal delay">
+            <div class="hero-grid"></div>
+            <div class="orb orb-one"></div>
+            <div class="orb orb-two"></div>
 
-            <div class="photo-frame">
+            <div class="container hero-layout">
 
-                <img
-                    src="profile.jpg"
-                    alt="Devraj Parihar - Data Analyst"
-                >
+                <div class="hero-copy reveal">
 
-                <div class="photo-overlay"></div>
+                    <div class="eyebrow">
+                        <span class="eyebrow-dot"></span>
+                        DATA ANALYST
+                    </div>
 
-                <div class="photo-corner top-left"></div>
-                <div class="photo-corner top-right"></div>
-                <div class="photo-corner bottom-left"></div>
-                <div class="photo-corner bottom-right"></div>
+                    <h1 class="name-heading">
+                        Devraj <span>Parihar.</span>
+                    </h1>
+
+                    <h2 class="hero-role">
+                        Turning raw data into <em>decisions.</em>
+                    </h2>
+
+                    <p class="hero-description">
+                        I transform data into meaningful insights using
+                        Python, SQL, Excel, Power BI and data visualization.
+                        My focus is on solving business problems through
+                        clean analysis and practical dashboards.
+                    </p>
+
+                    <div class="hero-actions">
+
+                        <a href="#apps" class="btn btn-primary">
+                            Explore My Apps
+                            <i class="fa-solid fa-arrow-down"></i>
+                        </a>
+
+                        <a href="#contact" class="btn btn-secondary">
+                            Get In Touch
+                            <i class="fa-regular fa-paper-plane"></i>
+                        </a>
+
+                    </div>
+
+                    <div class="hero-tools">
+
+                        <span>PYTHON</span>
+                        <span>SQL</span>
+                        <span>EXCEL</span>
+                        <span>POWER BI</span>
+                        <span>PANDAS</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hero-photo reveal delay">
+
+                    <div class="photo-frame">
+
+                        <img
+                            src="profile.jpg"
+                            alt="Devraj Parihar"
+                        >
+
+                        <div class="photo-overlay"></div>
+
+                    </div>
+
+                    <div class="photo-label">
+                        <span>DATA</span>
+                        <strong>ANALYST</strong>
+                    </div>
+
+                </div>
 
             </div>
 
+        </section>
 
-            <div class="photo-label">
 
-                <span></span>
+        <!-- About -->
+        <section class="section" id="about">
 
-                DEVRAJ PARIHAR
+            <div class="container">
 
-                <small>
-                    DATA ANALYST
-                </small>
+                <div class="section-heading reveal">
+
+                    <div class="section-number">01</div>
+
+                    <div>
+                        <span class="section-label">ABOUT ME</span>
+
+                        <h2>
+                            Data with purpose.
+                        </h2>
+                    </div>
+
+                </div>
+
+
+                <div class="about-grid">
+
+                    <div class="about-main reveal">
+
+                        <p class="large-text">
+                            I am a Data Analyst who enjoys turning
+                            messy datasets into clear and useful insights.
+                        </p>
+
+                        <p>
+                            I work across data cleaning, exploratory analysis,
+                            visualization and dashboard development. I enjoy
+                            understanding what the data is saying and then
+                            presenting it in a way that makes sense to
+                            people beyond the technical side.
+                        </p>
+
+                        <p>
+                            My projects focus on practical problems such as
+                            customer behavior, data quality and mathematical
+                            modelling.
+                        </p>
+
+                    </div>
+
+
+                    <div class="about-details reveal delay">
+
+                        <div class="detail-item">
+                            <span>01</span>
+                            <div>
+                                <strong>Analyze</strong>
+                                <p>Find patterns and meaningful insights.</p>
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+                            <span>02</span>
+                            <div>
+                                <strong>Visualize</strong>
+                                <p>Turn analysis into understandable dashboards.</p>
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+                            <span>03</span>
+                            <div>
+                                <strong>Decide</strong>
+                                <p>Connect insights with practical decisions.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
 
-        </div>
-
-    </div>
-
-</section>
+        </section>
 
 
+        <!-- Skills -->
+        <section class="section section-alt" id="skills">
 
-<!-- ================= ABOUT ================= -->
+            <div class="container">
 
-<section
-    class="section about"
-    id="about"
->
+                <div class="section-heading reveal">
 
-    <div class="container">
+                    <div class="section-number">02</div>
+
+                    <div>
+                        <span class="section-label">SKILLS</span>
+
+                        <h2>
+                            My toolkit.
+                        </h2>
+                    </div>
+
+                </div>
 
 
-        <div class="section-head reveal">
+                <div class="skills-grid">
+
+                    <div class="skill-card reveal">
+                        <div class="skill-icon">
+                            <i class="fa-brands fa-python"></i>
+                        </div>
+
+                        <h3>Python</h3>
+
+                        <p>
+                            Data analysis, automation and exploratory
+                            data work.
+                        </p>
+
+                        <div class="skill-tags">
+                            <span>Pandas</span>
+                            <span>NumPy</span>
+                            <span>Plotly</span>
+                        </div>
+                    </div>
+
+
+                    <div class="skill-card reveal">
+                        <div class="skill-icon">
+                            <i class="fa-solid fa-database"></i>
+                        </div>
+
+                        <h3>SQL</h3>
+
+                        <p>
+                            Querying, filtering, aggregations,
+                            joins and analytical logic.
+                        </p>
+
+                        <div class="skill-tags">
+                            <span>Queries</span>
+                            <span>Joins</span>
+                            <span>Analysis</span>
+                        </div>
+                    </div>
+
+
+                    <div class="skill-card reveal">
+                        <div class="skill-icon">
+                            <i class="fa-solid fa-chart-column"></i>
+                        </div>
+
+                        <h3>Visualization</h3>
+
+                        <p>
+                            Building dashboards and visual stories
+                            from complex datasets.
+                        </p>
+
+                        <div class="skill-tags">
+                            <span>Power BI</span>
+                            <span>Plotly</span>
+                            <span>Charts</span>
+                        </div>
+                    </div>
+
+
+                    <div class="skill-card reveal">
+                        <div class="skill-icon">
+                            <i class="fa-solid fa-table"></i>
+                        </div>
+
+                        <h3>Excel</h3>
+
+                        <p>
+                            Data preparation, analysis and
+                            business-focused reporting.
+                        </p>
+
+                        <div class="skill-tags">
+                            <span>Functions</span>
+                            <span>Pivot Tables</span>
+                            <span>Analysis</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Projects -->
+        <section class="section" id="projects">
+
+            <div class="container">
+
+                <div class="section-heading reveal">
+
+                    <div class="section-number">03</div>
+
+                    <div>
+                        <span class="section-label">PROJECTS</span>
+
+                        <h2>
+                            Problems I've explored.
+                        </h2>
+                    </div>
+
+                </div>
+
+
+                <div class="project-list">
+
+                    <article class="project-row reveal">
+
+                        <div class="project-number">01</div>
+
+                        <div class="project-content">
+                            <span class="project-type">
+                                DATA ANALYSIS
+                            </span>
+
+                            <h3>Customer Analysis</h3>
+
+                            <p>
+                                An analytical project focused on customer
+                                behavior, sales performance, segmentation
+                                and regional trends.
+                            </p>
+                        </div>
+
+                        <div class="project-tech">
+                            Python<br>
+                            Pandas<br>
+                            Plotly
+                        </div>
+
+                    </article>
+
+
+                    <article class="project-row reveal">
+
+                        <div class="project-number">02</div>
+
+                        <div class="project-content">
+                            <span class="project-type">
+                                DATA QUALITY
+                            </span>
+
+                            <h3>Data Quality Control</h3>
+
+                            <p>
+                                A practical application designed to identify
+                                missing values, duplicates, inconsistencies
+                                and other common data quality problems.
+                            </p>
+                        </div>
+
+                        <div class="project-tech">
+                            Python<br>
+                            Pandas<br>
+                            Streamlit
+                        </div>
+
+                    </article>
+
+
+                    <article class="project-row reveal">
+
+                        <div class="project-number">03</div>
+
+                        <div class="project-content">
+                            <span class="project-type">
+                                MATHEMATICAL MODEL
+                            </span>
+
+                            <h3>SIR Model Simulation</h3>
+
+                            <p>
+                                A simulation exploring how susceptible,
+                                infected and recovered populations change
+                                over time.
+                            </p>
+                        </div>
+
+                        <div class="project-tech">
+                            Python<br>
+                            Mathematics<br>
+                            Plotly
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Live Apps -->
+        <section class="section section-alt" id="apps">
+
+            <div class="container">
+
+                <div class="section-heading reveal">
+
+                    <div class="section-number">04</div>
+
+                    <div>
+                        <span class="section-label">LIVE APPS</span>
+
+                        <h2>
+                            Try the work yourself.
+                        </h2>
+                    </div>
+
+                </div>
+
+
+                <div class="apps-grid">
+
+
+                    <!-- Customer Analysis -->
+                    <article class="app-card reveal">
+
+                        <div class="app-top">
+
+                            <span class="app-number">
+                                01
+                            </span>
+
+                            <span class="app-status live">
+                                <i class="fa-solid fa-circle"></i>
+                                LIVE
+                            </span>
+
+                        </div>
+
+
+                        <div class="app-icon">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+
+
+                        <h3>
+                            Customer Analysis Dashboard
+                        </h3>
+
+
+                        <p>
+                            Interactive dashboard for exploring customer
+                            behavior, sales performance, segmentation
+                            and regional trends.
+                        </p>
+
+
+                        <div class="app-tags">
+                            <span>Python</span>
+                            <span>Streamlit</span>
+                            <span>Pandas</span>
+                            <span>Plotly</span>
+                        </div>
+
+
+                        <div class="app-actions">
+
+                            <a
+                                href="https://customer-analysis-dashboard-gjhfljvddbaq4qy8hap7ui.streamlit.app/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="app-btn primary"
+                            >
+                                Live Demo
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Data Quality -->
+                    <article class="app-card reveal">
+
+                        <div class="app-top">
+
+                            <span class="app-number">
+                                02
+                            </span>
+
+                            <span class="app-status live">
+                                <i class="fa-solid fa-circle"></i>
+                                LIVE
+                            </span>
+
+                        </div>
+
+
+                        <div class="app-icon">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+
+
+                        <h3>
+                            Data Quality Control Center
+                        </h3>
+
+
+                        <p>
+                            Interactive application for identifying missing
+                            values, duplicates, inconsistencies and other
+                            data quality issues.
+                        </p>
+
+
+                        <div class="app-tags">
+                            <span>Python</span>
+                            <span>Streamlit</span>
+                            <span>Pandas</span>
+                            <span>NumPy</span>
+                        </div>
+
+
+                        <div class="app-actions">
+
+                            <a
+                                href="https://data-quality-control-center-5jwgtf8ntv3qhgkwutdnmv.streamlit.app/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="app-btn primary"
+                            >
+                                Live Demo
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- SIR Model -->
+                    <article class="app-card reveal">
+
+                        <div class="app-top">
+
+                            <span class="app-number">
+                                03
+                            </span>
+
+                            <span class="app-status project-status">
+                                PROJECT
+                            </span>
+
+                        </div>
+
+
+                        <div class="app-icon">
+                            <i class="fa-solid fa-virus"></i>
+                        </div>
+
+
+                        <h3>
+                            SIR Model Simulation
+                        </h3>
+
+
+                        <p>
+                            Mathematical simulation showing how susceptible,
+                            infected and recovered populations change
+                            over time.
+                        </p>
+
+
+                        <div class="app-tags">
+                            <span>Python</span>
+                            <span>Mathematics</span>
+                            <span>Plotly</span>
+                        </div>
+
+
+                        <div class="app-actions">
+
+                            <a
+                                href="https://lnkd.in/p/dkG2_7gV"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="app-btn primary"
+                            >
+                                View Project
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Certifications -->
+        <section class="section" id="certifications">
+
+            <div class="container">
+
+                <div class="section-heading reveal">
+
+                    <div class="section-number">05</div>
+
+                    <div>
+                        <span class="section-label">CERTIFICATIONS</span>
+
+                        <h2>
+                            Learning in progress.
+                        </h2>
+                    </div>
+
+                </div>
+
+
+                <div class="certification-box reveal">
+
+                    <div class="cert-icon">
+                        <i class="fa-solid fa-certificate"></i>
+                    </div>
+
+                    <div>
+                        <h3>
+                            Building practical expertise
+                        </h3>
+
+                        <p>
+                            Continuously developing my skills in data
+                            analysis, visualization, SQL, Python and
+                            business intelligence through projects
+                            and hands-on learning.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Contact -->
+        <section class="section contact-section" id="contact">
+
+            <div class="container">
+
+                <div class="contact-content reveal">
+
+                    <span class="section-label">
+                        GET IN TOUCH
+                    </span>
+
+                    <h2>
+                        Let's talk about<br>
+                        <em>data.</em>
+                    </h2>
+
+                    <p>
+                        Looking for a Data Analyst, internship opportunity,
+                        or someone who enjoys solving problems with data?
+                        I'd be happy to connect.
+                    </p>
+
+
+                    <div class="contact-actions">
+
+                        <a
+                            href="mailto:your-email@example.com"
+                            class="btn btn-primary"
+                        >
+                            Send Email
+                            <i class="fa-regular fa-paper-plane"></i>
+                        </a>
+
+                        <a
+                            href="https://www.linkedin.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn btn-secondary"
+                        >
+                            LinkedIn
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <div class="container footer-container">
 
             <div>
-
-                <p class="eyebrow">
-                    ABOUT ME
-                </p>
-
-                <h2>
-                    Data meets
-                    <em>mathematics.</em>
-                </h2>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="about-flow">
-
-
-            <div class="about-intro reveal">
-
-                <p class="lead">
-                    I'm a Mathematics graduate with a strong interest
-                    in data analysis, visualization and problem solving.
-                </p>
-
-                <p>
-                    My mathematical background gives me a structured
-                    way to approach datasets, identify patterns and
-                    interpret results.
-                </p>
-
-                <p>
-                    I enjoy taking messy information and turning it
-                    into something clear, useful and easy to understand.
-                </p>
-
-            </div>
-
-
-
-            <div class="flow-track">
-
-
-                <div class="flow-item reveal">
-
-                    <div class="flow-dot"></div>
-
-                    <div class="flow-content">
-
-                        <span>
-                            BACKGROUND
-                        </span>
-
-                        <h3>
-                            Mathematics
-                        </h3>
-
-                        <p>
-                            B.Sc. Mathematics Honours with a foundation
-                            in statistics, probability, mathematical
-                            modeling and analytical thinking.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-
-                <div class="flow-item reveal">
-
-                    <div class="flow-dot"></div>
-
-                    <div class="flow-content">
-
-                        <span>
-                            APPROACH
-                        </span>
-
-                        <h3>
-                            Analytical Thinking
-                        </h3>
-
-                        <p>
-                            I approach datasets systematically by
-                            understanding the problem, cleaning the data,
-                            exploring patterns and interpreting results.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-
-                <div class="flow-item reveal">
-
-                    <div class="flow-dot"></div>
-
-                    <div class="flow-content">
-
-                        <span>
-                            WORK
-                        </span>
-
-                        <h3>
-                            Data Projects
-                        </h3>
-
-                        <p>
-                            From sales dashboards to customer analytics
-                            and data quality systems, I build projects
-                            that turn raw information into useful insights.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-
-                <div class="flow-item reveal">
-
-                    <div class="flow-dot"></div>
-
-                    <div class="flow-content">
-
-                        <span>
-                            FOCUS
-                        </span>
-
-                        <h3>
-                            Continuous Growth
-                        </h3>
-
-                        <p>
-                            Currently strengthening my skills across
-                            Python, SQL, Power BI, Excel and practical
-                            data analysis workflows.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="about-tools reveal">
-
-                <span>
-                    Analytical Thinking
+                <span class="footer-logo">
+                    DP<span>.</span>
                 </span>
 
-                <span>
-                    Problem Solving
-                </span>
-
-                <span>
-                    Data Interpretation
-                </span>
-
-                <span>
-                    Trend Analysis
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- ================= SKILLS ================= -->
-
-<section
-    class="section skills"
-    id="skills"
->
-
-    <div class="container">
-
-
-        <div class="section-head reveal">
-
-            <p class="eyebrow">
-                SKILLS & TOOLS
-            </p>
-
-            <h2>
-                My analytics
-                <em>toolkit.</em>
-            </h2>
-
-        </div>
-
-
-
-        <div class="skills-layout">
-
-
-            <div class="skill-panel reveal">
-
-                <div class="skill-title">
-
-                    <i class="fa-solid fa-magnifying-glass-chart"></i>
-
-                    <h3>
-                        Analysis
-                    </h3>
-
-                </div>
-
                 <p>
-                    Turning datasets into useful questions,
-                    patterns and findings.
+                    Data Analyst · Python · SQL · Visualization
                 </p>
-
-                <div class="skill-tags">
-
-                    <span>Data Cleaning</span>
-                    <span>EDA</span>
-                    <span>Trend Analysis</span>
-                    <span>Data Interpretation</span>
-
-                </div>
-
             </div>
-
-
-
-            <div class="skill-panel reveal">
-
-                <div class="skill-title">
-
-                    <i class="fa-solid fa-code"></i>
-
-                    <h3>
-                        Programming
-                    </h3>
-
-                </div>
-
-                <p>
-                    Using Python and numerical tools to
-                    work with data.
-                </p>
-
-                <div class="skill-tags">
-
-                    <span>Python</span>
-                    <span>SQL</span>
-                    <span>Pandas</span>
-                    <span>NumPy</span>
-                    <span>SciPy</span>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="skill-panel reveal">
-
-                <div class="skill-title">
-
-                    <i class="fa-solid fa-chart-column"></i>
-
-                    <h3>
-                        BI & Visualization
-                    </h3>
-
-                </div>
-
-                <p>
-                    Building visuals and dashboards that
-                    communicate clearly.
-                </p>
-
-                <div class="skill-tags">
-
-                    <span>Power BI</span>
-                    <span>Excel Charts</span>
-                    <span>Plotly</span>
-                    <span>Dashboards</span>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="skill-panel reveal">
-
-                <div class="skill-title">
-
-                    <i class="fa-solid fa-layer-group"></i>
-
-                    <h3>
-                        Tools
-                    </h3>
-
-                </div>
-
-                <p>
-                    Practical tools for organizing,
-                    analyzing and presenting datasets.
-                </p>
-
-                <div class="skill-tags">
-
-                    <span>Microsoft Excel</span>
-                    <span>Streamlit</span>
-                    <span>GitHub</span>
-                    <span>Power BI</span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- ================= PROJECTS ================= -->
-
-<section
-    class="section projects"
-    id="projects"
->
-
-    <div class="container">
-
-
-        <div class="section-head reveal">
-
-            <p class="eyebrow">
-                SELECTED WORK
-            </p>
-
-            <h2>
-                Projects built
-                <em>with data.</em>
-            </h2>
-
-        </div>
-
-
-
-        <div class="projects-list">
-
-
-            <!-- PROJECT 1 -->
-
-            <article class="project featured reveal">
-
-                <div class="project-main">
-
-                    <div class="project-meta">
-
-                        <span>
-                            SALES ANALYTICS
-                        </span>
-
-                        <span>
-                            POWER BI · DAX
-                        </span>
-
-                    </div>
-
-
-                    <h3>
-                        Vrinda Store Sales Analysis Dashboard
-                    </h3>
-
-
-                    <p>
-                        An interactive Power BI dashboard analyzing
-                        retail sales performance across orders,
-                        channels, categories, customer segments,
-                        states and order status.
-                    </p>
-
-
-                    <div class="metrics">
-
-                        <div>
-                            <strong>31K+</strong>
-                            <span>Units</span>
-                        </div>
-
-                        <div>
-                            <strong>28K+</strong>
-                            <span>Orders</span>
-                        </div>
-
-                        <div>
-                            <strong>21M+</strong>
-                            <span>Sales</span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="project-bottom">
-
-                        <span>
-                            Power BI · DAX · Data Cleaning · Modeling
-                        </span>
-
-                        <b>
-                            Academic project
-                        </b>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- PROJECT 2 -->
-
-            <article class="project reveal">
-
-                <div class="project-main">
-
-                    <div class="project-meta">
-
-                        <span>
-                            MARKET ANALYSIS
-                        </span>
-
-                        <span>
-                            EXCEL · STATISTICS
-                        </span>
-
-                    </div>
-
-
-                    <h3>
-                        Stock Market Trend Study
-                    </h3>
-
-
-                    <p>
-                        Historical stock market analysis using Excel
-                        to identify price trends, calculate moving
-                        averages and evaluate changes in volatility.
-                    </p>
-
-
-                    <div class="tag-row">
-
-                        <span>50D / 200D MA</span>
-                        <span>Volatility</span>
-                        <span>PivotTables</span>
-
-                    </div>
-
-
-                    <div class="project-bottom">
-
-                        <span>
-                            Excel · Statistics · Visualization
-                        </span>
-
-                        <b>
-                            Academic project
-                        </b>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- PROJECT 3 -->
-
-            <article class="project reveal">
-
-                <div class="project-main">
-
-                    <div class="project-meta">
-
-                        <span>
-                            MATHEMATICAL MODELING
-                        </span>
-
-                        <span>
-                            PYTHON · SCIPY
-                        </span>
-
-                    </div>
-
-
-                    <h3>
-                        Disease Spread Simulation
-                    </h3>
-
-
-                    <p>
-                        A Python-based SIR model using differential
-                        equations to simulate disease transmission
-                        and analyze susceptible, infected and recovered
-                        populations.
-                    </p>
-
-
-                    <div class="tag-row">
-
-                        <span>SIR Model</span>
-                        <span>Numerical Methods</span>
-                        <span>Simulation</span>
-
-                    </div>
-
-
-                    <div class="project-bottom">
-
-                        <span>
-                            Python · NumPy · SciPy
-                        </span>
-
-                        <b>
-                            Academic project
-                        </b>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- ================= LIVE APPS ================= -->
-
-<section
-    class="section apps-section"
-    id="apps"
->
-
-    <div class="container">
-
-
-        <div class="section-head reveal">
-
-            <p class="eyebrow">
-                LIVE APPLICATIONS
-            </p>
-
-            <h2>
-                Actually use
-                <em>what I built.</em>
-            </h2>
-
-            <p class="section-description">
-                Interactive applications built with Python,
-                Streamlit and data analysis tools.
-            </p>
-
-        </div>
-
-
-
-        <div class="apps-grid">
-
-
-            <!-- APP 1 -->
-
-            <article class="app-card reveal">
-
-                <div class="app-header">
-
-                    <span class="app-number">
-                        01
-                    </span>
-
-                    <span class="app-status">
-                        <i></i>
-                        LIVE
-                    </span>
-
-                </div>
-
-
-                <div class="app-icon">
-                    <i class="fa-solid fa-chart-line"></i>
-                </div>
-
-
-                <h3>
-                    Customer Analysis Dashboard
-                </h3>
-
-
-                <p>
-                    Interactive dashboard for exploring customer
-                    behavior, sales performance, segmentation
-                    and regional trends.
-                </p>
-
-
-                <div class="app-tags">
-
-                    <span>Python</span>
-                    <span>Streamlit</span>
-                    <span>Pandas</span>
-                    <span>Plotly</span>
-
-                </div>
-
-
-                <div class="app-actions">
-
-                    <a
-                        href="YOUR_CUSTOMER_APP_URL"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="app-btn primary"
-                    >
-                        Live Demo
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                    </a>
-
-
-                   <a
-    href="https://customer-analysis-dashboard-gjhfljvddbaq4qy8hap7ui.streamlit.app/"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="app-btn primary"
->
-    Live Demo
-    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-</a>
-                </div>
-
-            </article>
-
-
-
-            <!-- APP 2 -->
-
-            <article class="app-card reveal">
-
-                <div class="app-header">
-
-                    <span class="app-number">
-                        02
-                    </span>
-
-                    <span class="app-status">
-                        <i></i>
-                        LIVE
-                    </span>
-
-                </div>
-
-
-                <div class="app-icon">
-                    <i class="fa-solid fa-shield-halved"></i>
-                </div>
-
-
-                <h3>
-                    Data Quality Control Center
-                </h3>
-
-
-                <p>
-                    Interactive application for identifying
-                    missing values, duplicates, inconsistencies
-                    and other data quality issues.
-                </p>
-
-
-                <div class="app-tags">
-
-                    <span>Python</span>
-                    <span>Streamlit</span>
-                    <span>Pandas</span>
-                    <span>NumPy</span>
-
-                </div>
-
-
-                <div class="app-actions">
-
-                    <a
-                        href="YOUR_DATA_QUALITY_APP_URL"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="app-btn primary"
-                    >
-                        Live Demo
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                    </a>
-
-
-                   <a
-    href="https://data-quality-control-center-5jwgtf8ntv3qhgkwutdnmv.streamlit.app/"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="app-btn primary"
->
-    Live Demo
-    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-</a>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- APP 3 -->
-
-            <article class="app-card reveal">
-
-                <div class="app-header">
-
-                    <span class="app-number">
-                        03
-                    </span>
-
-                    <span class="app-status">
-                        <i></i>
-                        LIVE
-                    </span>
-
-                </div>
-
-
-                <div class="app-icon">
-                    <i class="fa-solid fa-virus-covid"></i>
-                </div>
-
-
-                <h3>
-                    SIR Model Simulation
-                </h3>
-
-
-                <p>
-                    Interactive mathematical simulation showing
-                    how susceptible, infected and recovered
-                    populations change over time.
-                </p>
-
-
-                <div class="app-tags">
-
-                    <span>Python</span>
-                    <span>Streamlit</span>
-                    <span>Mathematics</span>
-                    <span>Plotly</span>
-
-                </div>
-
-
-                <div class="app-actions">
-
-                    <a
-                        href="YOUR_SIR_APP_URL"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="app-btn primary"
-                    >
-                        Live Demo
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                    </a>
-
-
-<a
-    href="https://lnkd.in/p/dkG2_7gV"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="app-btn primary"
->
-    View Project
-    <i class="fa-brands fa-linkedin"></i>
-</a>
-                </div>
-
-            </article>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- ================= PROCESS ================= -->
-
-<section
-    class="section process"
-    id="process"
->
-
-    <div class="container">
-
-
-        <div class="section-head reveal">
-
-            <p class="eyebrow">
-                MY APPROACH
-            </p>
-
-            <h2>
-                From raw data
-                <em>to insight.</em>
-            </h2>
-
-        </div>
-
-
-
-        <div class="process-grid">
-
-
-            <div class="process-step reveal">
-
-                <i class="fa-solid fa-database"></i>
-
-                <h3>
-                    Understand
-                </h3>
-
-                <p>
-                    Understand the dataset, business question
-                    and objectives.
-                </p>
-
-            </div>
-
-
-
-            <div class="process-step reveal">
-
-                <i class="fa-solid fa-broom"></i>
-
-                <h3>
-                    Clean
-                </h3>
-
-                <p>
-                    Identify missing values, duplicates
-                    and inconsistencies.
-                </p>
-
-            </div>
-
-
-
-            <div class="process-step reveal">
-
-                <i class="fa-solid fa-magnifying-glass-chart"></i>
-
-                <h3>
-                    Analyze
-                </h3>
-
-                <p>
-                    Explore patterns, trends and relationships
-                    within the data.
-                </p>
-
-            </div>
-
-
-
-            <div class="process-step reveal">
-
-                <i class="fa-solid fa-chart-line"></i>
-
-                <h3>
-                    Visualize
-                </h3>
-
-                <p>
-                    Build clear visualizations that communicate
-                    the findings.
-                </p>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- ================= CERTIFICATIONS ================= -->
-
-<section
-    class="section certifications"
-    id="certifications"
->
-
-    <div class="container">
-
-
-        <div class="section-head reveal">
-
-            <p class="eyebrow">
-                LEARNING
-            </p>
-
-            <h2>
-                Training &
-                <em>certifications.</em>
-            </h2>
-
-        </div>
-
-
-
-        <div class="cert-grid">
-
-
-            <div class="cert-card reveal">
-
-                <div class="cert-icon">
-                    <i class="fa-solid fa-file-excel"></i>
-                </div>
-
-                <div>
-
-                    <span>
-                        TRAINING
-                    </span>
-
-                    <h3>
-                        Data Analysis with Excel
-                    </h3>
-
-                    <p>
-                        Excel-based data analysis,
-                        organization, visualization
-                        and trend identification.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="cert-card muted-card reveal">
-
-                <div class="cert-icon">
-                    <i class="fa-solid fa-database"></i>
-                </div>
-
-                <div>
-
-                    <span>
-                        COMING SOON
-                    </span>
-
-                    <h3>
-                        SQL
-                    </h3>
-
-                    <p>
-                        Certificate will be added
-                        after completion.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="cert-card muted-card reveal">
-
-                <div class="cert-icon">
-                    <i class="fa-brands fa-python"></i>
-                </div>
-
-                <div>
-
-                    <span>
-                        COMING SOON
-                    </span>
-
-                    <h3>
-                        Python
-                    </h3>
-
-                    <p>
-                        Certificate will be added
-                        after completion.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- ================= CONTACT ================= -->
-
-<section
-    class="section contact"
-    id="contact"
->
-
-    <div class="container">
-
-
-        <div class="contact-box reveal">
-
 
             <div>
-
-                <p class="eyebrow">
-                    GET IN TOUCH
-                </p>
-
-                <h2>
-                    Let's make data
-                    <em>useful.</em>
-                </h2>
-
                 <p>
-                    I'm open to Data Analyst opportunities,
-                    internships and projects involving
-                    data analysis, visualization and reporting.
+                    © <span id="year"></span> Devraj Parihar
                 </p>
-
             </div>
-
-
-
-            <div class="contact-actions">
-
-                <a
-                    class="email"
-                    href="mailto:manuparihar858@gmail.com"
-                >
-                    manuparihar858@gmail.com
-
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-
-
-                <div class="socials">
-
-                    <a
-                        href="https://www.linkedin.com/in/devraj-parihar-030343406"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <i class="fa-brands fa-linkedin"></i>
-                        LinkedIn
-                    </a>
-
-
-                    <a
-                        href="https://github.com/manuparihar858-dotcom"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <i class="fa-brands fa-github"></i>
-                        GitHub
-                    </a>
-
-                </div>
-
-            </div>
-
 
         </div>
 
-    </div>
-
-</section>
+    </footer>
 
 
-</main>
-
-
-
-<!-- ================= FOOTER ================= -->
-
-<footer>
-
-    <div class="container footer-inner">
-
-        <span>
-            © <span id="year"></span> Devraj Parihar
-        </span>
-
-        <span class="footer-status">
-            <i></i>
-            Built with data & curiosity
-        </span>
-
-        <span>
-            Data Analyst
-        </span>
-
-    </div>
-
-</footer>
-
-
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
