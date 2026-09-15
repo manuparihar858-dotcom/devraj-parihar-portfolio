@@ -1,74 +1,68 @@
-/* =========================================================
-   DEVRAJ PARIHAR PORTFOLIO
-   ========================================================= */
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* =========================
+       FOOTER YEAR
+    ========================= */
+
+    const year = document.getElementById("year");
+
+    if (year) {
+        year.textContent = new Date().getFullYear();
+    }
 
 
-/* ================= FOOTER YEAR ================= */
+    /* =========================
+       MOBILE MENU
+    ========================= */
 
-const yearElement = document.getElementById("year");
+    const menuToggle = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
+    const navLinks = document.querySelectorAll(".nav-link");
 
-if (yearElement) {
-    yearElement.textContent = new Date().getFullYear();
-}
+    if (menuToggle && navMenu) {
 
+        menuToggle.addEventListener("click", () => {
 
+            navMenu.classList.toggle("open");
 
-/* ================= MOBILE MENU ================= */
+            const icon = menuToggle.querySelector("i");
 
-const menuBtn = document.getElementById("menuBtn");
-const navMenu = document.getElementById("navMenu");
-
-if (menuBtn && navMenu) {
-
-    menuBtn.addEventListener("click", () => {
-
-        navMenu.classList.toggle("open");
-
-        const icon = menuBtn.querySelector("i");
-
-        if (navMenu.classList.contains("open")) {
-
-            icon.classList.remove("fa-bars");
-            icon.classList.add("fa-xmark");
-
-        } else {
-
-            icon.classList.remove("fa-xmark");
-            icon.classList.add("fa-bars");
-
-        }
-
-    });
-
-
-    navMenu.querySelectorAll("a").forEach(link => {
-
-        link.addEventListener("click", () => {
-
-            navMenu.classList.remove("open");
-
-            const icon = menuBtn.querySelector("i");
-
-            icon.classList.remove("fa-xmark");
-            icon.classList.add("fa-bars");
+            if (navMenu.classList.contains("open")) {
+                icon.classList.remove("fa-bars");
+                icon.classList.add("fa-xmark");
+            } else {
+                icon.classList.remove("fa-xmark");
+                icon.classList.add("fa-bars");
+            }
 
         });
 
-    });
 
-}
+        navLinks.forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                navMenu.classList.remove("open");
+
+                const icon = menuToggle.querySelector("i");
+
+                icon.classList.remove("fa-xmark");
+                icon.classList.add("fa-bars");
+
+            });
+
+        });
+
+    }
 
 
+    /* =========================
+       SCROLL REVEAL
+    ========================= */
 
-/* ================= SCROLL REVEAL ================= */
+    const revealElements = document.querySelectorAll(".reveal");
 
-const revealElements =
-    document.querySelectorAll(".reveal");
-
-
-const revealObserver =
-    new IntersectionObserver(
-
+    const revealObserver = new IntersectionObserver(
         entries => {
 
             entries.forEach(entry => {
@@ -77,43 +71,31 @@ const revealObserver =
 
                     entry.target.classList.add("visible");
 
-                    revealObserver.unobserve(
-                        entry.target
-                    );
+                    revealObserver.unobserve(entry.target);
 
                 }
 
             });
 
         },
-
         {
             threshold: 0.12
         }
-
     );
 
 
-revealElements.forEach(element => {
-
-    revealObserver.observe(element);
-
-});
+    revealElements.forEach(element => {
+        revealObserver.observe(element);
+    });
 
 
+    /* =========================
+       ACTIVE NAVIGATION
+    ========================= */
 
-/* ================= ACTIVE NAVIGATION ================= */
+    const sections = document.querySelectorAll("section[id]");
 
-const sections =
-    document.querySelectorAll("main section[id]");
-
-const navLinks =
-    document.querySelectorAll("#navMenu a");
-
-
-const sectionObserver =
-    new IntersectionObserver(
-
+    const sectionObserver = new IntersectionObserver(
         entries => {
 
             entries.forEach(entry => {
@@ -122,22 +104,16 @@ const sectionObserver =
                     return;
                 }
 
-
-                const id =
-                    entry.target.getAttribute("id");
-
+                const currentId = entry.target.getAttribute("id");
 
                 navLinks.forEach(link => {
 
                     link.classList.remove("active");
 
-                    if (
-                        link.getAttribute("href") ===
-                        `#${id}`
-                    ) {
+                    const href = link.getAttribute("href");
 
+                    if (href === `#${currentId}`) {
                         link.classList.add("active");
-
                     }
 
                 });
@@ -145,45 +121,67 @@ const sectionObserver =
             });
 
         },
-
         {
-            rootMargin:
-                "-35% 0px -55% 0px",
-
-            threshold:
-                0
+            rootMargin: "-35% 0px -55% 0px"
         }
-
     );
 
 
-sections.forEach(section => {
-
-    sectionObserver.observe(section);
-
-});
+    sections.forEach(section => {
+        sectionObserver.observe(section);
+    });
 
 
+    /* =========================
+       CURSOR GLOW
+    ========================= */
 
-/* ================= CURSOR GLOW ================= */
+    const cursorGlow = document.querySelector(".cursor-glow");
 
-const cursorGlow =
-    document.getElementById("cursorGlow");
+    if (cursorGlow && window.innerWidth > 800) {
+
+        document.addEventListener("mousemove", event => {
+
+            cursorGlow.style.left = `${event.clientX}px`;
+            cursorGlow.style.top = `${event.clientY}px`;
+
+        });
+
+    }
 
 
-if (
-    cursorGlow &&
-    window.matchMedia("(pointer: fine)").matches
-) {
+    /* =========================
+       SMOOTH ANCHOR SCROLL
+    ========================= */
 
-    document.addEventListener("mousemove", event => {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
-        cursorGlow.style.left =
-            `${event.clientX}px`;
+        anchor.addEventListener("click", event => {
 
-        cursorGlow.style.top =
-            `${event.clientY}px`;
+            const targetId = anchor.getAttribute("href");
+
+            if (
+                targetId === "#" ||
+                targetId.length === 0
+            ) {
+                return;
+            }
+
+            const target = document.querySelector(targetId);
+
+            if (!target) {
+                return;
+            }
+
+            event.preventDefault();
+
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        });
 
     });
 
-}
+});
