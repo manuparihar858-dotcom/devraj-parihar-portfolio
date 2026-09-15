@@ -789,7 +789,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
 
-        /*
+      const certifications = [
+    {
+        title: "SQL (Intermediate)",
+        issuer: "HackerRank",
+        date: "September 2026",
+        credentialId: "351E7CD555C0",
+        credentialUrl:
+            "https://www.hackerrank.com/certificates/351e7cd555c0"
+    },
+    {
+        title: "Data Science & Analytics",
+        issuer: "HP LIFE",
+        date: "September 2026",
+        credentialId:
+            "6f00221c-9ecb-4472-8d88-5ff9f224d666",
+        credentialUrl: null
+    }
+];  /*
          * Start the first case.
          */
         renderCase();
