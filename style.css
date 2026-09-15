@@ -1384,3 +1384,340 @@ img {
         flex-direction: column;
     }
 }
+/* =========================================
+   FLOWSTATE SCROLL EXPERIENCE
+========================================= */
+
+/* Smooth section transitions */
+section {
+    position: relative;
+    isolation: isolate;
+}
+
+
+/* Scroll reveal */
+[data-scroll] {
+    opacity: 0;
+    transform: translateY(55px);
+    transition:
+        opacity 0.9s cubic-bezier(.22, 1, .36, 1),
+        transform 1s cubic-bezier(.22, 1, .36, 1);
+}
+
+[data-scroll].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Directional reveals */
+[data-scroll="left"] {
+    transform: translateX(-70px);
+}
+
+[data-scroll="right"] {
+    transform: translateX(70px);
+}
+
+[data-scroll="scale"] {
+    transform: scale(.92);
+}
+
+[data-scroll].is-visible[data-scroll="left"],
+[data-scroll].is-visible[data-scroll="right"] {
+    transform: translateX(0);
+}
+
+[data-scroll].is-visible[data-scroll="scale"] {
+    transform: scale(1);
+}
+
+
+/* =========================================
+   HERO PARALLAX
+========================================= */
+
+.hero-copy {
+    will-change: transform;
+}
+
+.hero-photo {
+    will-change: transform;
+}
+
+
+/* =========================================
+   BACKGROUND FLOW
+========================================= */
+
+.hero-grid {
+    will-change: transform;
+    transition: opacity .3s ease;
+}
+
+.orb {
+    will-change: transform;
+}
+
+
+/* =========================================
+   SECTION HEADINGS
+========================================= */
+
+.section-heading {
+    transition:
+        transform .7s cubic-bezier(.22, 1, .36, 1),
+        opacity .7s ease;
+}
+
+.section-heading .section-number {
+    transition:
+        transform .7s cubic-bezier(.22, 1, .36, 1),
+        color .3s ease;
+}
+
+.section-heading:hover .section-number {
+    color: var(--accent-light);
+    transform: translateX(6px);
+}
+
+
+/* =========================================
+   PROJECT ROW INTERACTION
+========================================= */
+
+.project-row {
+    position: relative;
+    overflow: hidden;
+
+    transition:
+        transform .6s cubic-bezier(.22, 1, .36, 1),
+        padding-left .5s ease,
+        background .5s ease;
+}
+
+.project-row::before {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 2px;
+    height: 100%;
+
+    background: var(--accent);
+
+    transform: scaleY(0);
+    transform-origin: top;
+
+    transition: transform .6s cubic-bezier(.22, 1, .36, 1);
+}
+
+.project-row.is-active {
+    background: rgba(91, 140, 255, .025);
+    padding-left: 18px;
+}
+
+.project-row.is-active::before {
+    transform: scaleY(1);
+}
+
+.project-row.is-active .project-number {
+    color: var(--accent-light);
+}
+
+
+/* =========================================
+   PROJECT TOOLS
+========================================= */
+
+.project-tech span {
+    opacity: 0;
+    transform: translateY(10px);
+
+    transition:
+        opacity .45s ease,
+        transform .45s cubic-bezier(.22, 1, .36, 1),
+        background .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+.project-row.is-active .project-tech span {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project-row.is-active .project-tech span:nth-child(1) {
+    transition-delay: .05s;
+}
+
+.project-row.is-active .project-tech span:nth-child(2) {
+    transition-delay: .12s;
+}
+
+.project-row.is-active .project-tech span:nth-child(3) {
+    transition-delay: .19s;
+}
+
+.project-row.is-active .project-tech span:nth-child(4) {
+    transition-delay: .26s;
+}
+
+
+/* =========================================
+   APP CARDS
+========================================= */
+
+.app-card {
+    will-change: transform;
+    transition:
+        transform .65s cubic-bezier(.22, 1, .36, 1),
+        border-color .3s ease,
+        box-shadow .4s ease;
+}
+
+.app-card:nth-child(1) {
+    transition-delay: .05s;
+}
+
+.app-card:nth-child(2) {
+    transition-delay: .13s;
+}
+
+.app-card:nth-child(3) {
+    transition-delay: .21s;
+}
+
+
+/* =========================================
+   APP ICON FLOW
+========================================= */
+
+.app-icon {
+    transition:
+        transform .5s cubic-bezier(.22, 1, .36, 1),
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+.app-card.is-active .app-icon {
+    transform: translateY(-5px) rotate(-3deg);
+
+    border-color: rgba(91, 140, 255, .55);
+
+    box-shadow:
+        0 10px 30px rgba(91, 140, 255, .12);
+}
+
+
+/* =========================================
+   HERO TOOLS
+========================================= */
+
+.hero-tools span {
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        color .3s ease,
+        background .3s ease;
+}
+
+.hero-tools span:hover {
+    transform: translateY(-3px);
+
+    color: white;
+
+    border-color: rgba(91, 140, 255, .5);
+
+    background: rgba(91, 140, 255, .07);
+}
+
+
+/* =========================================
+   PHOTO PARALLAX FRAME
+========================================= */
+
+.photo-frame {
+    will-change: transform;
+}
+
+
+/* =========================================
+   SCROLL PROGRESS LINE
+========================================= */
+
+.scroll-progress {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 2px;
+
+    background: rgba(255,255,255,.04);
+
+    z-index: 2000;
+}
+
+.scroll-progress-bar {
+    width: 0;
+    height: 100%;
+
+    background: var(--accent);
+
+    transform-origin: left;
+
+    box-shadow: 0 0 12px rgba(91, 140, 255, .5);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 760px) {
+
+    [data-scroll="left"],
+    [data-scroll="right"] {
+        transform: translateY(35px);
+    }
+
+    [data-scroll].is-visible[data-scroll="left"],
+    [data-scroll].is-visible[data-scroll="right"] {
+        transform: translateY(0);
+    }
+
+    .project-row.is-active {
+        padding-left: 8px;
+    }
+
+}
+
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+
+    [data-scroll],
+    [data-scroll="left"],
+    [data-scroll="right"],
+    [data-scroll="scale"] {
+        opacity: 1;
+        transform: none;
+    }
+
+}
