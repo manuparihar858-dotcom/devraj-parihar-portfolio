@@ -485,4 +485,381 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateScroll();
 
-});
+/* =========================================
+   DATA DETECTIVE GAME
+========================================= */
+
+const detectiveCases = [
+
+    {
+        headers: ["Customer", "Age", "City", "Purchase"],
+
+        rows: [
+            ["Aarav", "24", "Delhi", "₹2,400"],
+            ["Riya", "29", "Mumbai", "₹3,100"],
+            ["Kabir", "-7", "Pune", "₹1,800"],
+            ["Neha", "31", "Delhi", "₹4,200"]
+        ],
+
+        correct: {
+            row: 2,
+            col: 1
+        },
+
+        explanation:
+            "An age of -7 is impossible."
+    },
+
+    {
+        headers: ["Order ID", "Customer", "Amount", "Status"],
+
+        rows: [
+            ["ORD-101", "Aarav", "₹2,400", "Completed"],
+            ["ORD-102", "Riya", "₹1,800", "Completed"],
+            ["ORD-103", "Kabir", "₹3,200", "Pending"],
+            ["ORD-103", "Neha", "₹2,100", "Completed"]
+        ],
+
+        correct: {
+            row: 3,
+            col: 0
+        },
+
+        explanation:
+            "ORD-103 appears twice. That's a duplicate order ID."
+    },
+
+    {
+        headers: ["Customer", "Region", "Orders", "Revenue"],
+
+        rows: [
+            ["Aarav", "North", "12", "₹18,400"],
+            ["Riya", "West", "9", "₹14,200"],
+            ["Kabir", "", "15", "₹22,100"],
+            ["Neha", "South", "11", "₹16,800"]
+        ],
+
+        correct: {
+            row: 2,
+            col: 1
+        },
+
+        explanation:
+            "Kabir's region is missing."
+    },
+
+    {
+        headers: ["Product", "Units", "Price", "Revenue"],
+
+        rows: [
+            ["Laptop", "4", "₹55,000", "₹220,000"],
+            ["Mouse", "12", "₹900", "₹10,800"],
+            ["Keyboard", "8", "₹1,500", "₹12,000"],
+            ["Monitor", "3", "₹18,000", "₹540,000"]
+        ],
+
+        correct: {
+            row: 3,
+            col: 3
+        },
+
+        explanation:
+            "3 × ₹18,000 = ₹54,000, not ₹540,000."
+    },
+
+    {
+        headers: ["Customer", "Orders", "Average Order", "Segment"],
+
+        rows: [
+            ["Aarav", "8", "₹2,400", "Regular"],
+            ["Riya", "11", "₹3,100", "Regular"],
+            ["Kabir", "7", "₹2,700", "Premium"],
+            ["Neha", "9", "₹2,900", "Regular"]
+        ],
+
+        correct: {
+            row: 2,
+            col: 3
+        },
+
+        explanation:
+            "Kabir has the Premium label despite having the lowest order count."
+    }
+
+];
+
+
+let detectiveIndex = 0;
+let detectiveScore = 0;
+let detectiveAnswered = false;
+
+
+const detectiveHead =
+    document.getElementById("detectiveHead");
+
+const detectiveBody =
+    document.getElementById("detectiveBody");
+
+const detectiveQuestion =
+    document.getElementById("detectiveQuestion");
+
+const detectiveMessage =
+    document.getElementById("detectiveMessage");
+
+const detectiveScoreElement =
+    document.getElementById("detectiveScore");
+
+const caseNumber =
+    document.getElementById("caseNumber");
+
+const detectiveProgress =
+    document.getElementById("detectiveProgress");
+
+const nextCase =
+    document.getElementById("nextCase");
+
+const detectiveResult =
+    document.getElementById("detectiveResult");
+
+const finalScore =
+    document.getElementById("finalScore");
+
+const finalMessage =
+    document.getElementById("finalMessage");
+
+const restartGame =
+    document.getElementById("restartGame");
+
+
+function loadDetectiveCase() {
+
+    const current =
+        detectiveCases[detectiveIndex];
+
+    detectiveAnswered = false;
+
+    nextCase.disabled = true;
+
+    caseNumber.textContent =
+        `${String(detectiveIndex + 1).padStart(2, "0")} / ${detectiveCases.length}`;
+
+    detectiveProgress.textContent =
+        `Case ${detectiveIndex + 1} of ${detectiveCases.length}`;
+
+    detectiveMessage.textContent =
+        "Select the value you think is wrong.";
+
+    detectiveMessage.className =
+        "detective-message";
+
+
+    detectiveHead.innerHTML =
+        current.headers
+            .map(header => `<th>${header}</th>`)
+            .join("");
+
+
+    detectiveBody.innerHTML =
+        current.rows
+            .map((row, rowIndex) => {
+
+                return `
+                    <tr>
+                        ${row.map((value, colIndex) => `
+                            <td
+                                class="selectable"
+                                data-row="${rowIndex}"
+                                data-col="${colIndex}"
+                            >
+                                ${value || "—"}
+                            </td>
+                        `).join("")}
+                    </tr>
+                `;
+
+            })
+            .join("");
+
+
+    detectiveBody
+        .querySelectorAll("td")
+        .forEach(cell => {
+
+            cell.addEventListener(
+                "click",
+                () => {
+
+                    if (detectiveAnswered) {
+                        return;
+                    }
+
+                    const row =
+                        Number(cell.dataset.row);
+
+                    const col =
+                        Number(cell.dataset.col);
+
+
+                    const correct =
+                        current.correct;
+
+
+                    detectiveAnswered = true;
+
+
+                    if (
+                        row === correct.row &&
+                        col === correct.col
+                    ) {
+
+                        detectiveScore++;
+
+                        detectiveScoreElement.textContent =
+                            detectiveScore;
+
+                        cell.classList.add("correct");
+
+                        detectiveMessage.textContent =
+                            `✓ Correct. ${current.explanation}`;
+
+                        detectiveMessage.classList.add(
+                            "success"
+                        );
+
+                    } else {
+
+                        cell.classList.add("wrong");
+
+                        detectiveMessage.textContent =
+                            `Not quite. ${current.explanation}`;
+
+                        detectiveMessage.classList.add(
+                            "error"
+                        );
+
+
+                        const correctCell =
+                            detectiveBody.querySelector(
+                                `[data-row="${correct.row}"][data-col="${correct.col}"]`
+                            );
+
+
+                        if (correctCell) {
+                            correctCell.classList.add(
+                                "correct"
+                            );
+                        }
+
+                    }
+
+
+                    nextCase.disabled = false;
+
+                }
+            );
+
+        });
+
+}
+
+
+function finishDetective() {
+
+    finalScore.textContent =
+        detectiveScore;
+
+
+    if (detectiveScore === 5) {
+
+        finalMessage.textContent =
+            "Outstanding. You're a Data Detective.";
+
+    } else if (detectiveScore >= 3) {
+
+        finalMessage.textContent =
+            "Nice work. Your analyst instincts are solid.";
+
+    } else {
+
+        finalMessage.textContent =
+            "Good start. Every analyst gets better with practice.";
+
+    }
+
+
+    detectiveResult.classList.add("show");
+
+    detectiveResult.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+}
+
+
+if (nextCase) {
+
+    nextCase.addEventListener(
+        "click",
+        () => {
+
+            if (!detectiveAnswered) {
+                return;
+            }
+
+
+            detectiveIndex++;
+
+
+            if (
+                detectiveIndex >=
+                detectiveCases.length
+            ) {
+
+                finishDetective();
+
+                return;
+
+            }
+
+
+            loadDetectiveCase();
+
+        }
+    );
+
+}
+
+
+if (restartGame) {
+
+    restartGame.addEventListener(
+        "click",
+        () => {
+
+            detectiveIndex = 0;
+            detectiveScore = 0;
+
+            detectiveScoreElement.textContent =
+                "0";
+
+            detectiveResult.classList.remove(
+                "show"
+            );
+
+            loadDetectiveCase();
+
+        }
+    );
+
+}
+
+
+if (
+    detectiveHead &&
+    detectiveBody
+) {
+
+    loadDetectiveCase();
+
+}});
