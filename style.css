@@ -814,14 +814,13 @@ img {
     display: inline-flex;
     align-items: center;
 
+    opacity: 1;
+    transform: translateY(0);
+
     padding: 7px 10px;
-
     border: 1px solid rgba(91, 140, 255, 0.28);
-
     border-radius: 5px;
-
     background: rgba(91, 140, 255, 0.06);
-
     color: #9bb7ff;
 
     font-family: var(--mono);
@@ -836,6 +835,7 @@ img {
         color 0.25s ease,
         box-shadow 0.25s ease,
         transform 0.25s ease;
+}
 }
 
 
